@@ -1,0 +1,853 @@
+{
+    "appTitle": "Umaycare Patient",
+    "@appTitle": {
+        "description": "The current appTitle"
+    },
+
+    "language": "Language",
+    "@language": {
+        "description": "The current language"
+    },
+
+    "hospitalCare": "Hospital Care",
+    "@hospitalCare": {
+        "description": "The current hospitalCare"
+    },
+
+    "id": "id",
+    "@id": {
+        "description": "The current id"
+    },
+
+    "setting": "Setting",
+    "@setting": {
+        "description": "The current setting"
+    },
+
+    "email": "Email",
+    "@email": {
+        "description": "The current email"
+    },
+
+    "password": "Password",
+    "@password": {
+        "description": "The current password"
+    },
+
+    "invalidEmail": "Invalid email",
+    "@invalidEmail": {
+        "description": "The current invalidEmail"
+    },
+
+    "invalidPassword": "Invalid Password",
+    "@invalidPassword": {
+        "description": "The current invalidPassword"
+    },
+    
+    "confirmPassword": "Confirm Password",
+    "@confirmPassword": {
+        "description": "The current confirmPassword"
+    },
+
+    "passwordDoNotMatch": "Passwords do not match",
+    "@passwordDoNotMatch": {
+        "description": "The current passwordDoNotMatch"
+    },
+
+    "login": "Login",
+    "@login": {
+        "description": "The current login"
+    },
+
+    "signup": "Signup",
+    "@signup": {
+        "description": "The current signup"
+    },
+
+    "logout": "Logout",
+    "@logout": {
+        "description": "The current logout"
+    },
+
+    "totalAppointment": "Total Appointment",
+    "@totalAppointment": {
+        "description": "The current totalAppointment"
+    },
+
+    "addAppointment": "Add Appointment",
+    "@addAppointment": {
+        "description": "The current addAppointment"
+    },
+
+    "appointmentRequest": "Appointment Request",
+    "@appointmentRequest": {
+        "description": "The current appointmentRequest"
+    },
+
+    "appointments": "Appointments",
+    "@appointments": {
+        "description": "The current appointments"
+    },
+
+    "appointment": "Appointment",
+    "@appointment": {
+        "description": "The current appointment"
+    },
+
+    "appointmentTime": "Appointment time",
+    "@appointmentTime": {
+        "description": "The current appointmentTime"
+    },
+
+    "newAppointment": "New Appointment",
+    "@newAppointment": {
+        "description": "The current newAppointment"
+    },
+
+    "createAppointment": "Create Appointment",
+    "@createAppointment": {
+        "description": "The current createAppointment"
+    },
+
+    "editAppointment": "Edit Appointment",
+    "@editAppointment": {
+        "description": "The current editAppointment"
+    },
+
+    "appointmentCreatedMessage": "Your appointment have been created successfully",
+    "@editAppointment": {
+        "description": "The current appointmentCreatedMessage"
+    },
+
+    "appointmentUpdateMessage": "Your appointment have been updated successfully",
+    "@editAppointment": {
+        "description": "The current appointmentUpdateMessage"
+    },
+
+    "checkProfile": "Check Profile",
+    "@checkProfile": {
+        "description": "The current checkProfile"
+    },
+
+    "todaysAppointment": "Todays Appointment",
+    "@todaysAppointment": {
+        "description": "The current todaysAppointment"
+    },
+
+    "appointmentList": "Appointment List",
+    "@appointmentList": {
+        "description": "The current Appointment List"
+    },
+
+    "profile": "Profile",
+    "@profile": {
+        "description": "The current profile"
+    },
+
+    "changesUpdatedSuccessfuly": "Change have been successful updated.",
+    "@changesUpdatedSuccessfuly": {
+        "description": "The current changesUpdatedSuccessfuly"
+    },
+
+    "changesUpdatedNotSuccessfull": "Changes are not successfully updated.",
+    "@changesUpdatedSuccessfuly": {
+        "description": "The current changesUpdatedSuccessfuly"
+    },
+
+    "notChangable": "Not changeble",
+    "@notChangable": {
+        "description": "The current notChangable"
+    },
+
+    "addPayment": "Add Payment",
+    "@addPayment": {
+        "description": "The current addPayment"
+    },
+
+    "invoiceId": "Invoice Id",
+    "@invoiceId": {
+        "description": "The current invoiceId"
+    },
+
+    "patient": "Patient",
+    "@patient": {
+        "description": "The current patient"
+    },
+
+    "patientName": "Patient Name",
+    "@patientName": {
+        "description": "The current patientName"
+    },
+
+    "doctorName": "Doctor Name",
+    "@doctorName": {
+        "description": "The current doctorName"
+    },
+
+    "date": "Date",
+    "@date": {
+        "description": "The current date"
+    },
+
+    "amount": "Amount",
+    "@amount": {
+        "description": "The current amount"
+    },
+
+    "patientPhone": "Patient phone",
+    "@patientPhone": {
+        "description": "The current patientPhone"
+    },
+
+    "dashboard": "Dashboard",
+    "@dashboard": {
+        "description": "The current dashboard"
+    },
+
+    "payment": "Payment",
+    "@payment": {
+        "description": "The current payment"
+    },
+
+    "paymentList": "Payment List",
+    "@paymentList": {
+        "description": "The current paymentList"
+    },
+
+    "doctor": "Doctor",
+    "@doctor": {
+        "description": "The current doctor"
+    },
+
+    "selectTheDate": "Select The Date",
+    "@selectTheDate": {
+        "description": "The current selectTheDate"
+    },
+
+    "availableSlot": "Available Slot",
+    "@availableSlot": {
+        "description": "The current Available Slot"
+    },
+
+    "remarks": "Remarks",
+    "@remarks": {
+        "description": "The current remarks"
+    },
+    
+    "giveYourRemarks": "Give your remarks",
+    "@giveYourRemarks": {
+        "description": "The current giveYourRemarks"
+    },
+
+    "appointmentStatus": "Appointment Status",
+    "@appointmentStatus": {
+        "description": "The current Appointment Status"
+    },
+
+    "noAppointment": "No Appointment",
+    "@noAppointment": {
+        "description": "The current noAppointment"
+    },
+
+    "invalid": "Invalid",
+    "@invalid": {
+        "description": "The current invalid"
+    },
+
+    "invalidInput": "Invalid input",
+    "@invalidInput": {
+        "description": "The current invalidInput "
+    },
+
+    "pleaseEnterValidInput": "Please Enter Valid Input",
+    "@pleaseEnterValidInput": {
+        "description": "The current pleaseEnterValidInput "
+    },
+
+    "ok": "Ok",
+    "@ok": {
+        "description": "The current ok "
+    },
+
+    "close": "close",
+    "@close": {
+        "description": "The current close "
+    },
+
+    "save": "Save",
+    "@save": {
+        "description": "The current save "
+    },
+
+    "update": "Update",
+    "@update": {
+        "description": "The current update "
+    },
+
+    "success": "Success",
+    "@success": {
+        "description": "The current success "
+    },
+
+    "successMessage": "Success Message",
+    "@successMessage": {
+        "description": "The current successMessage "
+    },
+
+    "payment": "Payment",
+    "@payment": {
+        "description": "The current payment "
+    },
+
+    "paymentSuccessfullMessage": "Payment successfull",
+    "@paymentSuccessfullMessage": {
+        "description": "The current paymentSuccessfullMessage "
+    },
+
+    "paymentUnsuccessfull": "Payment not successfull",
+    "@paymentUnsuccessfull": {
+        "description": "The current paymentUnsuccessfull "
+    },
+
+    "invoice": "Invoice",
+    "@invoice": {
+        "description": "The current invoice "
+    },
+
+    "depositAmount": "Deposit Amount",
+    "@depositAmount": {
+        "description": "The current depositAmount "
+    },
+
+    "depositAmountValidMessage": "Enter valid deposit amount",
+    "@depositAmountValidMessage": {
+        "description": "The current depositAmountValidMessage "
+    },
+
+    "depositType": "Deposit Type",
+    "@depositType": {
+        "description": "The current depositType "
+    },
+
+    "depositTypeValidMessage": "Enter valid deposit type",
+    "@depositTypeValidMessage": {
+        "description": "The current depositTypeValidMessage "
+    },
+
+    "cardType": "Card Type",
+    "@cardType": {
+        "description": "The current cardType "
+    },
+
+    "name": "Name",
+    "@name": {
+        "description": "The current name "
+    },
+
+    "enterName": "Enter Name",
+    "@enterName": {
+        "description": "The current enterName "
+    },
+
+    "invalidName": "Enter valid Name",
+    "@invalidName": {
+        "description": "The current invalidName "
+    },
+
+    "enterCardHolderName": "Enter Card Holder Name",
+    "@enterCardHolderName": {
+        "description": "The current enterCardHolderName "
+    },
+
+    "cardNumber": "Card Number",
+    "@cardNumber": {
+        "description": "The current cardNumber "
+    },
+
+    "enterCardnumber": "Enter Card Number",
+    "@enterCardnumber": {
+        "description": "The current enterCardnumber "
+    },
+
+    "invalidCardNumber": "Invalid Card Number",
+    "@invalidCardNumber": {
+        "description": "The current invalidCardNumber "
+    },
+
+    "exipryDate": "Exipry Date",
+    "@exipryDate": {
+        "description": "The current exipryDate "
+    },
+
+    "enterExipryDate": "Enter exipry date",
+    "@enterExipryDate": {
+        "description": "The current enterExipryDate "
+    },
+
+    "cvv": "CVV",
+    "@cvv": {
+        "description": "The current cvv "
+    },
+
+    "enterCvv": "Enter cvv",
+    "@enterCvv": {
+        "description": "The current enterCvv "
+    },
+
+    "invalidCvv": "Please enter valid cvv",
+    "@invalidCvv": {
+        "description": "The current invalidCvv "
+    },
+
+    "audioOnly": "Audio Only",
+    "@audioOnly": {
+        "description": "The current audioOnly "
+    },
+
+    "audioMuted": "Audio Muted",
+    "@audioMuted": {
+        "description": "The current audioMuted "
+    },
+
+    "videoMuted": "Video Muted",
+    "@videoMuted": {
+        "description": "The current videoMuted "
+    },
+
+    "joinMeeting": "Join Meeting",
+    "@joinMeeting": {
+        "description": "The current joinMeeting "
+    },
+
+    "videoAppointment": "Video Appointment",
+    "@videoAppointment": {
+        "description": "The current videoAppointment "
+    }, 
+
+    "startTime": "Start Time",
+    "@startTime": {
+        "description": "The current startTime "
+    }, 
+
+    "endTime": "End Time",
+    "@endTime": {
+        "description": "The current endTime "
+    }, 
+
+    "status": "Status",
+    "@status": {
+        "description": "The current status "
+    }, 
+
+    "appointmentLink": "Appointment Link",
+    "@appointmentLink": {
+        "description": "The current appointmentLink "
+    }, 
+
+    "action": "Action",
+    "@action": {
+        "description": "The current action "
+    }, 
+
+    "edit": "Edit",
+    "@edit": {
+        "description": "The current edit "
+    },
+
+    "delete": "Delete",
+    "@delete": {
+        "description": "The current delete "
+    },  
+
+    "failed": "Failed",
+    "@failed": {
+        "description": "The current failed "
+    },
+    
+    "appointmentWasNotDeleted": "Appointment Was Not Deleted",
+    "@appointmentWasNotDeleted": {
+        "description": "The current appointmentWasNotDeleted "
+    },
+
+    "appointmentWasDeleted": "Appointment Was Deleted",
+    "@appointmentWasDeleted": {
+        "description": "The current appointmentWasDeleted "
+    },
+
+    "anErrorHasOccurred": "An Error Has Occurred",
+    "@anErrorHasOccurred": {
+        "description": "The current anErrorHasOccurred "
+    },
+
+    "emailExist": "email exist",
+    "@emailExist": {
+        "description": "The current emailExist "
+    },
+
+    "emailIsAlreadyRegistered": "Email is already registered",
+    "@emailIsAlreadyRegistered": {
+        "description": "The current emailIsAlreadyRegistered "
+    },
+
+    "couldNotAuthenticateYouPleasetryagain": "Could Not Authenticate You. Please try again.",
+    "@couldNotAuthenticateYouPleasetryagain": {
+        "description": "The current couldNotAuthenticateYouPleasetryagain "
+    },
+
+    "yourAccrountHasBeenCreatedPpleaseLogin": "Your accrount has been created. please log in",
+    "@yourAccrountHasBeenCreatedPpleaseLogin": {
+        "description": "The current yourAccrountHasBeenCreatedPpleaseLogin "
+    },
+
+    "forgotPassword": "Forgot Password",
+    "@forgotPassword": {
+        "description": "The current forgotPassword "
+    },
+
+    "forgotYourPassword": "Forgot Your Password?",
+    "@forgotYourPassword": {
+        "description": "The current forgotYourPassword "
+    },
+
+    "yourPasswordResetLinkHasBeenSentToYourEmailAddress": "Your password reset link has been sent to your email address",
+    "@yourPasswordResetLinkHasBeenSentToYourEmailAddress": {
+        "description": "The current yourPasswordResetLinkHasBeenSentToYourEmailAddress "
+    },
+
+    "doNotHaveAnAccount": "Do Not Have An Account",
+    "@doNotHaveAnAccount": {
+        "description": "The current doNotHaveAnAccount "
+    },
+
+    "doYouAlreadyHaveAnAccount": "Do You Already Have An Account",
+    "@doYouAlreadyHaveAnAccount": {
+        "description": "The current doYouAlreadyHaveAnAccount "
+    },
+
+    "instead": "instead",
+    "@instead": {
+        "description": "The current instead "
+    },
+
+    "notFound": "Not Found",
+    "@notFound": {
+        "description": "The current notFound "
+    },
+
+    "youPovidedAnInvalidEmail": "You provided an invalid email",
+    "@youPovidedAnInvalidEmail": {
+        "description": "The current youPovidedAnInvalidEmail "
+    },
+
+    "firstName": "First Name",
+    "@firstName": {
+        "description": "The current firstName "
+    },
+
+    "lastName": "Last Name",
+    "@lastName": {
+        "description": "The current lastName "
+    },
+
+    "invalidfirstName": "invalid first name",
+    "@invalidfirstName": {
+        "description": "The current invalidfirstName "
+    },
+
+    "invalidLastName": "Invalid Last Name",
+    "@invalidLastName": {
+        "description": "The current invalidLastName "
+    },
+
+    "phone": "Phone",
+    "@phone": {
+        "description": "The current phone "
+    },
+
+    "invalidPhone": "invalid phone",
+    "@invalidPhone": {
+        "description": "The current invalidPhone "
+    },
+
+    "address": "Address",
+    "@address": {
+        "description": "The current address "
+    },
+
+    "invalidAddress": "invalid address",
+    "@invalidAddress": {
+        "description": "The current invalidAddress "
+    },
+
+    "hospital": "Hospital",
+    "@hospital": {
+        "description": "The current hospital "
+    },
+
+    "authenticationFailed": "Authentication Failed",
+    "@authenticationFailed": {
+        "description": "The current authenticationFailed "
+    },
+
+    "theEmailIsAlreadyInUse": "The Email Is Already In Use",
+    "@theEmailIsAlreadyInUse": {
+        "description": "The current theEmailIsAlreadyInUse "
+    },
+
+    "thisIsNotAValidEmailAddress": "This Is Not A Valid Email Address",
+    "@thisIsNotAVaidEmailAddress": {
+        "description": "The current thisIsNotAVaidEmailAddress "
+    },
+
+    "passwordIsTooWeak": "Password Is Too Weak",
+    "@passwordIsTooWeak": {
+        "description": "The current passwordIsTooWeak "
+    },
+
+    "couldNotFindTheEmailAddress": "Could Not Find The Email Address",
+    "@couldNotFindTheEmailAddress": {
+        "description": "The current couldNotFindTheEmailAddress "
+    },
+
+    "department": "Department",
+    "@department": {
+        "description": "The current department "
+    },
+
+    "invalidDepartment": "Invalid Department",
+    "@invalidDepartment": {
+        "description": "The current invalidDepartment "
+    },
+
+    "editProfile": "Edit Profile",
+    "@editProfile": {
+        "description": "The current editProfile "
+    },
+
+    "changePassword": "Change Password",
+    "@changePassword": {
+        "description": "The current changePassword "
+    },
+
+    "allInvoices": "All Invoices",
+    "@allInvoices": {
+        "description": "The current allInvoices "
+    },
+
+    "deposit": "Deposit",
+    "@deposit": {
+        "description": "The current deposit "
+    },
+
+    "totalAmount": "Total Amount",
+    "@totalAmount": {
+        "description": "The current totalAmount "
+    },
+
+    "totalDeposit": "Total Deposit",
+    "@totalDeposit": {
+        "description": "The current totalDeposit "
+    },
+
+    "totalDue": "Total Due",
+    "@totalDue": {
+        "description": "The current totalDue "
+    },
+
+    "prescriptionHasBeenCreated": "Prescription has been created.",
+    "@prescriptionHasBeenCreated": {
+        "description": "The current Prescription has been created. "
+    },
+
+    "createPrescription": "Create Prescription",
+    "@createPrescription": {
+        "description": "The current createPrescription "
+    },
+
+     "history": "History",
+    "@history": {
+        "description": "The current history "
+    },
+
+     "advice": "Advice",
+    "@advice": {
+        "description": "The current advice "
+    },
+
+     "note": "Note",
+    "@note": {
+        "description": "The current note "
+    },
+
+     "searchMedicine": "Search Medicine",
+    "@searchMedicine": {
+        "description": "The current searchMedicine "
+    },
+
+     "add": "add",
+    "@add": {
+        "description": "The current add "
+    },
+
+     "medicines": "Medicines",
+    "@medicines": {
+        "description": "The current medicines "
+    },
+
+     "days": "days",
+    "@days": {
+        "description": "The current days "
+    },
+
+     "afterfood": "after food",
+    "@afterfood": {
+        "description": "The current afterfood "
+    },
+
+     "create": "create",
+    "@create": {
+        "description": "The current create "
+    },
+
+     "yourPresciptions": "Your Prescriptions",
+    "@yourPresciption": {
+        "description": "The current yourPresciption "
+    },
+
+     "view": "View",
+    "@view": {
+        "description": "The current view "
+    },
+
+     "download": "Download",
+    "@download": {
+        "description": "The current download "
+    },
+
+     "edit": "Edit",
+    "@edit": {
+        "description": "The current edit "
+    },
+
+     "prescription": "Prescription",
+    "@prescription": {
+        "description": "The current prescription "
+    },
+
+    "prescriptionDetail": "Prescription Detail",
+    "@prescriptionDetail": {
+        "description": "The current prescriptionDetail "
+    },
+
+     "prescriptionId": "Prescription Id",
+    "@prescriptionId": {
+        "description": "The current prescriptionId "
+    },
+
+     "patientId": "Patient Id",
+    "@patientId": {
+        "description": "The current patientId "
+    },
+
+     "age": "age",
+    "@age": {
+        "description": "The current age "
+    },
+
+     "gender": "gender",
+    "@gender": {
+        "description": "The current gender "
+    },
+
+     "rx": "Rx",
+    "@rx": {
+        "description": "The current rx "
+    },
+
+     "signature": "signature",
+    "@signature": {
+        "description": "The current signature "
+    },
+
+    "doctorlist": "Doctor List",
+    "@doctorlist": {
+        "description": "The current doctorlist "
+    },
+
+     "department": "Department",
+    "@department": {
+        "description": "The current department "
+    },
+
+     "doctorsearch": "Doctor Search",
+    "@doctorsearch": {
+        "description": "The current doctorsearch "
+    },
+
+    "takeappointment": "Take appointment",
+    "@takeappointment": {
+        "description": "The current takeappointment "
+    },
+
+     "doctordetail": "Doctor details",
+    "@doctordetail": {
+        "description": "The current doctordetails"
+    },
+
+    "noslots": "No Slots",
+    "@noslots": {
+        "description": "The current noslots "
+    },
+    
+    "nodatatoshow": "No Data To Show",
+    "@signature": {
+        "description": "The current nodatatoshow "
+    },
+
+    "chooseapatient": "Choose a patient",
+    "@chooseapatient": {
+        "description": "The current chooseapatient "
+    },
+
+    "searchpatient": "Search patient",
+    "@searchpatient": {
+        "description": "The current searchpatient "
+    },
+
+    "chooseadoctor": "Choose a doctor",
+    "@chooseadoctor": {
+        "description": "The current chooseadoctor "
+    },
+
+    "searchbypatientname": "Search by patient name",
+    "@searchbypatientname": {
+        "description": "The current searchbypatientname "
+    },
+
+    "searchbydoctorname": "Search by doctor name",
+    "@searchbydoctorname": {
+        "description": "The current searchbydoctorname "
+    },
+
+    "searchdepartment": "Search department",
+    "@searchdepartment": {
+        "description": "The current searchdepartment "
+    },
+
+    "searchdoctor": "Search doctor",
+    "@searchdoctor": {
+        "description": "The current searchdoctor "
+    },
+
+    "loadingData": "Loading",
+    "@loadingData": {
+        "description": "The current loading"
+    },
+
+
+    "bookADoctor": "Book A Doctor",
+    "labReports": "Lab Reports",
+    "labReport": "Lab Report",
+    "labId": "Lab Id"
+
+}

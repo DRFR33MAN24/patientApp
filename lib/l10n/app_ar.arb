@@ -1,0 +1,344 @@
+{
+    "appTitle": "Umaycare Patient",
+
+    "language": "لغة",
+
+    "hospitalCare": "رعاية المستشفى",
+
+    "id": "هوية شخصية",
+
+    "setting": "إعدادات",
+
+    "email": "بريد إلكتروني",
+
+    "password": "كلمه السر",
+
+    "invalidEmail": "بريد إلكتروني خاطئ",
+
+    "invalidPassword": "رمز مرور خاطئ",
+
+    "confirmPassword": "تأكيد كلمة المرور",
+
+    "passwordDoNotMatch": "كلمة المرور غير مطابقة",
+
+    "login": "تسجيل الدخول",
+
+    "signup": "اشتراك",
+
+    "logout": "تسجيل خروج",  
+
+    "totalAppointment": "إجمالي التعيين",
+
+    "addAppointment": "أضف موعد",
+
+    "appointmentRequest": "طلب موعد",
+
+    "noAppointment": "لا موعد",
+
+    "newAppointment": "موعد جديد",
+
+    "appointmentTime": "وقت الموعد",
+
+    "appointments": "تعيينات",
+
+    "appointment": "ميعاد",
+
+    "createAppointment": "إنشاء موعد",
+
+    "editAppointment": "تحرير موعد",
+
+    "appointmentCreatedMessage": "تم إنشاء موعدك بنجاح",
+
+    "appointmentUpdateMessage": "تم تحديث موعدك بنجاح",
+
+    "appointmentList": "قائمة المواعيد",
+
+    "checkProfile": "تحقق من الملف الشخصي",
+
+    "profile": "الملف الشخصي",
+
+    "changesUpdatedSuccessfuly": "تم تحديث التغيير بنجاح.",
+
+    "changesUpdatedNotSuccessfull": "لم يتم تحديث التغييرات بنجاح.",
+
+    "notChangable": "غير قابل للتغيير",
+
+    "todaysAppointment": "موعد اليوم",
+
+    "dashboard": "لوحة القيادة",
+
+    "payment": "دفع",
+
+    "paymentList": "قائمة الدفع",    
+
+    "doctor": "طبيب",
+
+    "selectTheDate": "حدد التاريخ",
+
+    "availableSlot": "الفتحة المتاحة",
+
+    "remarks": "ملاحظات",
+
+    "giveYourRemarks": "قدم ملاحظاتك",
+    
+    "appointmentStatus": "حالة التعيين",
+
+    "invalid": "غير صالح",
+
+    "invalidInput": "مدخل غير صالح",
+
+    "pleaseEnterValidInput": "الرجاء إدخال إدخال صالح",
+
+    "ok": "نعم",
+
+    "close": "قريب",
+
+    "save": "حفظ",
+
+    "update": "تحديث",
+
+    "success": "نجاح",
+
+    "successMessage": "Mنجاح رسالة",
+
+    "payment": "دفع",
+
+    "paymentSuccessfullMessage": "تم الدفع بنجاح",
+
+    "paymentUnsuccessfull": "الدفع لم ينجح",
+
+    "addPayment": "إضافة الدفع",
+
+    "invoiceId": "هوية صوتية",
+
+    "patient": "مريض",
+
+    "patientName": "اسم المريض",
+
+    "doctorName": "اسم الطبيب",
+
+    "date": "تاريخ",
+
+    "amount": "كمية",
+
+    "patientPhone": "هاتف المريض",
+
+    "invoice": "فاتورة",
+
+    "depositAmount": "قيمة الايداع",
+
+    "depositAmountValidMessage": "أدخل مبلغ الإيداع الصحيح",
+
+    "depositType": "نوع الإيداع",
+
+    "depositTypeValidMessage": "أدخل نوع الإيداع الصحيح",
+
+    "cardType": "نوع البطاقة",
+
+    "name": "اسم",
+
+    "enterName": "أدخل الاسم",
+
+    "invalidName": "أدخل اسمًا صالحًا",
+
+    "enterCardHolderName": "أدخل اسم حامل البطاقة",
+
+    "cardNumber": "رقم البطاقة",
+
+    "enterCardnumber": "أدخل رقم البطاقة",
+
+    "invalidCardNumber": "رقم البطاقة غير صالحة",
+
+    "exipryDate": "تاريخ الانتهاء",
+
+    "enterExipryDate": "أدخل تاريخ إكسبري",
+
+    "cvv": "CVV",
+
+    "enterCvv": "أدخل cvv",
+
+    "invalidCvv": "الرجاء إدخال سيرة ذاتية صالحة",
+
+    "audioOnly": "صوت فقط",
+
+    "audioMuted": "كتم الصوت",
+
+    "videoMuted": "تم كتم صوت الفيديو",
+
+    "joinMeeting": "أنضم إلى الأجتماع",
+
+    "videoAppointment": "موعد بالفيديو",
+
+    "startTime": "وقت البدء",
+
+    "endTime": "وقت النهاية",
+
+    "status": "حالة",
+
+    "appointmentLink": "رابط الموعد",
+
+    "action": "عمل",
+
+    "edit": "يحرر",
+
+    "delete": "حذف",
+
+    "failed": "باءت بالفشل",
+
+    "appointmentWasNotDeleted": "لم يتم حذف الموعد",
+    
+    "appointmentWasDeleted": "تم حذف الموعد",
+    
+    "anErrorHasOccurred": "حدث خطأ",
+
+    "emailExist": "البريد الإلكتروني موجود",
+
+    "emailIsAlreadyRegistered": "Lتم تسجيل البريد بالفعل",
+
+    "couldNotAuthenticateYouPleasetryagain": "لا يمكن الوثوق بك. حاول مرة اخرى.",
+
+    "yourAccrountHasBeenCreatedPpleaseLogin": "تم إنشاء الحساب الخاص بك. الرجاء تسجيل الدخول",
+
+    "forgotYourPassword": "نسيت رقمك السري؟",
+
+    "forgotPassword": "هل نسيت كلمة السر",
+
+    "yourPasswordResetLinkHasBeenSentToYourEmailAddress": "تم إرسال رابط إعادة تعيين كلمة المرور إلى عنوان بريدك الإلكتروني",
+
+    "notFound": "غير موجود",
+
+    "doNotHaveAnAccount": "لا تملك حساب؟",
+
+    "doYouAlreadyHaveAnAccount": "هل لديك حساب بالفعل؟",
+
+    "instead": "في حين أن",
+
+    "youPovidedAnInvalidEmail": "لقد قدمت بريدًا إلكترونيًا غير صالح",
+
+     "firstName": "الاسم الأول",
+
+    "lastName": "الكنية",
+
+    "invalidfirstName": "الاسم الأول غير صالح",
+
+    "invalidLastName": "اسم العائلة غير صالح",
+
+    "phone": "هاتف",
+
+    "invalidPhone": "هاتف غير صالح",
+
+    "address": "عنوان",
+
+    "invalidAddress": "عنوان خاطئ",
+
+    "hospital": "مستشفى",
+
+     "authenticationFailed": "المصادقة فشلت",
+
+    "theEmailIsAlreadyInUse": "lالبريد الإلكتروني قيد الاستخدام بالفعل",
+
+    "thisIsNotAValidEmailAddress": "هذا ليس عنوان بريد إلكتروني صالحًا",
+
+    "passwordIsTooWeak": "كلمة المرور ضعيفة جدا",
+
+    "couldNotFindTheEmailAddress": "تعذر العثور على عنوان البريد الإلكتروني",
+
+    "department": "قسم",
+
+    "invalidDepartment": "قسم غير صالح",
+
+    "editProfile": "تعديل الملف الشخصي",
+
+    "changePassword": "تغيير كلمة السر",
+
+    "allInvoices": "جميع الفواتير",
+
+    "deposit": "الوديعة",
+
+    "totalAmount": "المبلغ الإجمالي",
+
+    "totalDeposit": "إجمالي الإيداع",
+
+    "totalDue": "الاجمالي المستحق",
+
+    "prescriptionHasBeenCreated": "تم إنشاء وصفة طبية",
+
+    "createPrescription": "إنشاء وصفة طبية",
+
+     "history": "التاريخ",
+
+     "advice": "النصيحة",
+
+     "note": "ملحوظة",
+
+     "searchMedicine": "بحث الطب",
+
+     "add": "يضيف",
+
+     "medicines": "الأدوية",
+
+     "days": "أيام",
+
+     "afterfood": "بعد الطعام",
+
+     "create": "يزيد",
+
+     "yourPresciptions": "الوصفات الطبية الخاصة بك",
+
+     "view": "رأي",
+
+     "download": "تحميل",
+
+     "edit": "يحرر",
+
+     "prescription": "روشتة",
+
+     "prescriptionDetail": "تفاصيل الوصفة",
+
+     "prescriptionId": "معرف وصفة طبية",
+
+     "patientId": "رقم المريض",
+
+     "age": "سن",
+
+     "gender": "جنس تذكير أو تأنيث",
+
+     "rx": "Rx",
+
+     "signature": "التوقيع",
+
+     "doctorlist": "قائمة الطبيب",
+
+     "department": "قسم",
+
+     "doctorsearch": "البحث عن طبيب",
+
+     "takeappointment": "خذ موعدًا",
+
+     "doctordetail": "تفاصيل الطبيب",
+
+     "noslots": "لا فتحات",
+
+     "nodatatoshow": "لا توجد بيانات لإظهارها",
+
+     "chooseapatient": "اختر مريض",
+
+    "searchpatient": "بحث المريض",
+
+    "chooseadoctor": "اختر الطبيب",
+
+    "searchbypatientname": "البحث عن طريق اسم المريض",
+
+    "searchbydoctorname": "البحث باسم الطبيب",
+
+    "searchdepartment": "قسم البحث",
+
+    "searchdoctor": "ابحث عن طبيب",
+
+    "loadingData": "جار التحميل",
+
+    "bookADoctor": "احجز دكتور",
+    "labReports": "تقارير المعمل",
+    "labReport": "تقرير معمل",
+    "labId": "معرّف المعمل"
+}

@@ -1,0 +1,346 @@
+{
+    "appTitle": "Umaycare Patient",
+
+    "language": "Langue",
+
+    "hospitalCare": "Soins hospitaliers",
+
+    "id": "identifiant",
+
+    "setting": "Réglage",
+
+    "email": "Email",
+
+    "password": "Mot de passe",
+
+    "invalidEmail": "Email invalide",
+
+    "invalidPassword": "Mot de passe incorrect",
+
+    "confirmPassword": "Confirmez le mot de passe",
+
+    "passwordDoNotMatch": "Les mots de passe ne correspondent pas",
+
+    "login": "Connexion",
+
+    "signup": "S'inscrire",
+
+    "logout": "Se déconnecter",  
+
+    "totalAppointment": "Rendez-vous total",
+
+    "addAppointment": "Ajouter un rendez-vous",
+
+    "appointmentRequest": "Demande de rendez-vous",
+
+    "noAppointment": "Pas de rendez-vous",
+
+    "newAppointment": "Nouveau rendez-vous",
+
+    "appointmentTime": "Heure du rendez-vous",
+
+    "appointments": "Rendez-vous",
+
+    "appointment": "Rendez-vous",
+
+    "createAppointment": "Créer un rendez-vous",
+
+    "editAppointment": "Modifier le rendez-vous",
+
+    "appointmentCreatedMessage": "Votre rendez-vous a été créé avec succès",
+
+    "appointmentUpdateMessage": "Votre rendez-vous a été mis à jour avec succès",
+
+    "appointmentList": "Liste de rendez-vous",
+
+    "checkProfile": "Vérifier le profil",
+
+    "profile": "Profil",
+
+    "changesUpdatedSuccessfuly": "Le changement a été mis à jour avec succès.",
+
+    "changesUpdatedNotSuccessfull": "Les modifications ne sont pas mises à jour avec succès.",
+
+    "notChangable": "Non modifiable.",
+
+    "todaysAppointment": "Rendez-vous du jour",
+
+    "dashboard": "Tableau de bord",
+
+    "payment": "Paiement",
+
+    "paymentList": "Liste de paiement",    
+
+    "doctor": "Docteur",
+
+    "selectTheDate": "Sélectionnez la date",
+
+    "availableSlot": "Emplacement disponible",
+
+    "remarks": "Remarques",
+
+    "giveYourRemarks": "Donnez vos remarques",
+    
+    "appointmentStatus": "Statut du rendez-vous",
+
+    "invalid": "Invalide",
+
+    "invalidInput": "Entrée invalide",
+
+    "pleaseEnterValidInput": "Veuillez entrer une entrée valide",
+
+    "ok": "D'accord",
+
+    "close": "Fermer",
+
+    "save": "Sauvegarder",
+
+    "update": "Mettre à jour",
+
+    "success": "Succès",
+
+    "successMessage": "Message de réussite",
+
+    "payment": "Paiement",
+
+    "paymentSuccessfullMessage": "Paiement réussi",
+
+    "paymentUnsuccessfull": "Paiement non réussi",
+
+    "addPayment": "Ajouter un paiement",
+
+    "invoiceId": "Identifiant de la facture",
+
+    "patient": "Patient",
+
+    "patientName": "Nom du patient",
+
+    "doctorName": "Nom du docteur",
+
+    "date": "Date",
+
+    "amount": "Montant",
+
+    "patientPhone": "Téléphone du patient",
+
+    "invoice": "Facturer",
+
+    "depositAmount": "Montant du dépôt",
+
+    "depositAmountValidMessage": "Entrez un montant de dépôt valide",
+
+    "depositType": "Type de dépôt",
+
+    "depositTypeValidMessage": "Entrez un type de dépôt valide",
+
+    "cardType": "Type de carte",
+
+    "name": "Nom",
+
+    "enterName": "Entrez le nom",
+
+    "invalidName": "Entrez un nom valide",
+
+    "enterCardHolderName": "Entrez le nom du titulaire de la carte",
+
+    "cardNumber": "Numéro de carte",
+
+    "enterCardnumber": "Entrez le numéro de carte",
+
+    "invalidCardNumber": "Numéro de carte invalide",
+
+    "exipryDate": "Date d'expiration",
+
+    "enterExipryDate": "Entrez la date d'expiration",
+
+    "cvv": "CVV",
+
+    "enterCvv": "Entrer cvv",
+
+    "invalidCvv": "Veuillez entrer valide cvv",
+
+    "audioOnly": "Audio seulement",
+
+    "audioMuted": "Son coupé",
+
+    "videoMuted": "Vidéo coupée",
+
+    "joinMeeting": "Rejoindre la réunion",
+
+    "videoAppointment": "Rendez-vous vidéo",
+
+    "startTime": "Heure de début",
+
+    "endTime": "Heure de fin",
+
+    "status": "Statut",
+
+    "appointmentLink": "Lien de rendez-vous",
+
+    "action": "action",
+
+    "edit": "Éditer",
+
+    "delete": "Effacer",
+
+    "failed": "Manqué",
+
+    "appointmentWasNotDeleted": "Le rendez-vous n'a pas été supprimé",
+    
+    "appointmentWasDeleted": "Le rendez-vous a été supprimé",
+    
+    "anErrorHasOccurred": "Une erreur est survenue!",
+
+    "emailExist": "l'email existe",
+
+    "emailIsAlreadyRegistered": "L'adresse e-mail est déjà utilisée",
+
+    "couldNotAuthenticateYouPleasetryagain": "Impossible de vous authentifier. Veuillez réessayer.",
+
+    "yourAccrountHasBeenCreatedPpleaseLogin": "Votre compte a été créé. veuillez vous connecter",
+
+    "forgotYourPassword": "Mot de passe oublié?",
+
+    "forgotPassword": "Mot de passe oublié",
+
+    "yourPasswordResetLinkHasBeenSentToYourEmailAddress": "Votre lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail",
+
+    "notFound": "Pas trouvé",
+
+    "doNotHaveAnAccount": "Vous n'avez pas de compte?",
+
+    "doYouAlreadyHaveAnAccount": "Avez-vous déjà un compte?",
+
+    "instead": "plutôt",
+
+    "youPovidedAnInvalidEmail": "Vous avez fourni un e-mail invalide",
+
+     "firstName": "Prénom",
+
+    "lastName": "Nom de famille",
+
+    "invalidfirstName": "Prénom invalide",
+
+    "invalidLastName": "Nom de famille invalide",
+
+    "phone": "Téléphoner",
+
+    "invalidPhone": "téléphone invalide",
+
+    "address": "Adresse",
+
+    "invalidAddress": "adresse invalide",
+
+    "hospital": "Hôpital",
+
+     "authenticationFailed": "Authentification échouée",
+
+    "theEmailIsAlreadyInUse": "l'e-mail est déjà utilisé",
+
+    "thisIsNotAValidEmailAddress": "Cette adresse email n'est pas valide",
+
+    "passwordIsTooWeak": "le mot de passe est trop faible",
+
+    "couldNotFindTheEmailAddress": "n'a pas pu trouver l'adresse e-mail",
+
+    "department": "département",
+
+    "invalidDepartment": "Département invalide",
+
+    "editProfile": "Editer le profil",
+
+    "changePassword": "Changer le mot de passe",
+
+    "allInvoices": "Toutes les factures",
+
+    "deposit": "Verser",
+
+    "totalAmount": "Montant total",
+
+    "totalDeposit": "Dépôt total",
+
+    "totalDue": "Total dû",
+
+    "prescriptionHasBeenCreated": "La prescription a été créée.",
+
+    "createPrescription": "Créer une ordonnance",
+
+     "history": "l'histoire",
+
+     "advice": "Conseil",
+
+     "note": "Noter",
+
+     "searchMedicine": "Recherche Médecine",
+
+     "add": "ajouter",
+
+     "medicines": "Médicaments",
+
+     "days": "jours",
+
+     "afterfood": "après la nourriture",
+
+     "create": "créer",
+
+     "yourPresciptions": "Vos ordonnances",
+
+     "view": "Vue",
+
+     "download": "Télécharger",
+
+     "edit": "Éditer",
+
+      "prescription": "Prescription",
+
+     "prescriptionDetail": "Détails de l'ordonnance",
+
+     "prescriptionId": "Identifiant de l'ordonnance",
+
+     "patientId": "Identifiant du patient",
+
+     "age": "âge",
+
+     "gender": "genre",
+
+     "rx": "Rx",
+
+     "signature": "Signature",
+
+     "doctorlist": "Liste des médecins",
+
+     "department": "département",
+
+     "doctorsearch": "Recherche de docteur",
+
+     "takeappointment": "Prendre rendez-vous",
+
+     "doctordetail": "Détail du docteur",
+
+     "noslots": "Pas de créneaux",
+
+     "nodatatoshow": "Aucune donnée à afficher",
+
+     "chooseapatient": "choisir un patient",
+
+    "searchpatient": "rechercher un patient",
+
+    "chooseadoctor": "choisir un médecin",
+
+    "searchbypatientname": "recherche par nom de patient",
+    
+    "searchbydoctorname": "Recherche par nom de médecin",
+    
+
+    "searchdepartment": "service de recherche",
+
+    "searchdoctor": "rechercher un médecin",
+
+    "loadingData": "Chargement",
+
+    "bookADoctor": "Réservez un médecin",
+    "labReports": "Rapports de laboratoire",
+    "labReport": "Rapport de laboratoire",
+    "labId": "Identifiant du laboratoire"
+
+}

@@ -17,6 +17,7 @@ import 'dart:convert';
 import '../auth/providers/auth.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:http_parser/http_parser.dart';
 
 class EditProfile extends StatefulWidget {
   static const routeName = '/editprofile';
@@ -46,18 +47,40 @@ class EditProfileState extends State<EditProfile> {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _phone = TextEditingController();
+  TextEditingController _age = TextEditingController();
   TextEditingController _address = TextEditingController();
   TextEditingController _department = TextEditingController();
+
+  String selectedSex = 'Male';
+  List<DropdownMenuItem<String>> get dropdownItems {
+    List<DropdownMenuItem<String>> menuItems = [
+      DropdownMenuItem(child: Text("Male"), value: "Male"),
+      DropdownMenuItem(child: Text("Female"), value: "Female"),
+    ];
+    return menuItems;
+  }
+
+  String selectedBlood = 'A+';
+  List<DropdownMenuItem<String>> get dropdownItemsBlood {
+    List<DropdownMenuItem<String>> menuItemsBlood = [
+      DropdownMenuItem(child: Text("A+"), value: "A+"),
+    ];
+    return menuItemsBlood;
+  }
 
   List data = new List();
   String zname;
   bool _isloading = true;
 
+  createNewProfile() async {
+    // check required fields for empty
+  }
   updateProfile(context) async {
+    print(selectedImage);
     if (_name != zname || _password != "") {
       var request = http.MultipartRequest(
         'POST',
-        Uri.parse(Auth().linkURL + "api/updatePatientProfile"),
+        Uri.parse(Auth().linkURL + "api/createPatientProfile"),
       );
 
       Map<String, String> headers = {"Content-type": "multipart/form-data"};
@@ -67,7 +90,7 @@ class EditProfileState extends State<EditProfile> {
           'image',
           selectedImage.readAsBytes().asStream(),
           selectedImage.lengthSync(),
-          filename: selectedImage.path.split('/').last,
+          filename: 'image.' + selectedImage.path.split('/').last,
         ),
       );
 
@@ -80,11 +103,15 @@ class EditProfileState extends State<EditProfile> {
         'address': this._address.text,
         'phone': this._phone.text,
         'department': this._department.text,
+        'sex': this.selectedSex,
+        'bloodgroup': this.selectedBlood,
+        'age': this._age.text
       });
 
       var res = await request.send();
       http.Response response = await http.Response.fromStream(res);
-      if (response.body == '"successful"') {
+      print('createPatientProfile' + response.body);
+      if (response.body == '"success"') {
         showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -153,7 +180,7 @@ class EditProfileState extends State<EditProfile> {
 
   Future getImage() async {
     print('getting the image');
-    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    var image = await ImagePicker().getImage(source: ImageSource.gallery);
 
     setState(() {
       selectedImage = File(image.path);
@@ -294,7 +321,7 @@ class EditProfileState extends State<EditProfile> {
       return Scaffold(
           appBar: AppBar(
             title: Text(
-              AppLocalizations.of(context).editProfile,
+              AppLocalizations.of(context).newProfile,
               style: TextStyle(
                   color: appcolor.appbartext(),
                   fontWeight: appcolor.appbarfontweight()),
@@ -323,8 +350,10 @@ class EditProfileState extends State<EditProfile> {
                                 },
                                 child: CircleAvatar(
                                     radius: 70,
-                                    backgroundImage: NetworkImage(
-                                        'https://picsum.photos/200')),
+                                    backgroundImage: selectedImage != null
+                                        ? Image.file(selectedImage).image
+                                        : NetworkImage(
+                                            'https://picsum.photos/200')),
                               ),
                             ),
                             Padding(
@@ -344,31 +373,6 @@ class EditProfileState extends State<EditProfile> {
                                       if (value.isEmpty) {
                                         return AppLocalizations.of(context)
                                             .invalidName;
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
-                              child: Center(
-                                child: Container(
-                                  width: double.infinity,
-                                  child: TextFormField(
-                                    controller: _email,
-                                    readOnly: true,
-                                    decoration: InputDecoration(
-                                        labelText:
-                                            '${AppLocalizations.of(context).email} (${AppLocalizations.of(context).notChangable})',
-                                        hintText:
-                                            AppLocalizations.of(context).email),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return AppLocalizations.of(context)
-                                            .invalidEmail;
                                       }
                                       return null;
                                     },
@@ -424,6 +428,55 @@ class EditProfileState extends State<EditProfile> {
                                 ),
                               ),
                             ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                    width: double.infinity,
+                                    child: DropdownButton(
+                                      value: selectedSex,
+                                      items: dropdownItems,
+                                      onChanged: (String value) {},
+                                    )),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: _age,
+                                    decoration: InputDecoration(
+                                        labelText:
+                                            AppLocalizations.of(context).age,
+                                        hintText:
+                                            AppLocalizations.of(context).age),
+                                    validator: (value) {
+                                      if (value.isEmpty) {
+                                        return AppLocalizations.of(context).age;
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                    width: double.infinity,
+                                    child: DropdownButton(
+                                      value: selectedBlood,
+                                      items: dropdownItemsBlood,
+                                      onChanged: (String value) {},
+                                    )),
+                              ),
+                            ),
                             Container(
                               width: MediaQuery.of(context).size.width * .9,
                               child: ElevatedButton(
@@ -433,7 +486,7 @@ class EditProfileState extends State<EditProfile> {
                                   }
                                 },
                                 child:
-                                    Text(AppLocalizations.of(context).update),
+                                    Text(AppLocalizations.of(context).create),
                               ),
                             )
                           ],

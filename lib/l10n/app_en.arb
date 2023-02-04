@@ -624,6 +624,11 @@
         "description": "The current editProfile "
     },
 
+        "newProfile": "New Profile",
+    "@editProfile": {
+        "description": "The current editProfile "
+    },
+
     "changePassword": "Change Password",
     "@changePassword": {
         "description": "The current changePassword "
@@ -708,6 +713,8 @@
     "@create": {
         "description": "The current create "
     },
+
+
 
      "yourPresciptions": "Your Prescriptions",
     "@yourPresciption": {

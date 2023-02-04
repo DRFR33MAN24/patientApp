@@ -35,7 +35,7 @@ class FullProfileState extends State<FullProfile> {
   final _formKey = GlobalKey<FormState>();
 
   String url;
-
+  String image;
   TextEditingController _name = TextEditingController();
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
@@ -76,6 +76,7 @@ class FullProfileState extends State<FullProfile> {
         _phone.text = resBody['phone'];
         _department.text = resBody['department'];
         _address.text = resBody['address'];
+        image = resBody['img_url'];
 
         _isloading = false;
       });
@@ -136,15 +137,14 @@ class FullProfileState extends State<FullProfile> {
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               child: Column(children: [
-              Center(
-                child: Container(
-                  padding: EdgeInsets.only(top: 20, bottom: 15),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 20),
+                child: Center(
                   child: CircleAvatar(
-                    radius: 100,
-                    backgroundImage: NetworkImage(
-                        "https://image.flaticon.com/icons/png/512/147/147144.png"),
-                    backgroundColor: Colors.transparent,
-                  ),
+                      radius: 70,
+                      backgroundImage: image != null
+                          ? NetworkImage(Auth().linkURL + image)
+                          : NetworkImage('https://picsum.photos/200')),
                 ),
               ),
               Center(

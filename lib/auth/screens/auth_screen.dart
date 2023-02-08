@@ -117,15 +117,17 @@ class _AuthCardState extends State<AuthCard> {
           _authData['email'],
           _authData['password'],
         );
+        Navigator.of(context).pushReplacementNamed('/');
       } else {
         // Sign user up
         await Provider.of<Auth>(context, listen: false).signup(
           _authData['email'],
           _authData['password'],
         );
+        _showErrorDialog("Signup successfull please confirm Email");
       }
-      Navigator.of(context).pushReplacementNamed('/');
     } on HttpException catch (error) {
+      print('error message' + error.toString());
       var errorMessage = AppLocalizations.of(context).authenticationFailed;
       if (error.toString().contains('EMAIL_EXISTS')) {
         errorMessage = AppLocalizations.of(context).theEmailIsAlreadyInUse;

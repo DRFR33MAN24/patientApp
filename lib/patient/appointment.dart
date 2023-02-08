@@ -17,6 +17,7 @@ import 'package:date_field/date_field.dart';
 import 'dart:async';
 import 'dart:convert';
 
+import '../profile/editProfile.dart';
 import 'showAppointment.dart';
 import '../auth/providers/auth.dart';
 
@@ -215,6 +216,10 @@ class PatientAppointmentDetailsScreenState
   @override
   void initState() {
     super.initState();
+    if (!Auth().profileCreated) {
+      String mode = 'new';
+      Navigator.of(context).pushNamed(EditProfile.routeName, arguments: mode);
+    }
 
     // url = Auth().linkURL + "api/getDoctorList?id=${this.useridd}&hospitalId=1";
     url_hospitals = Auth().linkURL + "api/getHospitalsList?id=${this.useridd}";

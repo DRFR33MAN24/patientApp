@@ -38,6 +38,9 @@ class FullProfileState extends State<FullProfile> {
   String image;
   TextEditingController _name = TextEditingController();
   TextEditingController _email = TextEditingController();
+  TextEditingController _blood = TextEditingController();
+  TextEditingController _age = TextEditingController();
+  TextEditingController _sex = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _phone = TextEditingController();
   TextEditingController _address = TextEditingController();
@@ -46,53 +49,67 @@ class FullProfileState extends State<FullProfile> {
 
   List data = new List();
   String zname;
-  bool _isloading = true;
+  bool _isloading = false;
 
-  Future<String> getSWData() async {
-    // url = Auth().linkURL + "api/getPatientProfile?id=";
-    // String urrr1 = url + "${this.useridd}";
-    // var res = await http
-    //     .get(Uri.parse(urrr1), headers: {"Accept": "application/json"});
+  // Future<String> getSWData() async {
+  //   // url = Auth().linkURL + "api/getPatientProfile?id=";
+  //   // String urrr1 = url + "${this.useridd}";
+  //   // var res = await http
+  //   //     .get(Uri.parse(urrr1), headers: {"Accept": "application/json"});
 
-    final url = Auth().linkURL + "api/getPatientProfile";
-    var data = await http.post(Uri.parse(url), body: {
-      'id': this.useridd,
-    }, headers: {
-      "Accept": "application/json"
-    });
+  //   final url = Auth().linkURL + "api/getPatientProfile";
+  //   var data = await http.post(Uri.parse(url), body: {
+  //     'id': this.useridd,
+  //   }, headers: {
+  //     "Accept": "application/json"
+  //   });
 
-    var resBody = json.decode(data.body);
+  //   var resBody = json.decode(data.body);
 
-    if (resBody == null) {
-      error = 'error';
-      setState(() {
-        _isloading = false;
-      });
-      return 'failed';
-    } else {
-      setState(() {
-        _email.text = resBody['email'];
-        _name.text = resBody['name'];
-        _phone.text = resBody['phone'];
-        _department.text = resBody['department'];
-        _address.text = resBody['address'];
-        image = resBody['img_url'];
+  //   if (resBody == null) {
+  //     error = 'error';
+  //     setState(() {
+  //       _isloading = false;
+  //     });
+  //     return 'failed';
+  //   } else {
+  //     setState(() {
+  //       _email.text = resBody['email'];
+  //       _name.text = resBody['name'];
+  //       _phone.text = resBody['phone'];
+  //       _department.text = resBody['department'];
+  //       _address.text = resBody['address'];
+  //       image = resBody['img_url'];
 
-        _isloading = false;
-      });
-      return "Sucess";
-    }
-  }
+  //       _isloading = false;
+  //     });
+  //     return "Sucess";
+  //   }
+  // }
 
   @override
   void initState() {
     super.initState();
-    getSWData().then((value) {
-      if (value == 'failed') {
-        String mode = 'new';
-        Navigator.of(context).pushNamed(EditProfile.routeName, arguments: mode);
-      }
-    });
+    if (!Auth().profileCreated) {
+      String mode = 'new';
+      Navigator.of(context).pushNamed(EditProfile.routeName, arguments: mode);
+    } else {
+      _email.text = Auth().email;
+      _name.text = Auth().name;
+      _phone.text = Auth().phone;
+      _department.text = Auth().department;
+      _address.text = Auth().address;
+      image = Auth().image;
+      _blood.text = Auth().blood;
+      _sex.text = Auth().sex;
+      _age.text = Auth().age;
+    }
+    // getSWData().then((value) {
+    //   if (value == 'failed') {
+    //     String mode = 'new';
+    //     Navigator.of(context).pushNamed(EditProfile.routeName, arguments: mode);
+    //   }
+    // });
   }
 
   AppColor appcolor = new AppColor();

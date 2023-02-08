@@ -187,130 +187,56 @@ class EditProfileState extends State<EditProfile> {
     });
   }
 
-  Future<String> getSWData() async {
-    url = Auth().linkURL + "api/getPatientProfile";
-    // String urrr1 = url + "${this.useridd}";
-    // var res = await http
-    //     .get(Uri.parse(urrr1), headers: {"Accept": "application/json"});
+  // Future<String> getSWData() async {
+  //   url = Auth().linkURL + "api/getPatientProfile";
+  //   // String urrr1 = url + "${this.useridd}";
+  //   // var res = await http
+  //   //     .get(Uri.parse(urrr1), headers: {"Accept": "application/json"});
 
-    var res = await http.post(Uri.parse(url), body: {
-      'id': useridd,
-    }, headers: {
-      "Accept": "application/json"
-    });
+  //   var res = await http.post(Uri.parse(url), body: {
+  //     'id': useridd,
+  //   }, headers: {
+  //     "Accept": "application/json"
+  //   });
 
-    var resBody = json.decode(res.body);
-    if (resBody == null) {
-      setState(() {
-        _isloading = false;
-      });
-      return 'failed';
-    }
-    setState(() {
-      _email.text = resBody['email'];
-      _name.text = resBody['name'];
-      _phone.text = resBody['phone'];
-      _department.text = resBody['department'];
-      _address.text = resBody['address'];
-      _image = resBody['image'];
+  //   var resBody = json.decode(res.body);
+  //   if (resBody == null) {
+  //     setState(() {
+  //       _isloading = false;
+  //     });
+  //     return 'failed';
+  //   }
+  //   setState(() {
+  //     _email.text = resBody['email'];
+  //     _name.text = resBody['name'];
+  //     _phone.text = resBody['phone'];
+  //     _department.text = resBody['department'];
+  //     _address.text = resBody['address'];
+  //     _image = resBody['image'];
 
-      zname = _name.text;
+  //     zname = _name.text;
 
-      _isloading = false;
-    });
-    print('edit get data');
-    return "Sucess";
-  }
+  //     _isloading = false;
+  //   });
+  //   print('edit get data');
+  //   return "Sucess";
+  // }
 
   @override
   void initState() {
     super.initState();
     url = Auth().linkURL + "api/getProfile?id=";
-    getSWData();
+    // getSWData();
+    _email.text = Auth().email;
+    _name.text = Auth().name;
+    _phone.text = Auth().phone;
+    _department.text = Auth().department;
+    _address.text = Auth().address;
+    selectedBlood = Auth().blood;
+    selectedSex = Auth().sex;
+    _age.text = Auth().age;
+    _image = Auth().image;
   }
-
-  // Future<String> updateProfile(context) async {
-  //   if (_name != zname || _password != "") {
-  //     String posturl = Auth().linkURL + "api/updatePatientProfile";
-
-  //     final res = await http.post(
-  //       Uri.parse(posturl),
-  //       body: {
-  //         'email': this._email.text,
-  //         'id': this.useridd,
-  //         'name': this._name.text,
-  //         'address': this._address.text,
-  //         'phone': this._phone.text,
-  //         'department': this._department.text,
-  //       },
-  //     );
-
-  //     if (res.body == '"successful"') {
-  //       showDialog(
-  //           context: context,
-  //           builder: (BuildContext context) {
-  //             return AlertDialog(
-  //               title: Text(
-  //                 AppLocalizations.of(context).success,
-  //               ),
-  //               content: Text(
-  //                   AppLocalizations.of(context).changesUpdatedSuccessfuly),
-  //               actions: [
-  //                 TextButton(
-  //                   child: Text(AppLocalizations.of(context).ok),
-  //                   onPressed: () {
-  //                     Navigator.of(context)
-  //                         .pushReplacementNamed(FullProfile.routeName);
-  //                   },
-  //                 )
-  //               ],
-  //             );
-  //           });
-
-  //       return 'success';
-  //     } else {
-  //       showDialog(
-  //           context: context,
-  //           builder: (BuildContext context) {
-  //             return AlertDialog(
-  //               title: Text(
-  //                 AppLocalizations.of(context).failed,
-  //               ),
-  //               content: Text(
-  //                   AppLocalizations.of(context).changesUpdatedNotSuccessfull),
-  //               actions: [
-  //                 TextButton(
-  //                   child: Text(AppLocalizations.of(context).ok),
-  //                   onPressed: () {
-  //                     Navigator.of(context)
-  //                         .pushReplacementNamed(FullProfile.routeName);
-  //                   },
-  //                 )
-  //               ],
-  //             );
-  //           });
-  //       return "error";
-  //     }
-  //   } else {
-  //     showDialog(
-  //         context: context,
-  //         builder: (BuildContext context) {
-  //           return AlertDialog(
-  //             title: Text(AppLocalizations.of(context).invalid),
-  //             content: Text(AppLocalizations.of(context).invalidInput),
-  //             actions: [
-  //               TextButton(
-  //                 child: Text(AppLocalizations.of(context).ok),
-  //                 onPressed: () {
-  //                   Navigator.of(context)
-  //                       .pushReplacementNamed(FullProfile.routeName);
-  //                 },
-  //               )
-  //             ],
-  //           );
-  //         });
-  //   }
-  // }
 
   AppColor appcolor = new AppColor();
 

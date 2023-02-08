@@ -7,16 +7,34 @@ import '../../home/models/http_exception.dart';
 
 class Auth with ChangeNotifier {
   String _token;
+  bool _profileCreated = false;
   DateTime _expiryDate;
   String _userId;
   String _particularId;
   Timer _authTimer;
+
+  // Profile data
+  String error;
+  String email;
+  String phone;
+  String name;
+  String age;
+  String blood;
+  String sex;
+  String department;
+  String image;
+  String address;
+  bool isloading;
 
   String _url_link = "http://192.168.1.5/";
   //String _url_link = "https://watan-tib.com/";
 
   bool get isAuth {
     return _token != null;
+  }
+
+  bool get profileCreated {
+    return _profileCreated;
   }
 
   String get token {
@@ -44,11 +62,45 @@ class Auth with ChangeNotifier {
     return _url_link;
   }
 
+  Future<String> getProfileData() async {
+    final url = linkURL + "api/getPatientProfile";
+    var data = await http.post(Uri.parse(url), body: {
+      'id': userId,
+    }, headers: {
+      "Accept": "application/json"
+    });
+
+    var resBody = json.decode(data.body);
+
+    if (resBody == null) {
+      error = 'error';
+
+      isloading = false;
+      _profileCreated = false;
+
+      return 'failed';
+    } else {
+      email = resBody['email'];
+      name = resBody['name'];
+      phone = resBody['phone'];
+      sex = resBody['sex'];
+      age = resBody['age'];
+      blood = resBody['blood'];
+      department = resBody['department'];
+      address = resBody['address'];
+      image = resBody['img_url'];
+
+      isloading = false;
+      _profileCreated = true;
+
+      return "Sucess";
+    }
+  }
+
   Future<void> _authenticate(
       String email, String password, String urlSegment) async {
     String gtype = "Patient";
     final url = this._url_link + 'api/authenticate';
-    print(url);
 
     try {
       final response = await http.post(
@@ -62,38 +114,46 @@ class Auth with ChangeNotifier {
       );
 
       final responseData = json.decode(response.body);
-      print(response);
-      responseData['error'] == null;
+      print('response data' + responseData['message']);
+
       if (responseData['error'] != null) {
-        throw HttpException(responseData['error']['message']);
+        throw HttpException(responseData['message']);
       }
 
-      _token = responseData['idToken'].toString();
-      _userId = responseData['ion_id'].toString();
+      if (urlSegment == 'login') {
+        _token = responseData['idToken'].toString();
+        _userId = responseData['ion_id'].toString();
 
-      _particularId = responseData['user_id'].toString();
+        _particularId = responseData['user_id'].toString();
 
-      _expiryDate = DateTime.now().add(
-        Duration(
-          seconds: int.parse(
-            responseData['expiresIn'].toString(),
+        _expiryDate = DateTime.now().add(
+          Duration(
+            seconds: int.parse(
+              responseData['expiresIn'].toString(),
+            ),
           ),
-        ),
-      );
+        );
 
-      _autoLogout();
-      notifyListeners();
-      final prefs = await SharedPreferences.getInstance();
-      final userData = json.encode(
-        {
-          'token': _token,
-          'userId': _userId,
-          'particularId': _particularId,
-          'expiryDate': _expiryDate.toIso8601String(),
-        },
-      );
-      prefs.setString('userData', userData);
+        _autoLogout();
+        notifyListeners();
+        final prefs = await SharedPreferences.getInstance();
+        final userData = json.encode(
+          {
+            'token': _token,
+            'userId': _userId,
+            'particularId': _particularId,
+            'expiryDate': _expiryDate.toIso8601String(),
+          },
+        );
+        prefs.setString('userData', userData);
+        if (_userId != null) {
+          _profileCreated = true;
+
+          await getProfileData();
+        }
+      }
     } catch (error) {
+      print(error);
       throw error;
     }
   }

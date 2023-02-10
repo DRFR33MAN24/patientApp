@@ -106,14 +106,15 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
     // var data = await http.get(Uri.parse(
     //     Auth().linkURL + "api/getAllDepartments?ion_id=" + this.useridd));
 
+    print('dbg getDepartments ${_hospital['id']}');
     final url = Auth().linkURL + "api/getAllDepartments";
     var data = await http.post(
       Uri.parse(url),
       body: {
-        'ion_id': this.useridd,
+        'hospital_id': this._hospital['id'],
       },
     );
-
+    print('dbg departmets ${data.body}');
     var jsondata = json.decode(data.body);
 
     for (var u in jsondata) {
@@ -240,11 +241,12 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
                 ),
                 searchHint: "Search Region",
                 onChanged: (value) {
+                  print('dbg region onCanged ${value['area']}');
                   setState(() {
                     // errordoctorselect = false;
                     _region = value;
                   });
-                  getHospitalsData(_region);
+                  getHospitalsData(_region['area']);
                 },
                 isExpanded: true,
               )),
@@ -295,13 +297,16 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
                 ),
                 searchHint: "Search hospital",
                 onChanged: (value) {
+                  print('dbg current hospital ${_hospital}');
                   setState(() {
                     // errordoctorselect = false;
+
                     _hospital = value;
                     // url = Auth().linkURL +
                     //     "api/getDoctorList?id=${this.useridd}&hospitalId=${_hospital['id']}";
                     // getSWData();
                   });
+                  _responseFuture();
                 },
                 isExpanded: true,
               )),
@@ -405,7 +410,8 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              DoctorListScreen(idd, useridd,
+                                              DoctorListScreen(
+                                                  idd, useridd, _hospital['id'],
                                                   departmentname:
                                                       _tempdepartment[index]
                                                           .id)));

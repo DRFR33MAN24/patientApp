@@ -244,7 +244,7 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              DoctorListScreen(idd, useridd,
+                                              DoctorListScreen(idd, useridd, '',
                                                   departmentname:
                                                       _tempdepartment[index]
                                                           .id)));

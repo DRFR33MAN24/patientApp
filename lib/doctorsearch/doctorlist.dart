@@ -45,20 +45,24 @@ class DoctorListScreen extends StatefulWidget {
   static const routeName = '/doctorlist';
   String idd;
   String useridd;
+  String hospitalId;
   String departmentname;
 
-  DoctorListScreen(this.idd, this.useridd, {this.departmentname});
+  DoctorListScreen(this.idd, this.useridd, this.hospitalId,
+      {this.departmentname});
   @override
-  DoctorListScreenState createState() =>
-      DoctorListScreenState(this.idd, this.useridd, this.departmentname);
+  DoctorListScreenState createState() => DoctorListScreenState(
+      this.idd, this.useridd, this.hospitalId, this.departmentname);
 }
 
 class DoctorListScreenState extends State<DoctorListScreen> {
   String idd;
   String useridd;
+  String hospitalId;
   String departmentname;
 
-  DoctorListScreenState(this.idd, this.useridd, this.departmentname);
+  DoctorListScreenState(
+      this.idd, this.useridd, this.hospitalId, this.departmentname);
 
   List<DoctorDetails> _tempdoctorlistdata = [];
   List<DoctorDetails> _doctorlistdata = [];
@@ -70,13 +74,14 @@ class DoctorListScreenState extends State<DoctorListScreen> {
     // var data = await http.get(Uri.parse(Auth().linkURL +
     //     "api/getDoctorsByDepartmentname?ion_id=${useridd}&department=" +
     //     departmentname));
-
+    print('dbg getDoctorsByDepartmentname ${hospitalId}');
     final url = Auth().linkURL + "api/getDoctorsByDepartmentname";
     var data = await http.post(
       Uri.parse(url),
       body: {
         'ion_id': useridd,
         'department': departmentname,
+        'hospital_id': hospitalId,
       },
     );
 
@@ -329,10 +334,22 @@ class DoctorListScreenState extends State<DoctorListScreen> {
                                                             AppointmentFromDoctorScreen
                                                                 .routeName);
                                                   } else if (item == 1) {
-                                                    Navigator.of(context)
-                                                        .pushReplacementNamed(
-                                                            DoctorDetailProfile
-                                                                .routeName);
+                                                    // Navigator.of(context)
+                                                    //     .pushReplacementNamed(
+                                                    //         DoctorDetailProfile
+                                                    //             .routeName);
+                                                    Navigator.of(context).push(MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            DoctorDetailProfile(
+                                                                idd, useridd,
+                                                                doctorionid:
+                                                                    _doctorlistdata[
+                                                                            index]
+                                                                        .ion_user_id,
+                                                                doctoruserid:
+                                                                    _doctorlistdata[
+                                                                            index]
+                                                                        .id)));
                                                   }
                                                 },
                                               ),

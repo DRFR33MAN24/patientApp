@@ -126,7 +126,7 @@ class MyApp extends StatelessWidget {
             DoctorDetailProfile.routeName: (ctx) =>
                 DoctorDetailProfile(auth.particularId, auth.userId),
             DoctorListScreen.routeName: (ctx) =>
-                DoctorListScreen(auth.particularId, auth.userId),
+                DoctorListScreen(auth.particularId, auth.userId, ''),
             AppointmentFromDoctorScreen.routeName: (ctx) =>
                 AppointmentFromDoctorScreen(auth.particularId, auth.userId),
             LabDetailScreen.routeName: (ctx) =>

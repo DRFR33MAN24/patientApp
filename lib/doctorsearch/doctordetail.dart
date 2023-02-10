@@ -92,7 +92,7 @@ class DoctorDetailProfileState extends State<DoctorDetailProfile> {
     // String urrr1 = url + this.doctorionid;
     // var res = await http
     //     .get(Uri.parse(urrr1), headers: {"Accept": "application/json"});
-
+    print('dbg getDoctorProfileData');
     final url = Auth().linkURL + "api/getDoctorProfile";
     var res = await http.post(
       Uri.parse(url),

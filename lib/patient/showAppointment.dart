@@ -77,7 +77,7 @@ class ShowPatientAppointmentScreenState
           'id': patient_id,
         },
       );
-
+      print('dbg ${data.body}');
       var jsondata = json.decode(data.body);
 
       for (var u in jsondata) {

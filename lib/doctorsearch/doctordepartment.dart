@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:date_field/date_field.dart';
+import 'package:search_choices/search_choices.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -57,6 +58,49 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
   List<DepartmentDetails> _departmentdata = [];
   List<DepartmentDetails> _tempdepartment = [];
   bool erroralllistdata = true;
+  String url_hospitals;
+  String url_regions;
+  List hospitalDataList = [];
+  List regionsDataList = [];
+  var _hospital;
+  var _region;
+
+  Future<String> getHospitalsData(String region) async {
+    String urrr1;
+
+    urrr1 = url_hospitals + "?region=${region}";
+
+    print('getHospitalsList');
+    var res = await http.get(
+      Uri.parse(urrr1),
+      headers: {"Accept": "application/json"},
+    );
+    var resBody = json.decode(res.body);
+    print(resBody);
+
+    setState(() {
+      hospitalDataList = resBody;
+    });
+
+    return "Sucess";
+  }
+
+  Future<String> getAllRegions() async {
+    String urrr1 = url_regions;
+    print('getAllRegions');
+    var res = await http.get(
+      Uri.parse(urrr1),
+      headers: {"Accept": "application/json"},
+    );
+    var resBody = json.decode(res.body);
+    print(resBody);
+
+    setState(() {
+      regionsDataList = resBody;
+    });
+
+    return "Sucess";
+  }
 
   Future<List<DepartmentDetails>> _responseFuture() async {
     // var data = await http.get(Uri.parse(
@@ -93,7 +137,12 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
   @override
   void initState() {
     super.initState();
+
+    url_regions = Auth().linkURL + "api/getAllRegions";
+    url_hospitals = Auth().linkURL + "api/getHospitalsList";
     _responseFuture();
+    this.getHospitalsData('');
+    this.getAllRegions();
   }
 
   TextEditingController _searchdepartment = TextEditingController();
@@ -146,6 +195,118 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
       body: Container(
           child: ListView(
         children: [
+          Container(
+            padding: const EdgeInsets.only(
+              top: 10,
+              left: 25,
+              right: 25,
+            ),
+            child: Center(
+              child: Container(
+                  child: SearchChoices.single(
+                displayClearIcon: false,
+                items: regionsDataList.map((item) {
+                  return new DropdownMenuItem(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 15, bottom: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 30,
+                            height: 30,
+                            child: Image.network(
+                                "https://image.flaticon.com/icons/png/512/147/147144.png"),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(item["area"]),
+                        ],
+                      ),
+                    ),
+                    value: item,
+                  );
+                }).toList(),
+                value: _region,
+                hint: Container(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Text(
+                    "Choose a Region",
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                searchHint: "Search Region",
+                onChanged: (value) {
+                  setState(() {
+                    // errordoctorselect = false;
+                    _region = value;
+                  });
+                  getHospitalsData(_region);
+                },
+                isExpanded: true,
+              )),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(
+              top: 10,
+              left: 25,
+              right: 25,
+            ),
+            child: Center(
+              child: Container(
+                  child: SearchChoices.single(
+                displayClearIcon: false,
+                items: hospitalDataList.map((item) {
+                  return new DropdownMenuItem(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 15, bottom: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 30,
+                            height: 30,
+                            child: Image.network(
+                                "https://image.flaticon.com/icons/png/512/147/147144.png"),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(item["name"]),
+                        ],
+                      ),
+                    ),
+                    value: item,
+                  );
+                }).toList(),
+                value: _hospital,
+                hint: Container(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Text(
+                    "Choose a Hospital",
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                searchHint: "Search hospital",
+                onChanged: (value) {
+                  setState(() {
+                    // errordoctorselect = false;
+                    _hospital = value;
+                    // url = Auth().linkURL +
+                    //     "api/getDoctorList?id=${this.useridd}&hospitalId=${_hospital['id']}";
+                    // getSWData();
+                  });
+                },
+                isExpanded: true,
+              )),
+            ),
+          ),
           Container(
             padding: const EdgeInsets.only(
               top: 10,

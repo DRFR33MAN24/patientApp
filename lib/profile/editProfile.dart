@@ -70,7 +70,7 @@ class EditProfileState extends State<EditProfile> {
 
   List data = new List();
   String zname;
-  bool _isloading = true;
+  bool _isloading = false;
 
   createNewProfile() async {
     // check required fields for empty
@@ -112,6 +112,7 @@ class EditProfileState extends State<EditProfile> {
       http.Response response = await http.Response.fromStream(res);
       print('createPatientProfile' + response.body);
       if (response.body == '"success"') {
+        Auth().getProfileData();
         showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -278,8 +279,8 @@ class EditProfileState extends State<EditProfile> {
                                     radius: 70,
                                     backgroundImage: selectedImage != null
                                         ? Image.file(selectedImage).image
-                                        : NetworkImage(
-                                            'https://picsum.photos/200')),
+                                        : NetworkImage(Auth().linkURL +
+                                            'upload/sidebar_image.png')),
                               ),
                             ),
                             Padding(
@@ -361,9 +362,12 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                     width: double.infinity,
                                     child: DropdownButton(
+                                      hint: Text('Sex'),
                                       value: selectedSex,
                                       items: dropdownItems,
-                                      onChanged: (String value) {},
+                                      onChanged: (String value) {
+                                        selectedSex = value;
+                                      },
                                     )),
                               ),
                             ),
@@ -397,9 +401,14 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                     width: double.infinity,
                                     child: DropdownButton(
+                                      hint: Text('Blood group'),
                                       value: selectedBlood,
                                       items: dropdownItemsBlood,
-                                      onChanged: (String value) {},
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          selectedBlood = value;
+                                        });
+                                      },
                                     )),
                               ),
                             ),

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../home/models/http_exception.dart';
 
-class Auth with ChangeNotifier {
+class Auth extends ChangeNotifier {
   String _token;
   bool _profileCreated = false;
   DateTime _expiryDate;
@@ -70,8 +70,9 @@ class Auth with ChangeNotifier {
       "Accept": "application/json"
     });
 
+    print('dbg getProfileData' + data.body);
     var resBody = json.decode(data.body);
-
+    print('dbg resBody ' + resBody.toString());
     if (resBody == null) {
       error = 'error';
 
@@ -92,6 +93,7 @@ class Auth with ChangeNotifier {
 
       isloading = false;
       _profileCreated = true;
+      print('dbg profile retrived');
 
       return "Sucess";
     }
@@ -114,7 +116,7 @@ class Auth with ChangeNotifier {
       );
 
       final responseData = json.decode(response.body);
-      print('response data' + responseData['message']);
+      print('dbg response data' + response.body);
 
       if (responseData['error'] != null) {
         throw HttpException(responseData['message']);
@@ -123,7 +125,6 @@ class Auth with ChangeNotifier {
       if (urlSegment == 'login') {
         _token = responseData['idToken'].toString();
         _userId = responseData['ion_id'].toString();
-
         _particularId = responseData['user_id'].toString();
 
         _expiryDate = DateTime.now().add(
@@ -147,9 +148,9 @@ class Auth with ChangeNotifier {
         );
         prefs.setString('userData', userData);
         if (_userId != null) {
-          _profileCreated = true;
-
-          await getProfileData();
+          print('dbg ' + _userId);
+          getProfileData();
+          notifyListeners();
         }
       }
     } catch (error) {
@@ -192,6 +193,7 @@ class Auth with ChangeNotifier {
   }
 
   Future<void> logout() async {
+    print('dbg logout');
     _token = null;
     _userId = null;
     _expiryDate = null;

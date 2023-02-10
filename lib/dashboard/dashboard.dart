@@ -18,6 +18,7 @@ import 'dart:convert';
 
 import '../home/widgets/app_drawer.dart';
 import '../home/widgets/bottom_navigation_bar.dart';
+import '../profile/editProfile.dart';
 import '../profile/fullProfile.dart';
 
 import '../patient/appointment.dart';
@@ -57,6 +58,7 @@ class DashboardScreen extends StatefulWidget {
 
   String idd;
   String useridd;
+
   DashboardScreen(this.idd, this.useridd);
 
   @override
@@ -67,7 +69,11 @@ class DashboardScreen extends StatefulWidget {
 class DashboardScreenState extends State<DashboardScreen> {
   String idd;
   String useridd;
-  DashboardScreenState(this.idd, this.useridd);
+
+  DashboardScreenState(
+    this.idd,
+    this.useridd,
+  );
   int len;
 
   Future<List<AppintmentDetails>> _responseFuture() async {
@@ -120,267 +126,318 @@ class DashboardScreenState extends State<DashboardScreen> {
   AppColor appcolor = new AppColor();
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context).dashboard,
-          style: TextStyle(
-            color: appcolor.appbartext(),
-            fontWeight: appcolor.appbarfontweight(),
-          ),
-        ),
-        centerTitle: false,
-        backgroundColor: appcolor.appbarbackground(),
-        elevation: 0.0,
-        iconTheme: IconThemeData(color: appcolor.appbaricontheme()),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 12, top: 8, bottom: 8),
-            child: GestureDetector(
-              child: CircleAvatar(
-                radius: 22,
-                backgroundImage: NetworkImage(
-                        "https://image.flaticon.com/icons/png/512/147/147144.png") ??
-                    Icon(Icons.person),
-                backgroundColor: Colors.transparent,
-              ),
-              onTap: () {
-                Navigator.of(context)
-                    .pushReplacementNamed(FullProfile.routeName);
-              },
+    return Consumer<Auth>(builder: (ctx, auth, _) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            AppLocalizations.of(context).dashboard,
+            style: TextStyle(
+              color: appcolor.appbartext(),
+              fontWeight: appcolor.appbarfontweight(),
             ),
-          )
-        ],
-      ),
-      drawer: AppDrawer(),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(10),
-        // height: MediaQuery.of(context).size.height,
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          GridView.count(
-            shrinkWrap: true,
-            primary: false,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
-            crossAxisCount: 2,
-            childAspectRatio: (100 / 100),
-            children: <Widget>[
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 10, right: 5, bottom: 5, left: 5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shadowColor: Color.fromRGBO(0, 0, 0, .5),
-                      elevation: 5,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.medical_services,
-                          color: Theme.of(context).primaryColor,
-                          size: 50,
-                        ),
-                        Padding(padding: EdgeInsets.all(15)),
-                        Text(
-                          AppLocalizations.of(context).bookADoctor,
-                          style: TextStyle(fontSize: 14, color: Colors.black),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed(
-                          DoctorDepartmentScreen.routeName);
-                    },
-                  ),
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 10, right: 5, bottom: 5, left: 5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shadowColor: Color.fromRGBO(0, 0, 0, .5),
-                      elevation: 5,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.calendar_today,
-                          color: Theme.of(context).primaryColor,
-                          size: 50,
-                        ),
-                        Padding(padding: EdgeInsets.all(15)),
-                        Text(
-                          AppLocalizations.of(context).appointments,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontSize: 14, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed(
-                          ShowPatientAppointmentScreen.routeName);
-                    },
-                  ),
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black, // foreground
-                      shadowColor: Color.fromRGBO(0, 0, 0, .5),
-                      elevation: 5,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.file_copy,
-                          color: Theme.of(context).primaryColor,
-                          size: 50,
-                        ),
-                        Padding(padding: EdgeInsets.all(15)),
-                        Text(
-                          AppLocalizations.of(context).prescription,
-                          style: TextStyle(fontSize: 15, color: Colors.black),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed(
-                          UserPrescriptionsScreen.routeName);
-                    },
-                  ),
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black, // foreground
-                      shadowColor: Color.fromRGBO(0, 0, 0, .5),
-                      elevation: 5,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.file_copy,
-                          color: Theme.of(context).primaryColor,
-                          size: 50,
-                        ),
-                        Padding(padding: EdgeInsets.all(15)),
-                        Text(
-                          AppLocalizations.of(context).labReports,
-                          style: TextStyle(fontSize: 15, color: Colors.black),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(LabListScreen.routeName);
-                    },
-                  ),
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black, // foreground
-                      shadowColor: Color.fromRGBO(0, 0, 0, .5),
-                      elevation: 5,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.person,
-                          color: Theme.of(context).primaryColor,
-                          size: 50,
-                        ),
-                        Padding(padding: EdgeInsets.all(15)),
-                        Text(
-                          AppLocalizations.of(context).profile,
-                          style: TextStyle(fontSize: 15, color: Colors.black),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(FullProfile.routeName);
-                    },
-                  ),
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black, // foreground
-                      shadowColor: Color.fromRGBO(0, 0, 0, .5),
-                      elevation: 5,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          color: Theme.of(context).primaryColor,
-                          size: 50,
-                        ),
-                        Padding(padding: EdgeInsets.all(15)),
-                        Text(
-                          AppLocalizations.of(context).setting,
-                          style: TextStyle(fontSize: 15, color: Colors.black),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(SettingScreen.routeName);
-                    },
-                  ),
-                ),
-              ),
-            ],
           ),
-        ]),
-      ),
-      bottomNavigationBar: AppBottomNavigationBar(screenNum: 0),
-    );
+          centerTitle: false,
+          backgroundColor: appcolor.appbarbackground(),
+          elevation: 0.0,
+          iconTheme: IconThemeData(color: appcolor.appbaricontheme()),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 12, top: 8, bottom: 8),
+              child: GestureDetector(
+                child: CircleAvatar(
+                  radius: 22,
+                  backgroundImage: NetworkImage(
+                          "https://image.flaticon.com/icons/png/512/147/147144.png") ??
+                      Icon(Icons.person),
+                  backgroundColor: Colors.transparent,
+                ),
+                onTap: () {
+                  if (auth.profileCreated) {
+                    Navigator.of(context)
+                        .pushReplacementNamed(FullProfile.routeName);
+                  } else {
+                    String mode = 'new';
+                    Navigator.of(context)
+                        .pushNamed(EditProfile.routeName, arguments: mode);
+                  }
+                },
+              ),
+            )
+          ],
+        ),
+        drawer: AppDrawer(),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(10),
+          // height: MediaQuery.of(context).size.height,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GridView.count(
+                  shrinkWrap: true,
+                  primary: false,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 5,
+                  crossAxisCount: 2,
+                  childAspectRatio: (100 / 100),
+                  children: <Widget>[
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10, right: 5, bottom: 5, left: 5),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            shadowColor: Color.fromRGBO(0, 0, 0, .5),
+                            elevation: 5,
+                            alignment: Alignment.bottomLeft,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.medical_services,
+                                color: Theme.of(context).primaryColor,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(15)),
+                              Text(
+                                AppLocalizations.of(context).bookADoctor,
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                                textAlign: TextAlign.left,
+                              ),
+                            ],
+                          ),
+                          onPressed: () {
+                            if (auth.profileCreated) {
+                              Navigator.of(context).pushReplacementNamed(
+                                  DoctorDepartmentScreen.routeName);
+                            } else {
+                              String mode = 'new';
+                              Navigator.of(context).pushNamed(
+                                  EditProfile.routeName,
+                                  arguments: mode);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10, right: 5, bottom: 5, left: 5),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            shadowColor: Color.fromRGBO(0, 0, 0, .5),
+                            elevation: 5,
+                            alignment: Alignment.bottomLeft,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.calendar_today,
+                                color: Theme.of(context).primaryColor,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(15)),
+                              Text(
+                                AppLocalizations.of(context).appointments,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          onPressed: () {
+                            if (auth.profileCreated) {
+                              Navigator.of(context).pushReplacementNamed(
+                                  ShowPatientAppointmentScreen.routeName);
+                            } else {
+                              String mode = 'new';
+                              Navigator.of(context).pushNamed(
+                                  EditProfile.routeName,
+                                  arguments: mode);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            onPrimary: Colors.black, // foreground
+                            shadowColor: Color.fromRGBO(0, 0, 0, .5),
+                            elevation: 5,
+                            alignment: Alignment.bottomLeft,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.file_copy,
+                                color: Theme.of(context).primaryColor,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(15)),
+                              Text(
+                                AppLocalizations.of(context).prescription,
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black),
+                                textAlign: TextAlign.left,
+                              ),
+                            ],
+                          ),
+                          onPressed: () {
+                            if (auth.profileCreated) {
+                              Navigator.of(context).pushReplacementNamed(
+                                  UserPrescriptionsScreen.routeName);
+                            } else {
+                              String mode = 'new';
+                              Navigator.of(context).pushNamed(
+                                  EditProfile.routeName,
+                                  arguments: mode);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            onPrimary: Colors.black, // foreground
+                            shadowColor: Color.fromRGBO(0, 0, 0, .5),
+                            elevation: 5,
+                            alignment: Alignment.bottomLeft,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.file_copy,
+                                color: Theme.of(context).primaryColor,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(15)),
+                              Text(
+                                AppLocalizations.of(context).labReports,
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black),
+                                textAlign: TextAlign.left,
+                              ),
+                            ],
+                          ),
+                          onPressed: () {
+                            if (auth.profileCreated) {
+                              Navigator.of(context).pushReplacementNamed(
+                                  LabListScreen.routeName);
+                            } else {
+                              String mode = 'new';
+                              Navigator.of(context).pushNamed(
+                                  EditProfile.routeName,
+                                  arguments: mode);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            onPrimary: Colors.black, // foreground
+                            shadowColor: Color.fromRGBO(0, 0, 0, .5),
+                            elevation: 5,
+                            alignment: Alignment.bottomLeft,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.person,
+                                color: Theme.of(context).primaryColor,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(15)),
+                              Text(
+                                AppLocalizations.of(context).profile,
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black),
+                                textAlign: TextAlign.left,
+                              ),
+                            ],
+                          ),
+                          onPressed: () {
+                            print('dbg' + auth.profileCreated.toString());
+                            if (auth.profileCreated) {
+                              Navigator.of(context)
+                                  .pushReplacementNamed(FullProfile.routeName);
+                            } else {
+                              String mode = 'new';
+                              Navigator.of(context).pushNamed(
+                                  EditProfile.routeName,
+                                  arguments: mode);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            onPrimary: Colors.black, // foreground
+                            shadowColor: Color.fromRGBO(0, 0, 0, .5),
+                            elevation: 5,
+                            alignment: Alignment.bottomLeft,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.settings,
+                                color: Theme.of(context).primaryColor,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(15)),
+                              Text(
+                                AppLocalizations.of(context).setting,
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black),
+                                textAlign: TextAlign.left,
+                              ),
+                            ],
+                          ),
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushReplacementNamed(SettingScreen.routeName);
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ]),
+        ),
+        bottomNavigationBar: AppBottomNavigationBar(screenNum: 0),
+      );
+    });
   }
 }

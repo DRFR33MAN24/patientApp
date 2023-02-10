@@ -90,20 +90,19 @@ class FullProfileState extends State<FullProfile> {
   @override
   void initState() {
     super.initState();
-    if (!Auth().profileCreated) {
-      String mode = 'new';
-      Navigator.of(context).pushNamed(EditProfile.routeName, arguments: mode);
-    } else {
-      _email.text = Auth().email;
-      _name.text = Auth().name;
-      _phone.text = Auth().phone;
-      _department.text = Auth().department;
-      _address.text = Auth().address;
-      image = Auth().image;
-      _blood.text = Auth().blood;
-      _sex.text = Auth().sex;
-      _age.text = Auth().age;
-    }
+
+    Auth auth = Provider.of<Auth>(context, listen: false);
+    print(auth.email);
+    _email.text = auth.email;
+    _name.text = auth.name;
+    _phone.text = auth.phone;
+    _department.text = auth.department;
+    _address.text = auth.address;
+    image = auth.image;
+    _blood.text = auth.blood;
+    _sex.text = auth.sex;
+    _age.text = auth.age;
+
     // getSWData().then((value) {
     //   if (value == 'failed') {
     //     String mode = 'new';
@@ -115,187 +114,190 @@ class FullProfileState extends State<FullProfile> {
   AppColor appcolor = new AppColor();
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.chevron_left,
-            size: 45,
-            color: Colors.blue,
+    return Consumer<Auth>(builder: (ctx, auth, _) {
+      return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.chevron_left,
+              size: 45,
+              color: Colors.blue,
+            ),
+            onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
           ),
-          onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+          centerTitle: true,
+          backgroundColor: appcolor.appbarbackground(),
+          elevation: 0.0,
+          iconTheme: IconThemeData(color: appcolor.appbaricontheme()),
+          actions: [
+            if (_isloading == false)
+              ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent,
+                    elevation: 0.0,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(EditProfile.routeName);
+                  },
+                  icon: Icon(
+                    Icons.edit,
+                    color: appcolor.appbaricontheme(),
+                  ),
+                  label: Text(
+                    AppLocalizations.of(context).edit,
+                    style: TextStyle(color: appcolor.appbaricontheme()),
+                  )),
+          ],
         ),
-        centerTitle: true,
-        backgroundColor: appcolor.appbarbackground(),
-        elevation: 0.0,
-        iconTheme: IconThemeData(color: appcolor.appbaricontheme()),
-        actions: [
-          if (_isloading == false)
-            ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
-                  elevation: 0.0,
+        body: (_isloading)
+            ? Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: Column(children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
+                  child: Center(
+                    child: CircleAvatar(
+                        radius: 70,
+                        backgroundImage: image != null
+                            ? NetworkImage(auth.linkURL + image)
+                            : NetworkImage('https://picsum.photos/200')),
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(EditProfile.routeName);
-                },
-                icon: Icon(
-                  Icons.edit,
-                  color: appcolor.appbaricontheme(),
-                ),
-                label: Text(
-                  AppLocalizations.of(context).edit,
-                  style: TextStyle(color: appcolor.appbaricontheme()),
-                )),
-        ],
-      ),
-      body: (_isloading)
-          ? Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              child: Column(children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 20),
-                child: Center(
-                  child: CircleAvatar(
-                      radius: 70,
-                      backgroundImage: image != null
-                          ? NetworkImage(Auth().linkURL + image)
-                          : NetworkImage('https://picsum.photos/200')),
-                ),
-              ),
-              Center(
-                child: Container(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(_name.text,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        )),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    InkWell(
-                      child: CircleAvatar(
-                        radius: 15,
-                        child: Icon(
-                          Icons.edit,
-                          color: Colors.black,
-                          size: 16,
-                        ),
-                        backgroundColor: Colors.transparent,
+                Center(
+                  child: Container(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(_name.text,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          )),
+                      SizedBox(
+                        width: 5,
                       ),
-                      onTap: () {
-                        Navigator.of(context).pushNamed(EditProfile.routeName);
-                      },
-                    ),
-                  ],
-                )),
-              ),
-              SizedBox(height: 30),
-              Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * .9,
-                  child: ListTile(
-                    leading: Icon(Icons.email),
-                    title: Text(_email.text),
-                    trailing: PopupMenuButton<int>(
-                      itemBuilder: (context) => [
-                        PopupMenuItem<int>(
-                            value: 0,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.edit,
-                                  color: Colors.orange,
-                                ),
-                                const SizedBox(
-                                  width: 7,
-                                ),
-                                Text(AppLocalizations.of(context).edit)
-                              ],
-                            )),
-                      ],
-                      onSelected: (item) {
-                        if (item == 0) {
+                      InkWell(
+                        child: CircleAvatar(
+                          radius: 15,
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.black,
+                            size: 16,
+                          ),
+                          backgroundColor: Colors.transparent,
+                        ),
+                        onTap: () {
                           Navigator.of(context)
                               .pushNamed(EditProfile.routeName);
-                        }
-                      },
+                        },
+                      ),
+                    ],
+                  )),
+                ),
+                SizedBox(height: 30),
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .9,
+                    child: ListTile(
+                      leading: Icon(Icons.email),
+                      title: Text(_email.text),
+                      trailing: PopupMenuButton<int>(
+                        itemBuilder: (context) => [
+                          PopupMenuItem<int>(
+                              value: 0,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.edit,
+                                    color: Colors.orange,
+                                  ),
+                                  const SizedBox(
+                                    width: 7,
+                                  ),
+                                  Text(AppLocalizations.of(context).edit)
+                                ],
+                              )),
+                        ],
+                        onSelected: (item) {
+                          if (item == 0) {
+                            Navigator.of(context)
+                                .pushNamed(EditProfile.routeName);
+                          }
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * .9,
-                  child: ListTile(
-                    leading: Icon(Icons.phone),
-                    title: Text(_phone.text),
-                    trailing: PopupMenuButton<int>(
-                      itemBuilder: (context) => [
-                        PopupMenuItem<int>(
-                            value: 0,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.edit,
-                                  color: Colors.orange,
-                                ),
-                                const SizedBox(
-                                  width: 7,
-                                ),
-                                Text(AppLocalizations.of(context).edit)
-                              ],
-                            )),
-                      ],
-                      onSelected: (item) {
-                        if (item == 0) {
-                          Navigator.of(context)
-                              .pushNamed(EditProfile.routeName);
-                        }
-                      },
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .9,
+                    child: ListTile(
+                      leading: Icon(Icons.phone),
+                      title: Text(_phone.text),
+                      trailing: PopupMenuButton<int>(
+                        itemBuilder: (context) => [
+                          PopupMenuItem<int>(
+                              value: 0,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.edit,
+                                    color: Colors.orange,
+                                  ),
+                                  const SizedBox(
+                                    width: 7,
+                                  ),
+                                  Text(AppLocalizations.of(context).edit)
+                                ],
+                              )),
+                        ],
+                        onSelected: (item) {
+                          if (item == 0) {
+                            Navigator.of(context)
+                                .pushNamed(EditProfile.routeName);
+                          }
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * .9,
-                  child: ListTile(
-                    leading: Icon(Icons.home),
-                    title: Text(_address.text),
-                    trailing: PopupMenuButton<int>(
-                      itemBuilder: (context) => [
-                        PopupMenuItem<int>(
-                            value: 0,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.edit,
-                                  color: Colors.orange,
-                                ),
-                                const SizedBox(
-                                  width: 7,
-                                ),
-                                Text(AppLocalizations.of(context).edit)
-                              ],
-                            )),
-                      ],
-                      onSelected: (item) {
-                        if (item == 0) {
-                          Navigator.of(context)
-                              .pushNamed(EditProfile.routeName);
-                        }
-                      },
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .9,
+                    child: ListTile(
+                      leading: Icon(Icons.home),
+                      title: Text(_address.text),
+                      trailing: PopupMenuButton<int>(
+                        itemBuilder: (context) => [
+                          PopupMenuItem<int>(
+                              value: 0,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.edit,
+                                    color: Colors.orange,
+                                  ),
+                                  const SizedBox(
+                                    width: 7,
+                                  ),
+                                  Text(AppLocalizations.of(context).edit)
+                                ],
+                              )),
+                        ],
+                        onSelected: (item) {
+                          if (item == 0) {
+                            Navigator.of(context)
+                                .pushNamed(EditProfile.routeName);
+                          }
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ])),
-      bottomNavigationBar: AppBottomNavigationBar(screenNum: 2),
-    );
+              ])),
+        bottomNavigationBar: AppBottomNavigationBar(screenNum: 2),
+      );
+    });
   }
 }

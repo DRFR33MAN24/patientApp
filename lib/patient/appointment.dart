@@ -84,7 +84,12 @@ class PatientAppointmentDetailsScreenState
   List data = List();
 
   List doctorDataList = [];
+
+  String url_regions;
   List hospitalDataList = [];
+  List regionsDataList = [];
+
+  var _region;
   List<DropdownMenuItem<Doctor>> dropdownDoctorItems;
 
   List doctorSlotList = [];
@@ -98,7 +103,7 @@ class PatientAppointmentDetailsScreenState
   String _patient;
   DateTime selectedDate;
 
-  bool _isloading = true;
+  bool _isloading = false;
 
   String _date = "";
   TextEditingController _remarks = TextEditingController();
@@ -150,8 +155,11 @@ class PatientAppointmentDetailsScreenState
     return "Sucess";
   }
 
-  Future<String> getHospitalsData() async {
-    String urrr1 = url_hospitals;
+  Future<String> getHospitalsData(String region) async {
+    String urrr1;
+
+    urrr1 = url_hospitals + "?region=${region}";
+
     print('getHospitalsList');
     var res = await http.get(
       Uri.parse(urrr1),
@@ -162,8 +170,23 @@ class PatientAppointmentDetailsScreenState
 
     setState(() {
       hospitalDataList = resBody;
+    });
 
-      _isloading = false;
+    return "Sucess";
+  }
+
+  Future<String> getAllRegions() async {
+    String urrr1 = url_regions;
+    print('dbg getAllRegions');
+    var res = await http.get(
+      Uri.parse(urrr1),
+      headers: {"Accept": "application/json"},
+    );
+    var resBody = json.decode(res.body);
+    print(resBody);
+
+    setState(() {
+      regionsDataList = resBody;
     });
 
     return "Sucess";
@@ -216,16 +239,18 @@ class PatientAppointmentDetailsScreenState
   @override
   void initState() {
     super.initState();
-    if (!Auth().profileCreated) {
-      String mode = 'new';
-      Navigator.of(context).pushNamed(EditProfile.routeName, arguments: mode);
-    }
+    // if (!Auth().profileCreated) {
+    //   String mode = 'new';
+    //   Navigator.of(context).pushNamed(EditProfile.routeName, arguments: mode);
+    // }
 
     // url = Auth().linkURL + "api/getDoctorList?id=${this.useridd}&hospitalId=1";
-    url_hospitals = Auth().linkURL + "api/getHospitalsList?id=${this.useridd}";
+    url_regions = Auth().linkURL + "api/getAllRegions";
+    url_hospitals = Auth().linkURL + "api/getHospitalsList";
 
-    this.getHospitalsData();
-    //this.getSWData();
+    this.getAllRegions();
+    this.getHospitalsData('');
+    this.getSWData();
 
     _patient = this.idd;
     appointmentStatus = new TextEditingController(text: 'Requested');
@@ -272,6 +297,53 @@ class PatientAppointmentDetailsScreenState
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Container(
+                          child: SearchChoices.single(
+                        displayClearIcon: false,
+                        items: regionsDataList.map((item) {
+                          return new DropdownMenuItem(
+                            child: Container(
+                              padding: EdgeInsets.only(top: 15, bottom: 15),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 30,
+                                    height: 30,
+                                    child: Image.network(
+                                        "https://image.flaticon.com/icons/png/512/147/147144.png"),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(item["area"]),
+                                ],
+                              ),
+                            ),
+                            value: item,
+                          );
+                        }).toList(),
+                        value: _region,
+                        hint: Container(
+                          padding: EdgeInsets.symmetric(vertical: 15),
+                          child: Text(
+                            "Choose a Region",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        searchHint: "Search Region",
+                        onChanged: (value) {
+                          print('dbg region onCanged ${value['area']}');
+                          setState(() {
+                            // errordoctorselect = false;
+                            _region = value;
+                          });
+                          getHospitalsData(_region['area']);
+                        },
+                        isExpanded: true,
+                      )),
                       Container(
                         child: SearchChoices.single(
                           displayClearIcon: false,

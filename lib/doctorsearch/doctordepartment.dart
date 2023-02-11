@@ -102,37 +102,41 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
     return "Sucess";
   }
 
-  Future<List<DepartmentDetails>> _responseFuture() async {
+  Future<void> _responseFuture() async {
     // var data = await http.get(Uri.parse(
     //     Auth().linkURL + "api/getAllDepartments?ion_id=" + this.useridd));
 
-    print('dbg getDepartments ${_hospital['id']}');
-    final url = Auth().linkURL + "api/getAllDepartments";
-    var data = await http.post(
-      Uri.parse(url),
-      body: {
-        'hospital_id': this._hospital['id'],
-      },
-    );
-    print('dbg departmets ${data.body}');
-    var jsondata = json.decode(data.body);
-
-    for (var u in jsondata) {
-      DepartmentDetails subdata = DepartmentDetails(
-        id: u["id"],
-        name: u["name"],
-        description: u["description"],
+    print('dbg getDepartments ${_hospital}');
+    if (_hospital != null) {
+      final url = Auth().linkURL + "api/getAllDepartments";
+      var data = await http.post(
+        Uri.parse(url),
+        body: {
+          'hospital_id': this._hospital['id'],
+        },
       );
-      _departmentdata.add(subdata);
+      print('dbg departmets ${data.body}');
+      var jsondata = json.decode(data.body);
+
+      for (var u in jsondata) {
+        DepartmentDetails subdata = DepartmentDetails(
+          id: u["id"],
+          name: u["name"],
+          description: u["description"],
+        );
+        _departmentdata.add(subdata);
+      }
+
+      this.len = _departmentdata.length;
+      setState(() {
+        _tempdepartment = _departmentdata;
+        erroralllistdata = false;
+      });
+    } else {
+      setState(() {
+        erroralllistdata = false;
+      });
     }
-
-    this.len = _departmentdata.length;
-    setState(() {
-      _tempdepartment = _departmentdata;
-      erroralllistdata = false;
-    });
-
-    return _departmentdata;
   }
 
   @override
@@ -169,6 +173,7 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
   AppColor appcolor = new AppColor();
 
   Widget build(BuildContext context) {
+    print('dbg ${erroralllistdata}');
     return Scaffold(
       appBar: AppBar(
         title: Text(

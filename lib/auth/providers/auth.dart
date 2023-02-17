@@ -86,7 +86,7 @@ class Auth extends ChangeNotifier {
       phone = resBody['phone'];
       sex = resBody['sex'];
       age = resBody['age'];
-      blood = resBody['blood'];
+      blood = resBody['bloodgroup'];
       department = resBody['department'];
       address = resBody['address'];
       image = resBody['img_url'];

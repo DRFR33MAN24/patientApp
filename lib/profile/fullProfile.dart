@@ -174,24 +174,6 @@ class FullProfileState extends State<FullProfile> {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           )),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      InkWell(
-                        child: CircleAvatar(
-                          radius: 15,
-                          child: Icon(
-                            Icons.edit,
-                            color: Colors.black,
-                            size: 16,
-                          ),
-                          backgroundColor: Colors.transparent,
-                        ),
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(EditProfile.routeName);
-                        },
-                      ),
                     ],
                   )),
                 ),
@@ -202,30 +184,6 @@ class FullProfileState extends State<FullProfile> {
                     child: ListTile(
                       leading: Icon(Icons.email),
                       title: Text(_email.text),
-                      trailing: PopupMenuButton<int>(
-                        itemBuilder: (context) => [
-                          PopupMenuItem<int>(
-                              value: 0,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.edit,
-                                    color: Colors.orange,
-                                  ),
-                                  const SizedBox(
-                                    width: 7,
-                                  ),
-                                  Text(AppLocalizations.of(context).edit)
-                                ],
-                              )),
-                        ],
-                        onSelected: (item) {
-                          if (item == 0) {
-                            Navigator.of(context)
-                                .pushNamed(EditProfile.routeName);
-                          }
-                        },
-                      ),
                     ),
                   ),
                 ),
@@ -235,30 +193,6 @@ class FullProfileState extends State<FullProfile> {
                     child: ListTile(
                       leading: Icon(Icons.phone),
                       title: Text(_phone.text),
-                      trailing: PopupMenuButton<int>(
-                        itemBuilder: (context) => [
-                          PopupMenuItem<int>(
-                              value: 0,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.edit,
-                                    color: Colors.orange,
-                                  ),
-                                  const SizedBox(
-                                    width: 7,
-                                  ),
-                                  Text(AppLocalizations.of(context).edit)
-                                ],
-                              )),
-                        ],
-                        onSelected: (item) {
-                          if (item == 0) {
-                            Navigator.of(context)
-                                .pushNamed(EditProfile.routeName);
-                          }
-                        },
-                      ),
                     ),
                   ),
                 ),
@@ -268,30 +202,33 @@ class FullProfileState extends State<FullProfile> {
                     child: ListTile(
                       leading: Icon(Icons.home),
                       title: Text(_address.text),
-                      trailing: PopupMenuButton<int>(
-                        itemBuilder: (context) => [
-                          PopupMenuItem<int>(
-                              value: 0,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.edit,
-                                    color: Colors.orange,
-                                  ),
-                                  const SizedBox(
-                                    width: 7,
-                                  ),
-                                  Text(AppLocalizations.of(context).edit)
-                                ],
-                              )),
-                        ],
-                        onSelected: (item) {
-                          if (item == 0) {
-                            Navigator.of(context)
-                                .pushNamed(EditProfile.routeName);
-                          }
-                        },
-                      ),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .9,
+                    child: ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text(_sex.text),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .9,
+                    child: ListTile(
+                      leading: Icon(Icons.cake),
+                      title: Text(_age.text),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .9,
+                    child: ListTile(
+                      leading: Icon(Icons.type_specimen),
+                      title: Text(_blood.text),
                     ),
                   ),
                 ),

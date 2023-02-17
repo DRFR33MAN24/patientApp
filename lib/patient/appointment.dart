@@ -656,6 +656,8 @@ class PatientAppointmentDetailsScreenState
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
+                            print(
+                                'dbg makeAppointment ${_ddoctor} ${availableSlot}');
                             if (_formKey.currentState.validate()) {
                               if (_ddoctor == "" || _ddoctor == null) {
                                 setState(() {

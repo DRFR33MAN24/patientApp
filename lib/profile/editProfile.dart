@@ -40,7 +40,7 @@ class EditProfileState extends State<EditProfile> {
   final _formKey = GlobalKey<FormState>();
 
   String url;
-  String _image;
+  String image;
   File selectedImage;
   var resJson;
   TextEditingController _name = TextEditingController();
@@ -226,17 +226,17 @@ class EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    url = Auth().linkURL + "api/getProfile?id=";
-    // getSWData();
-    _email.text = Auth().email;
-    _name.text = Auth().name;
-    _phone.text = Auth().phone;
-    _department.text = Auth().department;
-    _address.text = Auth().address;
-    selectedBlood = Auth().blood;
-    selectedSex = Auth().sex;
-    _age.text = Auth().age;
-    _image = Auth().image;
+    Auth auth = Provider.of<Auth>(context, listen: false);
+    print(auth.email);
+    _email.text = auth.email;
+    _name.text = auth.name;
+    _phone.text = auth.phone;
+    _department.text = auth.department;
+    _address.text = auth.address;
+    image = auth.image;
+    selectedBlood = auth.blood;
+    selectedSex = auth.sex;
+    _age.text = auth.age;
   }
 
   AppColor appcolor = new AppColor();
@@ -431,149 +431,187 @@ class EditProfileState extends State<EditProfile> {
                   )));
     } else {
       return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            AppLocalizations.of(context).editProfile,
-            style: TextStyle(
-                color: appcolor.appbartext(),
-                fontWeight: appcolor.appbarfontweight()),
-          ),
-          automaticallyImplyLeading: true,
-          leading: IconButton(
-            icon: Icon(
-              Icons.chevron_left,
-              size: 45,
-              color: Colors.blue,
+          appBar: AppBar(
+            title: Text(
+              AppLocalizations.of(context).editProfile,
+              style: TextStyle(
+                  color: appcolor.appbartext(),
+                  fontWeight: appcolor.appbarfontweight()),
             ),
-            onPressed: () => Navigator.of(context)
-                .pushReplacementNamed(FullProfile.routeName),
+            centerTitle: true,
+            backgroundColor: appcolor.appbarbackground(),
+            elevation: 0.0,
+            iconTheme: IconThemeData(color: appcolor.appbaricontheme()),
           ),
-          centerTitle: true,
-          backgroundColor: appcolor.appbarbackground(),
-          elevation: 0.0,
-          iconTheme: IconThemeData(color: appcolor.appbaricontheme()),
-        ),
-        body: (_isloading)
-            ? Center(child: CircularProgressIndicator())
-            : Container(
-                height: 700,
-                child: ListView(
-                  padding: EdgeInsets.all(20),
-                  children: [
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, bottom: 10),
-                            child: Center(
-                              child: Container(
-                                width: double.infinity,
-                                child: TextFormField(
-                                  controller: _name,
-                                  decoration: InputDecoration(
-                                      labelText:
-                                          AppLocalizations.of(context).name,
-                                      hintText: AppLocalizations.of(context)
-                                          .enterName),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return AppLocalizations.of(context)
-                                          .invalidName;
-                                    }
-                                    return null;
-                                  },
+          body: (_isloading)
+              ? Center(child: CircularProgressIndicator())
+              : Container(
+                  height: 700,
+                  child: ListView(
+                    padding: EdgeInsets.all(20),
+                    children: [
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Center(
+                              child: GestureDetector(
+                                onTap: () {
+                                  getImage();
+                                },
+                                child: CircleAvatar(
+                                    radius: 70,
+                                    backgroundImage: selectedImage != null
+                                        ? Image.file(selectedImage).image
+                                        : NetworkImage(Auth().linkURL + image)),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: _name,
+                                    decoration: InputDecoration(
+                                        labelText:
+                                            AppLocalizations.of(context).name,
+                                        hintText: AppLocalizations.of(context)
+                                            .enterName),
+                                    validator: (value) {
+                                      if (value.isEmpty) {
+                                        return AppLocalizations.of(context)
+                                            .invalidName;
+                                      }
+                                      return null;
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, bottom: 10),
-                            child: Center(
-                              child: Container(
-                                width: double.infinity,
-                                child: TextFormField(
-                                  controller: _email,
-                                  readOnly: true,
-                                  decoration: InputDecoration(
-                                      labelText:
-                                          '${AppLocalizations.of(context).email} (${AppLocalizations.of(context).notChangable})',
-                                      hintText:
-                                          AppLocalizations.of(context).email),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return AppLocalizations.of(context)
-                                          .invalidEmail;
-                                    }
-                                    return null;
-                                  },
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: _address,
+                                    decoration: InputDecoration(
+                                        labelText: AppLocalizations.of(context)
+                                            .address,
+                                        hintText: AppLocalizations.of(context)
+                                            .address),
+                                    validator: (value) {
+                                      if (value.isEmpty || value.length < 5) {
+                                        return AppLocalizations.of(context)
+                                            .invalidAddress;
+                                      }
+                                      return null;
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, bottom: 10),
-                            child: Center(
-                              child: Container(
-                                width: double.infinity,
-                                child: TextFormField(
-                                  controller: _address,
-                                  decoration: InputDecoration(
-                                      labelText:
-                                          AppLocalizations.of(context).address,
-                                      hintText:
-                                          AppLocalizations.of(context).address),
-                                  validator: (value) {
-                                    if (value.isEmpty || value.length < 5) {
-                                      return AppLocalizations.of(context)
-                                          .invalidAddress;
-                                    }
-                                    return null;
-                                  },
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: _phone,
+                                    decoration: InputDecoration(
+                                        labelText:
+                                            AppLocalizations.of(context).phone,
+                                        hintText:
+                                            AppLocalizations.of(context).phone),
+                                    validator: (value) {
+                                      if (value.isEmpty || value.length < 5) {
+                                        return AppLocalizations.of(context)
+                                            .phone;
+                                      }
+                                      return null;
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, bottom: 10),
-                            child: Center(
-                              child: Container(
-                                width: double.infinity,
-                                child: TextFormField(
-                                  controller: _phone,
-                                  decoration: InputDecoration(
-                                      labelText:
-                                          AppLocalizations.of(context).phone,
-                                      hintText:
-                                          AppLocalizations.of(context).phone),
-                                  validator: (value) {
-                                    if (value.isEmpty || value.length < 5) {
-                                      return AppLocalizations.of(context).phone;
-                                    }
-                                    return null;
-                                  },
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                    width: double.infinity,
+                                    child: DropdownButton(
+                                      hint: Text('Sex'),
+                                      value: selectedSex,
+                                      items: dropdownItems,
+                                      onChanged: (String value) {
+                                        selectedSex = value;
+                                      },
+                                    )),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: _age,
+                                    decoration: InputDecoration(
+                                        labelText:
+                                            AppLocalizations.of(context).age,
+                                        hintText:
+                                            AppLocalizations.of(context).age),
+                                    validator: (value) {
+                                      if (value.isEmpty) {
+                                        return AppLocalizations.of(context).age;
+                                      }
+                                      return null;
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * .9,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                if (_formKey.currentState.validate()) {
-                                  updateProfile(context);
-                                }
-                              },
-                              child: Text(AppLocalizations.of(context).update),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                    width: double.infinity,
+                                    child: DropdownButton(
+                                      hint: Text('Blood group'),
+                                      value: selectedBlood,
+                                      items: dropdownItemsBlood,
+                                      onChanged: (String value) {
+                                        setState(() {
+                                          selectedBlood = value;
+                                        });
+                                      },
+                                    )),
+                              ),
                             ),
-                          )
-                        ],
+                            Container(
+                              width: MediaQuery.of(context).size.width * .9,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  if (_formKey.currentState.validate()) {
+                                    updateProfile(context);
+                                  }
+                                },
+                                child: Text(AppLocalizations.of(context).edit),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                )),
-      );
+                    ],
+                  )));
     }
   }
 }

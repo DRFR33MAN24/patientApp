@@ -109,7 +109,7 @@ class _PrescriptionDetailScreenState extends State<PrescriptionDetailScreen> {
         'ion_id': ionid,
       },
     );
-
+    print('dbg ${medicinedata.body}');
     var jsondatax = json.decode(medicinedata.body);
 
     return jsondatax["name"];
@@ -121,7 +121,7 @@ class _PrescriptionDetailScreenState extends State<PrescriptionDetailScreen> {
     //     useridd));
 
     final url = Auth().linkURL + "api/viewPrescription";
-
+    print('dbg viewPrescription');
     try {
       final data = await http.post(
         Uri.parse(url),
@@ -130,7 +130,7 @@ class _PrescriptionDetailScreenState extends State<PrescriptionDetailScreen> {
           'user_ion_id': useridd,
         },
       );
-
+      print('dbg ${data.body}');
       var jsondata = json.decode(data.body);
       var ini_prescription = jsondata["prescription"];
       var ini_setting = jsondata["settings"];
@@ -219,6 +219,7 @@ class _PrescriptionDetailScreenState extends State<PrescriptionDetailScreen> {
 
       return subdata;
     } catch (error) {
+      print('dbg ${error}');
       throw error;
     }
   }

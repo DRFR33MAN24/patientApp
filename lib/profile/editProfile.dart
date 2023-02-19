@@ -41,6 +41,7 @@ class EditProfileState extends State<EditProfile> {
 
   String url;
   String image;
+
   File selectedImage;
   var resJson;
   TextEditingController _name = TextEditingController();
@@ -48,6 +49,9 @@ class EditProfileState extends State<EditProfile> {
   TextEditingController _password = TextEditingController();
   TextEditingController _phone = TextEditingController();
   TextEditingController _age = TextEditingController();
+  TextEditingController _day = TextEditingController();
+  TextEditingController _month = TextEditingController();
+  TextEditingController _year = TextEditingController();
   TextEditingController _address = TextEditingController();
   TextEditingController _department = TextEditingController();
 
@@ -72,10 +76,11 @@ class EditProfileState extends State<EditProfile> {
   String zname;
   bool _isloading = false;
 
-  createNewProfile() async {
-    // check required fields for empty
-  }
   updateProfile(context) async {
+    createNewProfile(context, true);
+  }
+
+  createNewProfile(context, edit) async {
     print(selectedImage);
     if (_name != zname || _password != "") {
       var request = http.MultipartRequest(
@@ -105,7 +110,9 @@ class EditProfileState extends State<EditProfile> {
         'department': this._department.text,
         'sex': this.selectedSex,
         'bloodgroup': this.selectedBlood,
-        'age': this._age.text
+        'age': this._age.text,
+        'birthday': this._day.text + this._month.text + this._year.text,
+        'edit': edit ? 'edit' : 'new'
       });
 
       var res = await request.send();
@@ -237,6 +244,14 @@ class EditProfileState extends State<EditProfile> {
     selectedBlood = auth.blood;
     selectedSex = auth.sex;
     _age.text = auth.age;
+
+    var birthday = auth.birthday.split('-');
+
+    if (birthday.length == 3) {
+      _day.text = birthday[0];
+      _month.text = birthday[1];
+      _year.text = birthday[2];
+    }
   }
 
   AppColor appcolor = new AppColor();
@@ -417,7 +432,7 @@ class EditProfileState extends State<EditProfile> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   if (_formKey.currentState.validate()) {
-                                    updateProfile(context);
+                                    createNewProfile(context, false);
                                   }
                                 },
                                 child:
@@ -576,6 +591,80 @@ class EditProfileState extends State<EditProfile> {
                                     },
                                   ),
                                 ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                    width: double.infinity,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller: _day,
+                                            decoration: InputDecoration(
+                                                labelText:
+                                                    AppLocalizations.of(context)
+                                                        .day,
+                                                hintText:
+                                                    AppLocalizations.of(context)
+                                                        .day),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .day;
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller: _month,
+                                            decoration: InputDecoration(
+                                                labelText:
+                                                    AppLocalizations.of(context)
+                                                        .month,
+                                                hintText:
+                                                    AppLocalizations.of(context)
+                                                        .month),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .month;
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller: _year,
+                                            decoration: InputDecoration(
+                                                labelText:
+                                                    AppLocalizations.of(context)
+                                                        .year,
+                                                hintText:
+                                                    AppLocalizations.of(context)
+                                                        .year),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .year;
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        )
+                                      ],
+                                    )),
                               ),
                             ),
                             Padding(

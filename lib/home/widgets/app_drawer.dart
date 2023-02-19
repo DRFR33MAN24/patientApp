@@ -36,7 +36,13 @@ class AppDrawer extends StatelessWidget {
               AppBar(
                 backgroundColor: Colors.blue,
                 toolbarHeight: 70,
-                title: Center(child: Text('Patient Express')),
+                title: Center(
+                    child: Column(
+                  children: [
+                    Text('Patient Express'),
+                    Text('ID: ${auth.userId}'),
+                  ],
+                )),
                 automaticallyImplyLeading: false,
                 centerTitle: false,
               ),

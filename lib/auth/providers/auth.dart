@@ -19,6 +19,7 @@ class Auth extends ChangeNotifier {
   String phone;
   String name;
   String age;
+  String birthday;
   String blood;
   String sex;
   String department;
@@ -86,6 +87,7 @@ class Auth extends ChangeNotifier {
       phone = resBody['phone'];
       sex = resBody['sex'];
       age = resBody['age'];
+      birthday = resBody['birthdate'];
       blood = resBody['bloodgroup'];
       department = resBody['department'];
       address = resBody['address'];

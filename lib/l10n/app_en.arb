@@ -761,6 +761,21 @@
         "description": "The current age "
     },
 
+         "day": "day",
+    "@day": {
+        "description": "The current day "
+    },
+
+         "month": "month",
+    "@month": {
+        "description": "The current month "
+    },
+
+         "year": "year",
+    "@year": {
+        "description": "The current year "
+    },
+
      "gender": "gender",
     "@gender": {
         "description": "The current gender "

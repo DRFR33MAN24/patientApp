@@ -161,7 +161,8 @@ class FullProfileState extends State<FullProfile> {
                         radius: 70,
                         backgroundImage: image != null
                             ? NetworkImage(auth.linkURL + image)
-                            : NetworkImage('https://picsum.photos/200')),
+                            : NetworkImage(
+                                Auth().linkURL + 'uploads/sidebar_image.png')),
                   ),
                 ),
                 Center(

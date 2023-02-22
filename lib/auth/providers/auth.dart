@@ -10,6 +10,7 @@ class Auth extends ChangeNotifier {
   bool _profileCreated = false;
   DateTime _expiryDate;
   String _userId;
+  String patient_id;
   String _particularId;
   Timer _authTimer;
 
@@ -92,6 +93,7 @@ class Auth extends ChangeNotifier {
       department = resBody['department'];
       address = resBody['address'];
       image = resBody['img_url'];
+      patient_id = resBody['id'];
 
       isloading = false;
       _profileCreated = true;

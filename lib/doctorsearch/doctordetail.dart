@@ -220,9 +220,11 @@ class DoctorDetailProfileState extends State<DoctorDetailProfile> {
     super.initState();
 
     getDoctorProfileData();
-    setState(() {});
+    print('dbg doctorDetail ${this.idd}');
+    setState(() {
+      _patient = this.idd;
+    });
 
-    _patient = this.idd;
     appointmentStatus = new TextEditingController(text: 'Requested');
   }
 

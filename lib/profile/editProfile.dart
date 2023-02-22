@@ -82,7 +82,28 @@ class EditProfileState extends State<EditProfile> {
 
   createNewProfile(context, edit) async {
     print(selectedImage);
-    if (_name != zname || _password != "") {
+    if (selectedImage == null && edit == false) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                AppLocalizations.of(context).action,
+              ),
+              content: Text("Please choose image"),
+              actions: [
+                TextButton(
+                  child: Text(AppLocalizations.of(context).ok),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+      return 'error';
+    }
+    if (_name != "") {
       var request = http.MultipartRequest(
         'POST',
         Uri.parse(Auth().linkURL + "api/createPatientProfile"),
@@ -111,7 +132,8 @@ class EditProfileState extends State<EditProfile> {
         'sex': this.selectedSex,
         'bloodgroup': this.selectedBlood,
         'age': this._age.text,
-        'birthday': this._day.text + this._month.text + this._year.text,
+        'birthdate':
+            this._day.text + "-" + this._month.text + "-" + this._year.text,
         'edit': edit ? 'edit' : 'new'
       });
 
@@ -119,7 +141,9 @@ class EditProfileState extends State<EditProfile> {
       http.Response response = await http.Response.fromStream(res);
       print('createPatientProfile' + response.body);
       if (response.body == '"success"') {
-        Auth().getProfileData();
+        Auth auth = Provider.of<Auth>(context, listen: false);
+        await auth.getProfileData();
+        //Auth().getProfileData();
         showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -156,8 +180,9 @@ class EditProfileState extends State<EditProfile> {
                   TextButton(
                     child: Text(AppLocalizations.of(context).ok),
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(FullProfile.routeName);
+                      // Navigator.of(context)
+                      //     .pushReplacementNamed(FullProfile.routeName);
+                      Navigator.of(context).pop();
                     },
                   )
                 ],
@@ -245,12 +270,18 @@ class EditProfileState extends State<EditProfile> {
     selectedSex = auth.sex;
     _age.text = auth.age;
 
-    var birthday = auth.birthday.split('-');
+    if (auth.birthday != null) {
+      var birthday = auth.birthday.split('-');
 
-    if (birthday.length == 3) {
-      _day.text = birthday[0];
-      _month.text = birthday[1];
-      _year.text = birthday[2];
+      if (birthday.length == 3) {
+        _day.text = birthday[0];
+        _month.text = birthday[1];
+        _year.text = birthday[2];
+      }
+    } else {
+      _day.text = '';
+      _month.text = '';
+      _year.text = '';
     }
   }
 
@@ -295,7 +326,7 @@ class EditProfileState extends State<EditProfile> {
                                     backgroundImage: selectedImage != null
                                         ? Image.file(selectedImage).image
                                         : NetworkImage(Auth().linkURL +
-                                            'upload/sidebar_image.png')),
+                                            'uploads/sidebar_image.png')),
                               ),
                             ),
                             Padding(
@@ -381,7 +412,9 @@ class EditProfileState extends State<EditProfile> {
                                       value: selectedSex,
                                       items: dropdownItems,
                                       onChanged: (String value) {
-                                        selectedSex = value;
+                                        setState(() {
+                                          selectedSex = value;
+                                        });
                                       },
                                     )),
                               ),
@@ -407,6 +440,80 @@ class EditProfileState extends State<EditProfile> {
                                     },
                                   ),
                                 ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Center(
+                                child: Container(
+                                    width: double.infinity,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller: _day,
+                                            decoration: InputDecoration(
+                                                labelText:
+                                                    AppLocalizations.of(context)
+                                                        .day,
+                                                hintText:
+                                                    AppLocalizations.of(context)
+                                                        .day),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .day;
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller: _month,
+                                            decoration: InputDecoration(
+                                                labelText:
+                                                    AppLocalizations.of(context)
+                                                        .month,
+                                                hintText:
+                                                    AppLocalizations.of(context)
+                                                        .month),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .month;
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller: _year,
+                                            decoration: InputDecoration(
+                                                labelText:
+                                                    AppLocalizations.of(context)
+                                                        .year,
+                                                hintText:
+                                                    AppLocalizations.of(context)
+                                                        .year),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .year;
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                        )
+                                      ],
+                                    )),
                               ),
                             ),
                             Padding(
@@ -565,7 +672,9 @@ class EditProfileState extends State<EditProfile> {
                                       value: selectedSex,
                                       items: dropdownItems,
                                       onChanged: (String value) {
-                                        selectedSex = value;
+                                        setState(() {
+                                          selectedSex = value;
+                                        });
                                       },
                                     )),
                               ),

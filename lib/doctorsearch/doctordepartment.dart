@@ -221,8 +221,7 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
                           Container(
                             width: 30,
                             height: 30,
-                            child: Image.network(
-                                "https://image.flaticon.com/icons/png/512/147/147144.png"),
+                            child: Image.asset("assets/icon/points.png"),
                           ),
                           SizedBox(
                             width: 10,
@@ -277,8 +276,7 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
                           Container(
                             width: 30,
                             height: 30,
-                            child: Image.network(
-                                "https://image.flaticon.com/icons/png/512/147/147144.png"),
+                            child: Image.asset("assets/icon/points.png"),
                           ),
                           SizedBox(
                             width: 10,

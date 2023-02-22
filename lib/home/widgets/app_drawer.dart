@@ -40,7 +40,7 @@ class AppDrawer extends StatelessWidget {
                     child: Column(
                   children: [
                     Text('Patient Express'),
-                    Text('ID: ${auth.userId}'),
+                    Text('ID: ${auth.patient_id}'),
                   ],
                 )),
                 automaticallyImplyLeading: false,

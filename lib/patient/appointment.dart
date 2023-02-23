@@ -329,13 +329,13 @@ class PatientAppointmentDetailsScreenState
                         hint: Container(
                           padding: EdgeInsets.symmetric(vertical: 15),
                           child: Text(
-                            "Choose a Region",
+                            AppLocalizations.of(context).choosearegion,
                             style: TextStyle(
                               fontSize: 16,
                             ),
                           ),
                         ),
-                        searchHint: "Search Region",
+                        searchHint: AppLocalizations.of(context).choosearegion,
                         onChanged: (value) {
                           print('dbg region onCanged ${value['area']}');
                           setState(() {
@@ -376,13 +376,14 @@ class PatientAppointmentDetailsScreenState
                           hint: Container(
                             padding: EdgeInsets.symmetric(vertical: 15),
                             child: Text(
-                              "Choose a Hospital",
+                              AppLocalizations.of(context).chooseahospital,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
                           ),
-                          searchHint: "Search hospital",
+                          searchHint:
+                              AppLocalizations.of(context).chooseahospital,
                           onChanged: (value) {
                             setState(() {
                               // errordoctorselect = false;
@@ -426,13 +427,14 @@ class PatientAppointmentDetailsScreenState
                           hint: Container(
                             padding: EdgeInsets.symmetric(vertical: 15),
                             child: Text(
-                              "Choose a doctor",
+                              AppLocalizations.of(context).chooseadoctor,
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
                           ),
-                          searchHint: "Search doctor",
+                          searchHint:
+                              AppLocalizations.of(context).chooseadoctor,
                           onChanged: (value) {
                             setState(() {
                               print('get doctor time slot');

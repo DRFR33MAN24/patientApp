@@ -89,6 +89,17 @@
         "description": "The current appointments"
     },
 
+        "choosearegion": "Choose a Region",
+    "@choosearegion": {
+        "description": "The current Region"
+    },
+
+        "chooseahospital": "Choose a Hospital",
+    "@chooseahospital": {
+        "description": "The current Hospital"
+    },
+
+
     "appointment": "Appointment",
     "@appointment": {
         "description": "The current appointment"

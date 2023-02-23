@@ -289,61 +289,62 @@ class ShowPatientAppointmentScreenState
                                           (_tempappointmentlistdata[index]
                                                       .status ==
                                                   "Confirmed")
-                                              ? Container(
-                                                  width: 40,
-                                                  height: 30,
-                                                  child: ElevatedButton(
-                                                    style: ButtonStyle(
-                                                        padding:
-                                                            MaterialStateProperty.all(
-                                                                EdgeInsets.only(
-                                                                    top: 2,
-                                                                    bottom: 2)),
-                                                        backgroundColor:
-                                                            MaterialStateProperty.all(
-                                                                Colors.white),
-                                                        shape: MaterialStateProperty.all<
-                                                                RoundedRectangleBorder>(
-                                                            RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        10),
-                                                                side: BorderSide(color: Colors.black12)))),
-                                                    onPressed: () {
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) => Jitsi(
-                                                                link: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .jitsi_link,
-                                                                p_name: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .patient_name,
-                                                                d_name:
-                                                                    _tempappointmentlistdata[
-                                                                            index]
-                                                                        .doctor_name,
-                                                                d_date:
-                                                                    _tempappointmentlistdata[
-                                                                            index]
-                                                                        .date,
-                                                                s_time: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .start_time,
-                                                                e_time: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .end_time)),
-                                                      );
-                                                    },
-                                                    child: Icon(
-                                                      Icons.video_call_rounded,
-                                                      size: 25,
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
-                                                    ),
-                                                  ),
-                                                )
+                                              ? Container()
+                                              // ? Container(
+                                              //     width: 40,
+                                              //     height: 30,
+                                              //     child: ElevatedButton(
+                                              //       style: ButtonStyle(
+                                              //           padding:
+                                              //               MaterialStateProperty.all(
+                                              //                   EdgeInsets.only(
+                                              //                       top: 2,
+                                              //                       bottom: 2)),
+                                              //           backgroundColor:
+                                              //               MaterialStateProperty.all(
+                                              //                   Colors.white),
+                                              //           shape: MaterialStateProperty.all<
+                                              //                   RoundedRectangleBorder>(
+                                              //               RoundedRectangleBorder(
+                                              //                   borderRadius:
+                                              //                       BorderRadius.circular(
+                                              //                           10),
+                                              //                   side: BorderSide(color: Colors.black12)))),
+                                              //       onPressed: () {
+                                              //         // Navigator.push(
+                                              //         //   context,
+                                              //         //   MaterialPageRoute(
+                                              //         //       builder: (context) => Jitsi(
+                                              //         //           link: _tempappointmentlistdata[
+                                              //         //                   index]
+                                              //         //               .jitsi_link,
+                                              //         //           p_name: _tempappointmentlistdata[
+                                              //         //                   index]
+                                              //         //               .patient_name,
+                                              //         //           d_name:
+                                              //         //               _tempappointmentlistdata[
+                                              //         //                       index]
+                                              //         //                   .doctor_name,
+                                              //         //           d_date:
+                                              //         //               _tempappointmentlistdata[
+                                              //         //                       index]
+                                              //         //                   .date,
+                                              //         //           s_time: _tempappointmentlistdata[
+                                              //         //                   index]
+                                              //         //               .start_time,
+                                              //         //           e_time: _tempappointmentlistdata[
+                                              //         //                   index]
+                                              //         //               .end_time)),
+                                              //         // );
+                                              //       },
+                                              //       child: Icon(
+                                              //         Icons.video_call_rounded,
+                                              //         size: 25,
+                                              //         color: Theme.of(context)
+                                              //             .primaryColor,
+                                              //       ),
+                                              //     ),
+                                              //   )
                                               : Container(),
                                         ],
                                       ),

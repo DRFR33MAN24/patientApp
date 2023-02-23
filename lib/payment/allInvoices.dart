@@ -110,7 +110,7 @@ class AllInvoicePaymentState extends State<AllInvoicePayment> {
 
   Future gettotalamount() async {
     String posturl = Auth().linkURL + "api/totalAmountPatient";
-
+    print('dbg ${this.idd} ${this.userid}');
     final res = await http.post(
       Uri.parse(posturl),
       body: {

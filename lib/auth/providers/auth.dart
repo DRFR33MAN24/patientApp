@@ -190,7 +190,7 @@ class Auth extends ChangeNotifier {
     this._particularId = extractedUserData['particularId'];
 
     this._expiryDate = expiryDate;
-
+    getProfileData();
     notifyListeners();
     _autoLogout();
     return true;

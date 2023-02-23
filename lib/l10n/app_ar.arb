@@ -326,6 +326,19 @@
     "searchpatient": "بحث المريض",
 
     "chooseadoctor": "اختر الطبيب",
+            "choosearegion": "اختر المنطقة",
+    "@choosearegion": {
+        "description": "The current Region"
+    },
+
+        "chooseahospital": "اختر المشفى",
+    "@chooseahospital": {
+        "description": "The current Hospital"
+    },
+
+    "day":"يوم",
+    "month":"شهر",
+    "year":"سنة",
 
     "searchbypatientname": "البحث عن طريق اسم المريض",
 

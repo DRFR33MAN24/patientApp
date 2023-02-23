@@ -99,6 +99,7 @@ class PatientAppointmentDetailsScreenState
   List data2 = List();
   List data3 = ['Confirmed', 'Pending', 'Requested'];
   String availableSlot = '';
+  String selectedDoctor = '';
   TextEditingController appointmentStatus = TextEditingController();
   String _patient;
   DateTime selectedDate;
@@ -194,12 +195,12 @@ class PatientAppointmentDetailsScreenState
 
   Future<String> makeAppointment(context) async {
     String posturl = Auth().linkURL + "api/addAppointment";
-
+    print('dbg make call');
     final res = await http.post(
       Uri.parse(posturl),
       body: {
         'patient': this._patient,
-        'doctor': this._ddoctor,
+        'doctor': this.selectedDoctor,
         'date': this._date,
         'status': this.appointmentStatus.text,
         'time_slot': this.availableSlot,
@@ -207,7 +208,7 @@ class PatientAppointmentDetailsScreenState
         'remarks': this._remarks.text,
       },
     );
-
+    print('dbg body ${res.body}');
     if (res.statusCode == 200 && _patient != "") {
       showDialog(
           context: context,
@@ -251,7 +252,8 @@ class PatientAppointmentDetailsScreenState
     this.getAllRegions();
     this.getHospitalsData('');
     this.getSWData();
-
+    Auth auth = Provider.of<Auth>(context, listen: false);
+    this.idd = auth.userId;
     _patient = this.idd;
     appointmentStatus = new TextEditingController(text: 'Requested');
   }
@@ -436,7 +438,7 @@ class PatientAppointmentDetailsScreenState
                               print('get doctor time slot');
                               errordoctorselect = false;
                               _ddoctor = value;
-
+                              selectedDoctor = value.id;
                               availableSlot = "";
 
                               String formattedDate = DateFormat('yyyy-MM-dd')

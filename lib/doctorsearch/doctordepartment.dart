@@ -148,6 +148,10 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
     _responseFuture();
     this.getHospitalsData('');
     this.getAllRegions();
+
+    //set user and doctor ids from auth provider
+    Auth auth = Provider.of<Auth>(context, listen: false);
+    this.idd = auth.userId;
   }
 
   TextEditingController _searchdepartment = TextEditingController();

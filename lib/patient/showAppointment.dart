@@ -62,7 +62,7 @@ class ShowPatientAppointmentScreenState
   bool erroralllistdata = true;
   Future<List<AppintmentDetails>> _responseFuture() async {
     String patient_id = this.idd;
-
+    print('dbg ${patient_id}');
     // var data = await http.get(Uri.parse(Auth().linkURL +
     //     "api/getMyAllAppoinmentList?group=patient&id=" +
     //     patient_id));
@@ -109,6 +109,8 @@ class ShowPatientAppointmentScreenState
   @override
   void initState() {
     super.initState();
+    Auth auth = Provider.of<Auth>(context, listen: false);
+    this.idd = auth.userId;
 
     _responseFuture();
   }

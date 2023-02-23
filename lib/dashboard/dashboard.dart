@@ -33,6 +33,7 @@ class AppintmentDetails {
   final String id;
   final String patient_name;
   final String doctor_name;
+  final String hospital_name;
   final String date;
   final String start_time;
   final String end_time;
@@ -44,6 +45,7 @@ class AppintmentDetails {
     this.id,
     this.patient_name,
     this.doctor_name,
+    this.hospital_name,
     this.date,
     this.start_time,
     this.end_time,
@@ -100,6 +102,7 @@ class DashboardScreenState extends State<DashboardScreen> {
           id: u["id"],
           patient_name: u["patient_name"],
           doctor_name: u["doctor_name"],
+          hospital_name: u['hospital_name'],
           date: u["date"],
           start_time: u["start_time"],
           end_time: u["end_time"],

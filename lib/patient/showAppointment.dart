@@ -8,8 +8,6 @@ import 'package:http/http.dart' as http;
 
 import 'dart:async';
 import 'dart:convert';
-import '../jitsi/jitsi.dart';
-import '../jitsi/jitsi.dart';
 import '../auth/providers/auth.dart';
 import 'appointment.dart';
 
@@ -19,6 +17,7 @@ class AppintmentDetails {
   final String id;
   final String patient_name;
   final String doctor_name;
+  final String hospital_name;
   final String date;
   final String start_time;
   final String end_time;
@@ -31,6 +30,7 @@ class AppintmentDetails {
     this.id,
     this.patient_name,
     this.doctor_name,
+    this.hospital_name,
     this.date,
     this.start_time,
     this.end_time,
@@ -85,6 +85,7 @@ class ShowPatientAppointmentScreenState
           id: u["id"],
           patient_name: u["patient_name"],
           doctor_name: u["doctor_name"],
+          hospital_name: u["hospital_name"],
           date: "${u["date"]}",
           start_time: u["start_time"],
           end_time: u["end_time"],
@@ -367,6 +368,28 @@ class ShowPatientAppointmentScreenState
                                                 .50,
                                             child: Text(
                                               "${_tempappointmentlistdata[index].doctor_name}",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 20,
+                                                color: Colors.black,
+                                                fontFamily: "Proxima Nova",
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .50,
+                                            child: Text(
+                                              "${_tempappointmentlistdata[index].hospital_name}",
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w400,

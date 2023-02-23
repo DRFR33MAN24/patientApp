@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 
 import 'dart:async';
 import 'dart:convert';
-import '../jitsi/jitsi.dart';
 import 'addPayment.dart';
 import '../auth/providers/auth.dart';
 

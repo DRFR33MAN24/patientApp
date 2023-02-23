@@ -16,7 +16,6 @@ import '../../patient/appointment.dart';
 import '../../patient/showAppointment.dart';
 import '../../patient/todaysappointment.dart';
 
-import '../../jitsi/jitsi.dart';
 import '../../payment/addPayment.dart';
 import '../../payment/showPayment.dart';
 

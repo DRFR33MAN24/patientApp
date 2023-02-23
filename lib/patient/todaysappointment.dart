@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 
 import 'dart:async';
 import 'dart:convert';
-import '../jitsi/jitsi.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,6 +16,7 @@ class AppintmentDetails {
   final String id;
   final String patient_name;
   final String doctor_name;
+  final String hospital_name;
   final String date;
   final String start_time;
   final String end_time;
@@ -28,6 +28,7 @@ class AppintmentDetails {
     this.id,
     this.patient_name,
     this.doctor_name,
+    this.hospital_name,
     this.date,
     this.start_time,
     this.end_time,
@@ -81,6 +82,7 @@ class ShowTodaysAppointmentScreenState
         id: u["id"],
         patient_name: u["patient_name"],
         doctor_name: u["doctor_name"],
+        hospital_name: u['hospital_name'],
         date: u["date"],
         start_time: u["start_time"],
         end_time: u["end_time"],
@@ -285,31 +287,31 @@ class ShowTodaysAppointmentScreenState
                                                                         10),
                                                                 side: BorderSide(color: Colors.black12)))),
                                                     onPressed: () {
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) => Jitsi(
-                                                                link: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .jitsi_link,
-                                                                p_name: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .patient_name,
-                                                                d_name:
-                                                                    _tempappointmentlistdata[
-                                                                            index]
-                                                                        .doctor_name,
-                                                                d_date:
-                                                                    _tempappointmentlistdata[
-                                                                            index]
-                                                                        .date,
-                                                                s_time: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .start_time,
-                                                                e_time: _tempappointmentlistdata[
-                                                                        index]
-                                                                    .end_time)),
-                                                      );
+                                                      // Navigator.push(
+                                                      //   context,
+                                                      //   MaterialPageRoute(
+                                                      //       builder: (context) => Jitsi(
+                                                      //           link: _tempappointmentlistdata[
+                                                      //                   index]
+                                                      //               .jitsi_link,
+                                                      //           p_name: _tempappointmentlistdata[
+                                                      //                   index]
+                                                      //               .patient_name,
+                                                      //           d_name:
+                                                      //               _tempappointmentlistdata[
+                                                      //                       index]
+                                                      //                   .doctor_name,
+                                                      //           d_date:
+                                                      //               _tempappointmentlistdata[
+                                                      //                       index]
+                                                      //                   .date,
+                                                      //           s_time: _tempappointmentlistdata[
+                                                      //                   index]
+                                                      //               .start_time,
+                                                      //           e_time: _tempappointmentlistdata[
+                                                      //                   index]
+                                                      //               .end_time)),
+                                                      // );
                                                     },
                                                     child: Icon(
                                                       Icons.video_call,
@@ -341,6 +343,27 @@ class ShowTodaysAppointmentScreenState
                                                 .50,
                                             child: Text(
                                               "${_tempappointmentlistdata[index].doctor_name}",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .50,
+                                            child: Text(
+                                              "${_tempappointmentlistdata[index].hospital_name}",
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,

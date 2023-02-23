@@ -28,8 +28,8 @@ class Auth extends ChangeNotifier {
   String address;
   bool isloading;
 
-  String _url_link = "http://192.168.1.5/";
-  //String _url_link = "https://watan-tib.com/";
+  //String _url_link = "http://192.168.1.5/";
+  String _url_link = "https://watan-tib.com/";
 
   bool get isAuth {
     return _token != null;

@@ -26,8 +26,6 @@ import 'patient/appointment.dart';
 import 'patient/showAppointment.dart';
 import 'patient/todaysappointment.dart';
 
-import 'jitsi/jitsi.dart';
-
 import 'payment/addPayment.dart';
 import 'payment/showPayment.dart';
 
@@ -102,7 +100,6 @@ class MyApp extends StatelessWidget {
                 EditProfile('edit', auth.particularId, auth.userId),
             PrescriptionDetailScreen.routeName: (ctx) =>
                 PrescriptionDetailScreen(auth.particularId, auth.userId),
-            Jitsi.routeName: (ctx) => Jitsi(),
             AddPaymentScreen.routeName: (ctx) =>
                 AddPaymentScreen(auth.particularId),
             ShowPayment.routeName: (ctx) => ShowPayment(auth.particularId),

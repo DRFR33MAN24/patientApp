@@ -11,8 +11,6 @@ import 'package:http/http.dart' as http;
 
 import 'dart:async';
 import 'dart:convert';
-import '../jitsi/jitsi.dart';
-import '../jitsi/jitsi.dart';
 import '../auth/providers/auth.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:hmz_patient/auth/screens/reset_password.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth.dart';
 import '../../home/models/http_exception.dart';
@@ -36,21 +37,24 @@ class AuthScreen extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                height: 600,
+                height: 700,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      height: 200,
+                      height: 150,
                       margin: EdgeInsets.only(bottom: 5, left: 30, right: 30),
                       padding: EdgeInsets.only(left: 10, right: 10),
-                      child: Image.asset("assets/icon/loginicon.png"),
+                      child: Image.asset(
+                        "assets/icon/loginicon.png",
+                      ),
                     ),
                     SizedBox(
                       height: 30,
                     ),
                     Container(
+                      height: 500,
                       child: AuthCard(),
                     ),
                   ],
@@ -174,12 +178,11 @@ class _AuthCardState extends State<AuthCard> {
         padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
-          child: Expanded(
-            child: SingleChildScrollView(
-                child: Column(
+          child: SingleChildScrollView(
+            child: Column(
               children: <Widget>[
                 Container(
-                  height: 60,
+                  height: 50,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: new BorderRadius.circular(5),
@@ -286,11 +289,12 @@ class _AuthCardState extends State<AuthCard> {
                 SizedBox(
                   height: 30,
                 ),
-                GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushNamed('reset_password'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(ResetPassword.routeName);
+                    },
                     child: Text(AppLocalizations.of(context).resetPassword,
                         style: TextStyle(
                           fontSize: 20,
@@ -298,7 +302,7 @@ class _AuthCardState extends State<AuthCard> {
                   ),
                 ),
               ],
-            )),
+            ),
           ),
         ),
       ),

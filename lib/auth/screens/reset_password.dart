@@ -6,8 +6,6 @@ import '../../home/models/http_exception.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-enum AuthMode { Signup, Login }
-
 class ResetPassword extends StatelessWidget {
   static const routeName = '/reset_password';
 
@@ -75,19 +73,16 @@ class ResetCard extends StatefulWidget {
 
 class _ResetCardState extends State<ResetCard> {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  AuthMode _authMode = AuthMode.Signup;
-  Map<String, String> _authData = {
-    'email': '',
-    'password': '',
-  };
+
   var _isLoading = false;
-  final _passwordController = TextEditingController();
+
+  String email = '';
 
   void _showErrorDialog(String message) {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text(AppLocalizations.of(context).anErrorHasOccurred),
+        title: Text(AppLocalizations.of(context).success),
         content: Text(message),
         actions: <Widget>[
           TextButton(
@@ -111,39 +106,30 @@ class _ResetCardState extends State<ResetCard> {
     });
 
     try {
-      if (_authMode == AuthMode.Login) {
-        // Log user in
-        await Provider.of<Auth>(context, listen: false).login(
-          _authData['email'],
-          _authData['password'],
-        );
-        Navigator.of(context).pushReplacementNamed('/');
-      } else {
-        // Sign user up
-        await Provider.of<Auth>(context, listen: false).signup(
-          _authData['email'],
-          _authData['password'],
-        );
-        _showErrorDialog("Signup successfull please confirm Email");
-      }
+      await Provider.of<Auth>(context, listen: false).forgotPassword(
+        this.email,
+      );
+      Navigator.of(context).pushReplacementNamed('/');
+
+      _showErrorDialog(AppLocalizations.of(context)
+          .yourPasswordResetLinkHasBeenSentToYourEmailAddress);
     } on HttpException catch (error) {
       print('error message' + error.toString());
-      var errorMessage = AppLocalizations.of(context).authenticationFailed;
-      if (error.toString().contains('EMAIL_EXISTS')) {
-        errorMessage = AppLocalizations.of(context).theEmailIsAlreadyInUse;
-      } else if (error.toString().contains('INVALID_EMAIL')) {
-        errorMessage = AppLocalizations.of(context).thisIsNotAValidEmailAddress;
-      } else if (error.toString().contains('WEAK_PASSWORD')) {
-        errorMessage = AppLocalizations.of(context).passwordIsTooWeak;
-      } else if (error.toString().contains('EMAIL_NOT_FOUND')) {
-        errorMessage = AppLocalizations.of(context).couldNotFindTheEmailAddress;
-      } else if (error.toString().contains('INVALID_PASSWORD')) {
-        errorMessage = AppLocalizations.of(context).invalidPassword;
-      }
-      _showErrorDialog(errorMessage);
+      // var errorMessage = AppLocalizations.of(context).authenticationFailed;
+      // if (error.toString().contains('EMAIL_EXISTS')) {
+      //   errorMessage = AppLocalizations.of(context).theEmailIsAlreadyInUse;
+      // } else if (error.toString().contains('INVALID_EMAIL')) {
+      //   errorMessage = AppLocalizations.of(context).thisIsNotAValidEmailAddress;
+      // } else if (error.toString().contains('WEAK_PASSWORD')) {
+      //   errorMessage = AppLocalizations.of(context).passwordIsTooWeak;
+      // } else if (error.toString().contains('EMAIL_NOT_FOUND')) {
+      //   errorMessage = AppLocalizations.of(context).couldNotFindTheEmailAddress;
+      // } else if (error.toString().contains('INVALID_PASSWORD')) {
+      //   errorMessage = AppLocalizations.of(context).invalidPassword;
+      // }
+      // _showErrorDialog(error);
     } catch (error) {
-      var errorMessage =
-          AppLocalizations.of(context).couldNotAuthenticateYouPleasetryagain;
+      var errorMessage = AppLocalizations.of(context).anErrorHasOccurred;
 
       _showErrorDialog(errorMessage);
     }
@@ -151,18 +137,6 @@ class _ResetCardState extends State<ResetCard> {
     setState(() {
       _isLoading = false;
     });
-  }
-
-  void _switchAuthMode() {
-    if (_authMode == AuthMode.Login) {
-      setState(() {
-        _authMode = AuthMode.Signup;
-      });
-    } else {
-      setState(() {
-        _authMode = AuthMode.Login;
-      });
-    }
   }
 
   @override
@@ -197,22 +171,22 @@ class _ResetCardState extends State<ResetCard> {
                       return null;
                     },
                     onSaved: (value) {
-                      _authData['email'] = value;
+                      this.email = value;
                     },
                   ),
                 ),
                 if (_isLoading)
                   CircularProgressIndicator()
                 else
-                  ElevatedButton(
-                      child: Text(
-                          _authMode == AuthMode.Login
-                              ? AppLocalizations.of(context).login
-                              : AppLocalizations.of(context).signup,
-                          style: TextStyle(fontSize: 20)),
-                      onPressed: _submit,
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(50))),
+                  SizedBox(
+                    height: 30,
+                  ),
+                ElevatedButton(
+                    child: Text(AppLocalizations.of(context).resetPassword,
+                        style: TextStyle(fontSize: 20)),
+                    onPressed: _submit,
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50))),
               ],
             ),
           ),

@@ -103,7 +103,7 @@ class Auth extends ChangeNotifier {
     }
   }
 
-  Future<void> _forgotPassword($email) async {
+  Future<void> forgotPassword($email) async {
     final url = this._url_link + 'api/forgot_password';
     try {
       final response = await http.post(

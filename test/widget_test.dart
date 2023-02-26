@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:hmz_patient/main.dart';
+import 'package:watantib/main.dart';
 // import 'package:hmzPatient/main.dart';
 
 void main() {

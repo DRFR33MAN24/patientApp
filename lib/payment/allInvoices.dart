@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/utils/colors.dart';
 import '../home/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -153,7 +153,7 @@ class AllInvoicePaymentState extends State<AllInvoicePayment> {
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+          onPressed: () => Navigator.of(context).pushNamed('/'),
         ),
         centerTitle: true,
         backgroundColor: appcolor.appbarbackground(),

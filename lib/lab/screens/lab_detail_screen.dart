@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/auth/providers/auth.dart';
-import 'package:hmz_patient/dashboard/dashboard.dart';
-import 'package:hmz_patient/lab/screens/user_labs_screen.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/auth/providers/auth.dart';
+import 'package:watantib/dashboard/dashboard.dart';
+import 'package:watantib/lab/screens/user_labs_screen.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -157,8 +157,8 @@ class _LabDetailScreenState extends State<LabDetailScreen> {
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context)
-              .pushReplacementNamed(LabListScreen.routeName),
+          onPressed: () =>
+              Navigator.of(context).pushNamed(LabListScreen.routeName),
         ),
         actions: <Widget>[],
       ),

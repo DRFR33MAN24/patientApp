@@ -109,7 +109,7 @@ class _ResetCardState extends State<ResetCard> {
       await Provider.of<Auth>(context, listen: false).forgotPassword(
         this.email,
       );
-      Navigator.of(context).pushReplacementNamed('/');
+      Navigator.of(context).pushNamed('/');
 
       _showErrorDialog(AppLocalizations.of(context)
           .yourPasswordResetLinkHasBeenSentToYourEmailAddress);
@@ -178,15 +178,16 @@ class _ResetCardState extends State<ResetCard> {
                 if (_isLoading)
                   CircularProgressIndicator()
                 else
-                  SizedBox(
-                    height: 30,
-                  ),
-                ElevatedButton(
-                    child: Text(AppLocalizations.of(context).resetPassword,
-                        style: TextStyle(fontSize: 20)),
-                    onPressed: _submit,
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(50))),
+
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: ElevatedButton(
+                      child: Text(AppLocalizations.of(context).resetPassword,
+                          style: TextStyle(fontSize: 20)),
+                      onPressed: _submit,
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(50))),
+                ),
               ],
             ),
           ),

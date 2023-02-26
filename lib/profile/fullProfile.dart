@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/home/widgets/app_drawer.dart';
-import 'package:hmz_patient/profile/editProfile.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/home/widgets/app_drawer.dart';
+import 'package:watantib/profile/editProfile.dart';
+import 'package:watantib/utils/colors.dart';
 
 import '../home/widgets/bottom_navigation_bar.dart';
 import 'package:intl/intl.dart';
@@ -124,7 +124,7 @@ class FullProfileState extends State<FullProfile> {
               size: 45,
               color: Colors.blue,
             ),
-            onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+            onPressed: () => Navigator.of(context).pushNamed('/'),
           ),
           centerTitle: true,
           backgroundColor: appcolor.appbarbackground(),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hmz_patient/doctorsearch/doctorappointment.dart';
-import 'package:hmz_patient/doctorsearch/doctordepartment.dart';
-import 'package:hmz_patient/doctorsearch/doctordetail.dart';
-import 'package:hmz_patient/doctorsearch/doctorlist.dart';
-import 'package:hmz_patient/language/provider/language_provider.dart';
-import 'package:hmz_patient/payment/allInvoices.dart';
-import 'package:hmz_patient/payment/deposit.dart';
+import 'package:watantib/doctorsearch/doctorappointment.dart';
+import 'package:watantib/doctorsearch/doctordepartment.dart';
+import 'package:watantib/doctorsearch/doctordetail.dart';
+import 'package:watantib/doctorsearch/doctorlist.dart';
+import 'package:watantib/language/provider/language_provider.dart';
+import 'package:watantib/payment/allInvoices.dart';
+import 'package:watantib/payment/deposit.dart';
 
 import 'profile/editProfile.dart';
 import 'profile/fullProfile.dart';
@@ -33,7 +33,7 @@ import 'payment/showPayment.dart';
 import 'dashboard/dashboard.dart';
 import 'profile/changePassword.dart';
 
-import 'package:hmz_patient/l10n/l10n.dart';
+import 'package:watantib/l10n/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
 
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Patient Express',
+          title: 'وطن طب',
           theme: ThemeData(
             primarySwatch: Colors.blue,
             scaffoldBackgroundColor: Color(0xffbfafafa),

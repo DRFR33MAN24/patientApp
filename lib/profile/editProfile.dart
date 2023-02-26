@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/home/widgets/app_drawer.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/home/widgets/app_drawer.dart';
+import 'package:watantib/utils/colors.dart';
 import 'fullProfile.dart';
 import 'changePassword.dart';
 import '../home/widgets/bottom_navigation_bar.dart';
@@ -68,6 +68,7 @@ class EditProfileState extends State<EditProfile> {
   List<DropdownMenuItem<String>> get dropdownItemsBlood {
     List<DropdownMenuItem<String>> menuItemsBlood = [
       DropdownMenuItem(child: Text("A+"), value: "A+"),
+      DropdownMenuItem(child: Text("O+"), value: "O+"),
     ];
     return menuItemsBlood;
   }
@@ -103,22 +104,23 @@ class EditProfileState extends State<EditProfile> {
           });
       return 'error';
     }
-    if (_name != "") {
+    if (_name.text != "") {
       var request = http.MultipartRequest(
         'POST',
         Uri.parse(Auth().linkURL + "api/createPatientProfile"),
       );
 
       Map<String, String> headers = {"Content-type": "multipart/form-data"};
-
-      request.files.add(
-        http.MultipartFile(
-          'image',
-          selectedImage.readAsBytes().asStream(),
-          selectedImage.lengthSync(),
-          filename: 'image.' + selectedImage.path.split('/').last,
-        ),
-      );
+      if (selectedImage != null) {
+        request.files.add(
+          http.MultipartFile(
+            'image',
+            selectedImage.readAsBytes().asStream(),
+            selectedImage.lengthSync(),
+            filename: 'image.' + selectedImage.path.split('/').last,
+          ),
+        );
+      }
 
       request.headers.addAll(headers);
       print("request: " + request.toString());
@@ -181,7 +183,7 @@ class EditProfileState extends State<EditProfile> {
                     child: Text(AppLocalizations.of(context).ok),
                     onPressed: () {
                       // Navigator.of(context)
-                      //     .pushReplacementNamed(FullProfile.routeName);
+                      //     .pushNamed(FullProfile.routeName);
                       Navigator.of(context).pop();
                     },
                   )
@@ -201,8 +203,7 @@ class EditProfileState extends State<EditProfile> {
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(FullProfile.routeName);
+                    Navigator.of(context).pushNamed(FullProfile.routeName);
                   },
                 )
               ],

@@ -4,13 +4,13 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/auth/providers/auth.dart';
-import 'package:hmz_patient/dashboard/dashboard.dart';
-import 'package:hmz_patient/prescription/screens/prescription_detail_screen.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/auth/providers/auth.dart';
+import 'package:watantib/dashboard/dashboard.dart';
+import 'package:watantib/prescription/screens/prescription_detail_screen.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:provider/provider.dart';
 import '../../home/widgets/app_drawer.dart';
-import 'package:hmz_patient/lab/screens/lab_detail_screen.dart';
+import 'package:watantib/lab/screens/lab_detail_screen.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -140,8 +140,8 @@ class _LabListScreenState extends State<LabListScreen> {
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context)
-              .pushReplacementNamed(DashboardScreen.routeName),
+          onPressed: () =>
+              Navigator.of(context).pushNamed(DashboardScreen.routeName),
         ),
       ),
       drawer: AppDrawer(),

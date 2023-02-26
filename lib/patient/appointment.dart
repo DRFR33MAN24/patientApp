@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/dashboard/dashboard.dart';
-import 'package:hmz_patient/language/provider/language_provider.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/dashboard/dashboard.dart';
+import 'package:watantib/language/provider/language_provider.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:search_choices/search_choices.dart';
 
 import '../home/widgets/bottom_navigation_bar.dart';
@@ -221,8 +221,8 @@ class PatientAppointmentDetailsScreenState
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed(
-                        ShowPatientAppointmentScreen.routeName);
+                    Navigator.of(context)
+                        .pushNamed(ShowPatientAppointmentScreen.routeName);
                   },
                 )
               ],
@@ -279,8 +279,8 @@ class PatientAppointmentDetailsScreenState
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context)
-              .pushReplacementNamed(DashboardScreen.routeName),
+          onPressed: () =>
+              Navigator.of(context).pushNamed(DashboardScreen.routeName),
         ),
         centerTitle: true,
         backgroundColor: appcolor.appbarbackground(),

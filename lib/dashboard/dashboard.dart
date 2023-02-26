@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:hmz_patient/doctorsearch/doctordepartment.dart';
-import 'package:hmz_patient/prescription/screens/prescription_detail_screen.dart';
-import 'package:hmz_patient/prescription/screens/user_prescriptions_screen.dart';
-import 'package:hmz_patient/lab/screens/user_labs_screen.dart';
-import 'package:hmz_patient/lab/screens/lab_detail_screen.dart';
-import 'package:hmz_patient/setting/setting.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/doctorsearch/doctordepartment.dart';
+import 'package:watantib/prescription/screens/prescription_detail_screen.dart';
+import 'package:watantib/prescription/screens/user_prescriptions_screen.dart';
+import 'package:watantib/lab/screens/user_labs_screen.dart';
+import 'package:watantib/lab/screens/lab_detail_screen.dart';
+import 'package:watantib/setting/setting.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -160,8 +160,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                   ),
                   onTap: () {
                     if (auth.profileCreated) {
-                      Navigator.of(context)
-                          .pushReplacementNamed(FullProfile.routeName);
+                      Navigator.of(context).pushNamed(FullProfile.routeName);
                     } else {
                       String mode = 'new';
                       Navigator.of(context)
@@ -218,7 +217,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             onPressed: () {
                               if (auth.profileCreated) {
-                                Navigator.of(context).pushReplacementNamed(
+                                Navigator.of(context).pushNamed(
                                     DoctorDepartmentScreen.routeName);
                               } else {
                                 String mode = 'new';
@@ -261,7 +260,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             onPressed: () {
                               if (auth.profileCreated) {
-                                Navigator.of(context).pushReplacementNamed(
+                                Navigator.of(context).pushNamed(
                                     ShowPatientAppointmentScreen.routeName);
                               } else {
                                 String mode = 'new';
@@ -304,7 +303,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             onPressed: () {
                               if (auth.profileCreated) {
-                                Navigator.of(context).pushReplacementNamed(
+                                Navigator.of(context).pushNamed(
                                     UserPrescriptionsScreen.routeName);
                               } else {
                                 String mode = 'new';
@@ -347,8 +346,8 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             onPressed: () {
                               if (auth.profileCreated) {
-                                Navigator.of(context).pushReplacementNamed(
-                                    LabListScreen.routeName);
+                                Navigator.of(context)
+                                    .pushNamed(LabListScreen.routeName);
                               } else {
                                 String mode = 'new';
                                 Navigator.of(context).pushNamed(
@@ -391,8 +390,8 @@ class DashboardScreenState extends State<DashboardScreen> {
                             onPressed: () {
                               print('dbg' + auth.profileCreated.toString());
                               if (auth.profileCreated) {
-                                Navigator.of(context).pushReplacementNamed(
-                                    FullProfile.routeName);
+                                Navigator.of(context)
+                                    .pushNamed(FullProfile.routeName);
                               } else {
                                 String mode = 'new';
                                 Navigator.of(context).pushNamed(
@@ -433,8 +432,8 @@ class DashboardScreenState extends State<DashboardScreen> {
                               ],
                             ),
                             onPressed: () {
-                              Navigator.of(context).pushReplacementNamed(
-                                  SettingScreen.routeName);
+                              Navigator.of(context)
+                                  .pushNamed(SettingScreen.routeName);
                             },
                           ),
                         ),

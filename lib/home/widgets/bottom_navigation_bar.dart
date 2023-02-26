@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:hmz_patient/profile/fullProfile.dart';
+import 'package:watantib/profile/fullProfile.dart';
 import '../../profile/changePassword.dart';
 import '../../patient/showAppointment.dart';
 import '../../dashboard/dashboard.dart';
@@ -40,15 +40,14 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   void _onItemTapped(int index) {
     setState(() {
       if (index == 0) {
-        Navigator.of(context).pushReplacementNamed(DashboardScreen.routeName);
+        Navigator.of(context).pushNamed(DashboardScreen.routeName);
       }
       if (index == 1) {
-        Navigator.of(context)
-            .pushReplacementNamed(ShowPatientAppointmentScreen.routeName);
+        Navigator.of(context).pushNamed(ShowPatientAppointmentScreen.routeName);
       }
 
       if (index == 2) {
-        Navigator.of(context).pushReplacementNamed(FullProfile.routeName);
+        Navigator.of(context).pushNamed(FullProfile.routeName);
       }
 
       _selectedIndex = index;

@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/auth/providers/auth.dart';
-import 'package:hmz_patient/dashboard/dashboard.dart';
-import 'package:hmz_patient/prescription/screens/prescription_detail_screen.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/auth/providers/auth.dart';
+import 'package:watantib/dashboard/dashboard.dart';
+import 'package:watantib/prescription/screens/prescription_detail_screen.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:provider/provider.dart';
 import '../../home/widgets/app_drawer.dart';
 
@@ -125,8 +125,8 @@ class _UserPrescriptionsScreenState extends State<UserPrescriptionsScreen> {
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context)
-              .pushReplacementNamed(DashboardScreen.routeName),
+          onPressed: () =>
+              Navigator.of(context).pushNamed(DashboardScreen.routeName),
         ),
       ),
       drawer: AppDrawer(),
@@ -328,10 +328,10 @@ class _UserPrescriptionsScreenState extends State<UserPrescriptionsScreen> {
 // import 'dart:io';
 
 // import 'package:flutter/material.dart';
-// import 'package:hmz_patient/auth/providers/auth.dart';
-// import 'package:hmz_patient/dashboard/dashboard.dart';
-// import 'package:hmz_patient/prescription/screens/prescription_detail_screen.dart';
-// import 'package:hmz_patient/utils/colors.dart';
+// import 'package:watantib/auth/providers/auth.dart';
+// import 'package:watantib/dashboard/dashboard.dart';
+// import 'package:watantib/prescription/screens/prescription_detail_screen.dart';
+// import 'package:watantib/utils/colors.dart';
 // import 'package:provider/provider.dart';
 // import '../../home/widgets/app_drawer.dart';
 
@@ -453,7 +453,7 @@ class _UserPrescriptionsScreenState extends State<UserPrescriptionsScreen> {
 //             color: Colors.blue,
 //           ),
 //           onPressed: () => Navigator.of(context)
-//               .pushReplacementNamed(DashboardScreen.routeName),
+//               .pushNamed(DashboardScreen.routeName),
 //         ),
 //       ),
 //       drawer: AppDrawer(),

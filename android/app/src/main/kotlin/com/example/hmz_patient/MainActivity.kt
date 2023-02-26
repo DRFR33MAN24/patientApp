@@ -1,4 +1,4 @@
-package com.example.hmz_patient
+package com.watantib
 
 import io.flutter.embedding.android.FlutterActivity
 

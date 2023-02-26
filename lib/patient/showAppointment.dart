@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/utils/colors.dart';
 import '../home/widgets/bottom_navigation_bar.dart';
 
 import 'package:provider/provider.dart';
@@ -147,8 +147,8 @@ class ShowPatientAppointmentScreenState
               Icons.add,
             ),
             onPressed: () {
-              Navigator.of(context).pushReplacementNamed(
-                  PatientAppointmentDetailsScreen.routeName);
+              Navigator.of(context)
+                  .pushNamed(PatientAppointmentDetailsScreen.routeName);
             },
           )
         ],
@@ -168,7 +168,7 @@ class ShowPatientAppointmentScreenState
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+          onPressed: () => Navigator.of(context).pushNamed('/'),
         ),
         centerTitle: false,
         backgroundColor: appcolor.appbarbackground(),

@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/auth/screens/reset_password.dart';
+import 'package:watantib/auth/screens/reset_password.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth.dart';
 import '../../home/models/http_exception.dart';
@@ -121,7 +121,7 @@ class _AuthCardState extends State<AuthCard> {
           _authData['email'],
           _authData['password'],
         );
-        Navigator.of(context).pushReplacementNamed('/');
+        Navigator.of(context).pushNamed('/');
       } else {
         // Sign user up
         await Provider.of<Auth>(context, listen: false).signup(

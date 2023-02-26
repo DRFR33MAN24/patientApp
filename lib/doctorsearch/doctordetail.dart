@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/doctorsearch/doctorappointment.dart';
-import 'package:hmz_patient/doctorsearch/doctorlist.dart';
-import 'package:hmz_patient/home/widgets/app_drawer.dart';
-import 'package:hmz_patient/language/provider/language_provider.dart';
-import 'package:hmz_patient/patient/showAppointment.dart';
-import 'package:hmz_patient/profile/changePassword.dart';
-import 'package:hmz_patient/profile/editProfile.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/doctorsearch/doctorappointment.dart';
+import 'package:watantib/doctorsearch/doctorlist.dart';
+import 'package:watantib/home/widgets/app_drawer.dart';
+import 'package:watantib/language/provider/language_provider.dart';
+import 'package:watantib/patient/showAppointment.dart';
+import 'package:watantib/profile/changePassword.dart';
+import 'package:watantib/profile/editProfile.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../home/widgets/bottom_navigation_bar.dart';
@@ -201,8 +201,8 @@ class DoctorDetailProfileState extends State<DoctorDetailProfile> {
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed(
-                        ShowPatientAppointmentScreen.routeName);
+                    Navigator.of(context)
+                        .pushNamed(ShowPatientAppointmentScreen.routeName);
                   },
                 )
               ],

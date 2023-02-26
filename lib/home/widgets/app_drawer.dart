@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/doctorsearch/doctordepartment.dart';
-import 'package:hmz_patient/doctorsearch/doctordetail.dart';
-import 'package:hmz_patient/doctorsearch/doctorlist.dart';
-import 'package:hmz_patient/payment/allInvoices.dart';
-import 'package:hmz_patient/payment/deposit.dart';
-import 'package:hmz_patient/prescription/screens/prescription_detail_screen.dart';
-import 'package:hmz_patient/profile/fullProfile.dart';
+import 'package:watantib/doctorsearch/doctordepartment.dart';
+import 'package:watantib/doctorsearch/doctordetail.dart';
+import 'package:watantib/doctorsearch/doctorlist.dart';
+import 'package:watantib/payment/allInvoices.dart';
+import 'package:watantib/payment/deposit.dart';
+import 'package:watantib/prescription/screens/prescription_detail_screen.dart';
+import 'package:watantib/profile/fullProfile.dart';
 import '../../profile/editProfile.dart';
 import '../../setting/setting.dart';
 import '../../prescription/screens/user_prescriptions_screen.dart';
@@ -38,7 +38,7 @@ class AppDrawer extends StatelessWidget {
                 title: Center(
                     child: Column(
                   children: [
-                    Text('Patient Express'),
+                    Text('وطن طب'),
                     Text('ID: ${auth.patient_id}'),
                   ],
                 )),
@@ -51,8 +51,7 @@ class AppDrawer extends StatelessWidget {
                 ),
                 title: Text(AppLocalizations.of(context).dashboard),
                 onTap: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(DashboardScreen.routeName);
+                  Navigator.of(context).pushNamed(DashboardScreen.routeName);
                 },
               ),
               Divider(
@@ -78,7 +77,7 @@ class AppDrawer extends StatelessWidget {
                             AppLocalizations.of(context).appointmentRequest),
                         onTap: () {
                           if (auth.profileCreated) {
-                            Navigator.of(context).pushReplacementNamed(
+                            Navigator.of(context).pushNamed(
                                 PatientAppointmentDetailsScreen.routeName);
                           } else {
                             String mode = 'new';
@@ -99,7 +98,7 @@ class AppDrawer extends StatelessWidget {
                             AppLocalizations.of(context).todaysAppointment),
                         onTap: () {
                           if (auth.profileCreated) {
-                            Navigator.of(context).pushReplacementNamed(
+                            Navigator.of(context).pushNamed(
                                 ShowTodaysAppointmentScreen.routeName);
                           } else {
                             String mode = 'new';
@@ -120,7 +119,7 @@ class AppDrawer extends StatelessWidget {
                             Text(AppLocalizations.of(context).appointmentList),
                         onTap: () {
                           if (auth.profileCreated) {
-                            Navigator.of(context).pushReplacementNamed(
+                            Navigator.of(context).pushNamed(
                                 ShowPatientAppointmentScreen.routeName);
                           } else {
                             String mode = 'new';
@@ -144,8 +143,8 @@ class AppDrawer extends StatelessWidget {
                 title: Text(AppLocalizations.of(context).prescription),
                 onTap: () {
                   if (auth.profileCreated) {
-                    Navigator.of(context).pushReplacementNamed(
-                        UserPrescriptionsScreen.routeName);
+                    Navigator.of(context)
+                        .pushNamed(UserPrescriptionsScreen.routeName);
                   } else {
                     String mode = 'new';
                     Navigator.of(context)
@@ -175,7 +174,7 @@ class AppDrawer extends StatelessWidget {
                         title: Text(AppLocalizations.of(context).addPayment),
                         onTap: () {
                           Navigator.of(context)
-                              .pushReplacementNamed(AddPaymentScreen.routeName);
+                              .pushNamed(AddPaymentScreen.routeName);
                         },
                       ),
                     ),
@@ -187,8 +186,8 @@ class AppDrawer extends StatelessWidget {
                         ),
                         title: Text(AppLocalizations.of(context).allInvoices),
                         onTap: () {
-                          Navigator.of(context).pushReplacementNamed(
-                              AllInvoicePayment.routeName);
+                          Navigator.of(context)
+                              .pushNamed(AllInvoicePayment.routeName);
                         },
                       ),
                     ),
@@ -199,7 +198,7 @@ class AppDrawer extends StatelessWidget {
                         title: Text(AppLocalizations.of(context).deposit),
                         onTap: () {
                           Navigator.of(context)
-                              .pushReplacementNamed(DepositPayment.routeName);
+                              .pushNamed(DepositPayment.routeName);
                         },
                       ),
                     ),
@@ -225,8 +224,8 @@ class AppDrawer extends StatelessWidget {
                         title: Text(AppLocalizations.of(context).department),
                         onTap: () {
                           if (auth.profileCreated) {
-                            Navigator.of(context).pushReplacementNamed(
-                                DoctorDepartmentScreen.routeName);
+                            Navigator.of(context)
+                                .pushNamed(DoctorDepartmentScreen.routeName);
                           } else {
                             String mode = 'new';
                             Navigator.of(context).pushNamed(
@@ -249,8 +248,7 @@ class AppDrawer extends StatelessWidget {
                 title: Text(AppLocalizations.of(context).profile),
                 onTap: () {
                   if (auth.profileCreated) {
-                    Navigator.of(context)
-                        .pushReplacementNamed(FullProfile.routeName);
+                    Navigator.of(context).pushNamed(FullProfile.routeName);
                   } else {
                     String mode = 'new';
                     Navigator.of(context)
@@ -267,8 +265,7 @@ class AppDrawer extends StatelessWidget {
                 ),
                 title: Text(AppLocalizations.of(context).setting),
                 onTap: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(SettingScreen.routeName);
+                  Navigator.of(context).pushNamed(SettingScreen.routeName);
                 },
               ),
               Divider(
@@ -281,7 +278,7 @@ class AppDrawer extends StatelessWidget {
                 title: Text(AppLocalizations.of(context).logout),
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).pushReplacementNamed('/');
+                  Navigator.of(context).pushNamed('/');
 
                   Provider.of<Auth>(context, listen: false).logout();
                 },

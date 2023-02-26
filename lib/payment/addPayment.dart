@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hmz_patient/payment/deposit.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/payment/deposit.dart';
+import 'package:watantib/utils/colors.dart';
 import '../home/widgets/bottom_navigation_bar.dart';
 
 import 'package:intl/intl.dart';
@@ -141,8 +141,7 @@ class AddPaymentScreenState extends State<AddPaymentScreen> {
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(DepositPayment.routeName);
+                    Navigator.of(context).pushNamed(DepositPayment.routeName);
                   },
                 )
               ],
@@ -163,8 +162,7 @@ class AddPaymentScreenState extends State<AddPaymentScreen> {
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(DepositPayment.routeName);
+                    Navigator.of(context).pushNamed(DepositPayment.routeName);
                   },
                 )
               ],
@@ -193,7 +191,7 @@ class AddPaymentScreenState extends State<AddPaymentScreen> {
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+          onPressed: () => Navigator.of(context).pushNamed('/'),
         ),
         centerTitle: true,
         backgroundColor: appcolor.appbarbackground(),

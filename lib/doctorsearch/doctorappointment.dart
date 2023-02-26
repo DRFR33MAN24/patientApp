@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/doctorsearch/doctordetail.dart';
-import 'package:hmz_patient/doctorsearch/doctorlist.dart';
-import 'package:hmz_patient/language/provider/language_provider.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/doctorsearch/doctordetail.dart';
+import 'package:watantib/doctorsearch/doctorlist.dart';
+import 'package:watantib/language/provider/language_provider.dart';
+import 'package:watantib/utils/colors.dart';
 
 import '../home/widgets/bottom_navigation_bar.dart';
 
@@ -210,8 +210,7 @@ class AppointmentFromDoctorScreenScreenState
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(DoctorListScreen.routeName);
+                    Navigator.of(context).pushNamed(DoctorListScreen.routeName);
                   },
                 )
               ],

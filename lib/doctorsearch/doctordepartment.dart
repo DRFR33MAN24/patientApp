@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:hmz_patient/dashboard/dashboard.dart';
-import 'package:hmz_patient/doctorsearch/doctorlist.dart';
-import 'package:hmz_patient/setting/setting.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/dashboard/dashboard.dart';
+import 'package:watantib/doctorsearch/doctorlist.dart';
+import 'package:watantib/setting/setting.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -193,8 +193,8 @@ class DoctorDepartmentScreenState extends State<DoctorDepartmentScreen> {
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context)
-              .pushReplacementNamed(DashboardScreen.routeName),
+          onPressed: () =>
+              Navigator.of(context).pushNamed(DashboardScreen.routeName),
         ),
         centerTitle: true,
         backgroundColor: appcolor.appbarbackground(),

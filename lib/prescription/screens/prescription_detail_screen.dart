@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/auth/providers/auth.dart';
-import 'package:hmz_patient/prescription/screens/user_prescriptions_screen.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/auth/providers/auth.dart';
+import 'package:watantib/prescription/screens/user_prescriptions_screen.dart';
+import 'package:watantib/utils/colors.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 import 'package:http/http.dart' as http;
@@ -253,7 +253,7 @@ class _PrescriptionDetailScreenState extends State<PrescriptionDetailScreen> {
             color: Colors.blue,
           ),
           onPressed: () => Navigator.of(context)
-              .pushReplacementNamed(UserPrescriptionsScreen.routeName),
+              .pushNamed(UserPrescriptionsScreen.routeName),
         ),
         actions: <Widget>[],
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/home/widgets/app_drawer.dart';
-import 'package:hmz_patient/setting/setting.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/home/widgets/app_drawer.dart';
+import 'package:watantib/setting/setting.dart';
+import 'package:watantib/utils/colors.dart';
 import '../home/widgets/bottom_navigation_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -107,8 +107,7 @@ class ProfileState extends State<Profile> {
                   TextButton(
                     child: Text(AppLocalizations.of(context).ok),
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(Profile.routeName);
+                      Navigator.of(context).pushNamed(Profile.routeName);
                     },
                   )
                 ],
@@ -130,8 +129,7 @@ class ProfileState extends State<Profile> {
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(Profile.routeName);
+                    Navigator.of(context).pushNamed(Profile.routeName);
                   },
                 )
               ],
@@ -158,8 +156,8 @@ class ProfileState extends State<Profile> {
             size: 45,
             color: Colors.blue,
           ),
-          onPressed: () => Navigator.of(context)
-              .pushReplacementNamed(SettingScreen.routeName),
+          onPressed: () =>
+              Navigator.of(context).pushNamed(SettingScreen.routeName),
         ),
         centerTitle: true,
         backgroundColor: appcolor.appbarbackground(),

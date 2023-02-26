@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hmz_patient"
+    package="com.watantib"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
     
    <application
         tools:replace="android:label"
-        android:label="Patient Express"
+        android:label="وطن طب"
         android:icon="@mipmap/ic_launcher"
 >
         <activity

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/doctorsearch/doctorappointment.dart';
-import 'package:hmz_patient/doctorsearch/doctordepartment.dart';
-import 'package:hmz_patient/doctorsearch/doctordetail.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/doctorsearch/doctorappointment.dart';
+import 'package:watantib/doctorsearch/doctordepartment.dart';
+import 'package:watantib/doctorsearch/doctordetail.dart';
+import 'package:watantib/utils/colors.dart';
 import '../home/widgets/bottom_navigation_bar.dart';
 
 import 'package:provider/provider.dart';
@@ -160,7 +160,7 @@ class DoctorListScreenState extends State<DoctorListScreen> {
               color: Colors.blue,
             ),
             onPressed: () => Navigator.of(context)
-                .pushReplacementNamed(DoctorDepartmentScreen.routeName),
+                .pushNamed(DoctorDepartmentScreen.routeName),
           ),
           centerTitle: true,
           backgroundColor: appcolor.appbarbackground(),
@@ -327,13 +327,12 @@ class DoctorListScreenState extends State<DoctorListScreen> {
                                                 ],
                                                 onSelected: (item) {
                                                   if (item == 0) {
-                                                    Navigator.of(context)
-                                                        .pushReplacementNamed(
-                                                            AppointmentFromDoctorScreen
-                                                                .routeName);
+                                                    Navigator.of(context).pushNamed(
+                                                        AppointmentFromDoctorScreen
+                                                            .routeName);
                                                   } else if (item == 1) {
                                                     // Navigator.of(context)
-                                                    //     .pushReplacementNamed(
+                                                    //     .pushNamed(
                                                     //         DoctorDetailProfile
                                                     //             .routeName);
                                                     Navigator.of(context).push(MaterialPageRoute(

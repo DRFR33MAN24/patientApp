@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hmz_patient/utils/colors.dart';
+import 'package:watantib/utils/colors.dart';
 import '../profile/changePassword.dart';
 import '../l10n/l10n.dart';
 import '../language/provider/language_provider.dart';
@@ -48,7 +48,7 @@ class SettingScreenState extends State<SettingScreen> {
               size: 45,
               color: Colors.blue,
             ),
-            onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+            onPressed: () => Navigator.of(context).pushNamed('/'),
           ),
           centerTitle: true,
           backgroundColor: appcolor.appbarbackground(),
@@ -114,8 +114,7 @@ class SettingScreenState extends State<SettingScreen> {
                       trailing: InkWell(
                         child: Icon(Icons.send),
                         onTap: () {
-                          Navigator.of(context)
-                              .pushReplacementNamed(Profile.routeName);
+                          Navigator.of(context).pushNamed(Profile.routeName);
                         },
                       ),
                     ),

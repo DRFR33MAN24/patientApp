@@ -174,8 +174,9 @@ class _AuthCardState extends State<AuthCard> {
         padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
+          child: Expanded(
+            child: SingleChildScrollView(
+                child: Column(
               children: <Widget>[
                 Container(
                   height: 60,
@@ -255,31 +256,23 @@ class _AuthCardState extends State<AuthCard> {
                     ),
                   ),
                 SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 if (_isLoading)
                   CircularProgressIndicator()
                 else
                   ElevatedButton(
-                    child: Text(_authMode == AuthMode.Login
-                        ? AppLocalizations.of(context).login
-                        : AppLocalizations.of(context).signup),
-                    onPressed: _submit,
-                    style: ButtonStyle(
-
-                        // shape: RoundedRectangleBorder(
-                        //   borderRadius: BorderRadius.circular(30),
-                        // ),
-                        // padding:
-                        //     EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0),
-                        // backgroundColor: Theme.of(context).primaryColor,
-                        // foregroundColor: Theme.of(context).primaryTextTheme.button.color,
-                        ),
-                  ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
+                      child: Text(
+                          _authMode == AuthMode.Login
+                              ? AppLocalizations.of(context).login
+                              : AppLocalizations.of(context).signup,
+                          style: TextStyle(fontSize: 20)),
+                      onPressed: _submit,
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(50))),
+                Text("او", style: TextStyle(fontSize: 20)),
+                ElevatedButton(
+                    onPressed: () {
                       _switchAuthMode();
                     },
                     child: Text(
@@ -288,10 +281,24 @@ class _AuthCardState extends State<AuthCard> {
                           : AppLocalizations.of(context).login,
                       style: TextStyle(fontSize: 20),
                     ),
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50))),
+                SizedBox(
+                  height: 30,
+                ),
+                GestureDetector(
+                  onTap: () =>
+                      Navigator.of(context).pushNamed('reset_password'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(AppLocalizations.of(context).resetPassword,
+                        style: TextStyle(
+                          fontSize: 20,
+                        )),
                   ),
-                )
+                ),
               ],
-            ),
+            )),
           ),
         ),
       ),

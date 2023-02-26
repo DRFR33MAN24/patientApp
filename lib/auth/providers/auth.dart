@@ -103,6 +103,20 @@ class Auth extends ChangeNotifier {
     }
   }
 
+  Future<void> _forgotPassword($email) async {
+    final url = this._url_link + 'api/forgot_password';
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        body: {
+          'email': email,
+        },
+      );
+    } catch (error) {
+      print('dbg ${error}');
+    }
+  }
+
   Future<void> _authenticate(
       String email, String password, String urlSegment) async {
     String gtype = "Patient";
@@ -119,8 +133,8 @@ class Auth extends ChangeNotifier {
         },
       );
 
-      final responseData = json.decode(response.body);
       print('dbg response data' + response.body);
+      final responseData = json.decode(response.body);
 
       if (responseData['error'] != null) {
         throw HttpException(responseData['message']);

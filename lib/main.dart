@@ -15,6 +15,7 @@ import 'setting/setting.dart';
 import 'prescription/screens/user_prescriptions_screen.dart';
 import 'auth/providers/auth.dart';
 import 'auth/screens/auth_screen.dart';
+import 'auth/screens/reset_password.dart';
 import 'prescription/screens/prescription_detail_screen.dart';
 import 'package:provider/provider.dart';
 import 'prescription/screens/user_prescriptions_screen.dart';
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
           routes: {
             DashboardScreen.routeName: (ctx) =>
                 DashboardScreen(auth.particularId, auth.userId),
+            ResetPassword.routeName: (ctx) => ResetPassword(),
             Profile.routeName: (ctx) => Profile(auth.particularId, auth.userId),
             FullProfile.routeName: (ctx) =>
                 FullProfile(auth.particularId, auth.userId),

@@ -7,8 +7,7 @@
         tools:replace="android:label"
         android:label="Patient Express"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true">
-
+>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Color(0xffbfafafa),
             //  scaffoldBackgroundColor: Colors.black,
             accentColor: Colors.blue,
-            fontFamily: 'Proxima Nova',
+            fontFamily: 'Tajawal',
           ),
           locale: langProvider.locale,
           supportedLocales: L10n.all,

@@ -68,7 +68,7 @@ flutter:
 
   assets:
     - assets/images/creditcardlogos.png
-    - assets/icon/loginicon.png
+    - assets/icon/loginicon1.png
     - assets/icon/points.png
 
   # To add assets to your application, add an assets section, like this:
@@ -94,6 +94,10 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

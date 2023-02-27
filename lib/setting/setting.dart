@@ -31,7 +31,7 @@ class SettingScreenState extends State<SettingScreen> {
 
   Widget build(BuildContext context) {
     final provider = Provider.of<LanguageProvider>(context);
-    final locale = provider.locale ?? Locale('en');
+    final locale = provider.locale;
 
     return Scaffold(
         appBar: AppBar(
@@ -80,6 +80,7 @@ class SettingScreenState extends State<SettingScreen> {
                             child: DropdownButton(
                           value: locale,
                           items: L10n.all.map((locale) {
+                            print("dbg ${locale}");
                             final flag = L10n.getLang(locale.languageCode);
                             return DropdownMenuItem(
                               child: Center(

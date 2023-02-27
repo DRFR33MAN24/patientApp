@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 
-class L10n{
+class L10n {
   static final all = [
+    const Locale("ar"),
     const Locale("en"),
-    const Locale("fr"),
-    const Locale("ar","SA"),
   ];
 
   static String getLang(String code) {
     switch (code) {
-      
       case 'en':
         return 'English';
       case 'ar':
-        return 'Arabic';
+        return 'عربي';
       case 'fr':
       default:
         return 'French';
     }
   }
-
 }

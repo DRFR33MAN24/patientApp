@@ -47,7 +47,7 @@ class AuthScreen extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: 5, left: 30, right: 30),
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Image.asset(
-                        "assets/icon/loginicon.png",
+                        "assets/icon/loginicon1.png",
                       ),
                     ),
                     SizedBox(
@@ -273,7 +273,10 @@ class _AuthCardState extends State<AuthCard> {
                       onPressed: _submit,
                       style: ElevatedButton.styleFrom(
                           minimumSize: const Size.fromHeight(50))),
-                Text("او", style: TextStyle(fontSize: 20)),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("او", style: TextStyle(fontSize: 20)),
+                ),
                 ElevatedButton(
                     onPressed: () {
                       _switchAuthMode();

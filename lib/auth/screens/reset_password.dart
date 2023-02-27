@@ -43,7 +43,7 @@ class ResetPassword extends StatelessWidget {
                       height: 200,
                       margin: EdgeInsets.only(bottom: 5, left: 30, right: 30),
                       padding: EdgeInsets.only(left: 10, right: 10),
-                      child: Image.asset("assets/icon/loginicon.png"),
+                      child: Image.asset("assets/icon/loginicon1.png"),
                     ),
                     SizedBox(
                       height: 30,
@@ -178,16 +178,15 @@ class _ResetCardState extends State<ResetCard> {
                 if (_isLoading)
                   CircularProgressIndicator()
                 else
-
-                Padding(
-                  padding: const EdgeInsets.only(top:8.0),
-                  child: ElevatedButton(
-                      child: Text(AppLocalizations.of(context).resetPassword,
-                          style: TextStyle(fontSize: 20)),
-                      onPressed: _submit,
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(50))),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: ElevatedButton(
+                        child: Text(AppLocalizations.of(context).resetPassword,
+                            style: TextStyle(fontSize: 20)),
+                        onPressed: _submit,
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size.fromHeight(50))),
+                  ),
               ],
             ),
           ),

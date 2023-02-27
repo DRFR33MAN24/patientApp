@@ -15,7 +15,7 @@
 
     "invalidEmail": "بريد إلكتروني خاطئ",
 
-    "invalidPassword": "رمز مرور خاطئ",
+    "invalidPassword": "كلمة مرور خاطئة",
 
     "confirmPassword": "تأكيد كلمة المرور",
 
@@ -28,25 +28,25 @@
     "logout": "تسجيل خروج",  
     "resetPassword":"اعادة تعيين كلمة المرور",
 
-    "totalAppointment": "إجمالي التعيين",
+    "totalAppointment": "المواعيد الكلية",
 
     "addAppointment": "أضف موعد",
 
-    "appointmentRequest": "طلب موعد",
+    "appointmentRequest": "اطلب موعد",
 
-    "noAppointment": "لا موعد",
+    "noAppointment": "لا مواعيد",
 
     "newAppointment": "موعد جديد",
 
     "appointmentTime": "وقت الموعد",
 
-    "appointments": "تعيينات",
+    "appointments": "المواعيد",
 
-    "appointment": "ميعاد",
+    "appointment": "موعد",
 
-    "createAppointment": "إنشاء موعد",
+    "createAppointment": "انشئ موعد",
 
-    "editAppointment": "تحرير موعد",
+    "editAppointment": "تغيير الموعد",
 
     "appointmentCreatedMessage": "تم إنشاء موعدك بنجاح",
 
@@ -58,17 +58,17 @@
 
     "profile": "الملف الشخصي",
 
-    "changesUpdatedSuccessfuly": "تم تحديث التغيير بنجاح.",
+    "changesUpdatedSuccessfuly": "تم تطبيق التغييرات بنجاح.",
 
-    "changesUpdatedNotSuccessfull": "لم يتم تحديث التغييرات بنجاح.",
+    "changesUpdatedNotSuccessfull": "لم يتم تطبيق التغييرات بنجاح.",
 
     "notChangable": "غير قابل للتغيير",
 
-    "todaysAppointment": "موعد اليوم",
+    "todaysAppointment": "مواعيد اليوم",
 
-    "dashboard": "لوحة القيادة",
+    "dashboard": "لوحة التحكم",
 
-    "payment": "دفع",
+    "payment": "الدفع",
 
     "paymentList": "قائمة الدفع",    
 
@@ -76,23 +76,23 @@
 
     "selectTheDate": "حدد التاريخ",
 
-    "availableSlot": "الفتحة المتاحة",
+    "availableSlot": "موعد متاح",
 
     "remarks": "ملاحظات",
 
     "giveYourRemarks": "قدم ملاحظاتك",
     
-    "appointmentStatus": "حالة التعيين",
+    "appointmentStatus": "حالة الموعد",
 
-    "invalid": "غير صالح",
+    "invalid": "غير صحيح",
 
-    "invalidInput": "مدخل غير صالح",
+    "invalidInput": "بيانات غير صحيحة",
 
-    "pleaseEnterValidInput": "الرجاء إدخال إدخال صالح",
+    "pleaseEnterValidInput": "الرجاء إدخال بيانات صحيحة",
 
     "ok": "نعم",
 
-    "close": "قريب",
+    "close": "اغلاق",
 
     "save": "حفظ",
 
@@ -100,17 +100,17 @@
 
     "success": "نجاح",
 
-    "successMessage": "Mنجاح رسالة",
+    "successMessage": "نجاح",
 
     "payment": "دفع",
 
     "paymentSuccessfullMessage": "تم الدفع بنجاح",
 
-    "paymentUnsuccessfull": "الدفع لم ينجح",
+    "paymentUnsuccessfull": "لم يتم الدفع بنجاح",
 
-    "addPayment": "إضافة الدفع",
+    "addPayment": "إضافة دفعة",
 
-    "invoiceId": "هوية صوتية",
+    "invoiceId": "رقم طلب الدفع",
 
     "patient": "مريض",
 
@@ -140,7 +140,7 @@
 
     "enterName": "أدخل الاسم",
 
-    "invalidName": "أدخل اسمًا صالحًا",
+    "invalidName": "أدخل اسمًا صحيحا",
 
     "enterCardHolderName": "أدخل اسم حامل البطاقة",
 
@@ -148,17 +148,17 @@
 
     "enterCardnumber": "أدخل رقم البطاقة",
 
-    "invalidCardNumber": "رقم البطاقة غير صالحة",
+    "invalidCardNumber": "رقم البطاقة غير صالح",
 
     "exipryDate": "تاريخ الانتهاء",
 
-    "enterExipryDate": "أدخل تاريخ إكسبري",
+    "enterExipryDate": "أدخل تاريخ الانتهاء",
 
     "cvv": "CVV",
 
     "enterCvv": "أدخل cvv",
 
-    "invalidCvv": "الرجاء إدخال سيرة ذاتية صالحة",
+    "invalidCvv": "الرجاء إدخال cvv صالح",
 
     "audioOnly": "صوت فقط",
 
@@ -184,7 +184,7 @@
 
     "delete": "حذف",
 
-    "failed": "باءت بالفشل",
+    "failed": "فشل",
 
     "appointmentWasNotDeleted": "لم يتم حذف الموعد",
     
@@ -196,11 +196,11 @@
 
     "emailIsAlreadyRegistered": "Lتم تسجيل البريد بالفعل",
 
-    "couldNotAuthenticateYouPleasetryagain": "لا يمكن الوثوق بك. حاول مرة اخرى.",
+    "couldNotAuthenticateYouPleasetryagain": "لا يمكن تسجيل الدخول. حاول مرة اخرى.",
 
     "yourAccrountHasBeenCreatedPpleaseLogin": "تم إنشاء الحساب الخاص بك. الرجاء تسجيل الدخول",
 
-    "forgotYourPassword": "نسيت رقمك السري؟",
+    "forgotYourPassword": "نسيت كلمة السر؟",
 
     "forgotPassword": "هل نسيت كلمة السر",
 
@@ -212,9 +212,9 @@
 
     "doYouAlreadyHaveAnAccount": "هل لديك حساب بالفعل؟",
 
-    "instead": "في حين أن",
+    "instead": "بديل",
 
-    "youPovidedAnInvalidEmail": "لقد قدمت بريدًا إلكترونيًا غير صالح",
+    "youPovidedAnInvalidEmail": "لقد قدمت بريدًا إلكترونيًا غير صحيح",
 
      "firstName": "الاسم الأول",
 
@@ -246,7 +246,7 @@
 
     "department": "قسم",
 
-    "invalidDepartment": "قسم غير صالح",
+    "invalidDepartment": "قسم غير صحيح",
 
     "editProfile": "تعديل الملف الشخصي",
 
@@ -272,9 +272,9 @@
 
      "note": "ملحوظة",
 
-     "searchMedicine": "بحث الطب",
+     "searchMedicine": "ابحث عن دواء",
 
-     "add": "يضيف",
+     "add": "اضف",
 
      "medicines": "الأدوية",
 
@@ -282,17 +282,17 @@
 
      "afterfood": "بعد الطعام",
 
-     "create": "يزيد",
+     "create": "انشئ",
 
      "yourPresciptions": "الوصفات الطبية الخاصة بك",
 
-     "view": "رأي",
+     "view": "عرض",
 
      "download": "تحميل",
 
-     "edit": "يحرر",
+     "edit": "تغيير",
 
-     "prescription": "روشتة",
+     "prescription": "وصفة",
 
      "prescriptionDetail": "تفاصيل الوصفة",
 
@@ -300,9 +300,9 @@
 
      "patientId": "رقم المريض",
 
-     "age": "سن",
+     "age": "العمر",
 
-     "gender": "جنس تذكير أو تأنيث",
+     "gender": "الجنس",
 
      "rx": "Rx",
 
@@ -318,13 +318,13 @@
 
      "doctordetail": "تفاصيل الطبيب",
 
-     "noslots": "لا فتحات",
+     "noslots": "لا مواعيد متاحة",
 
      "nodatatoshow": "لا توجد بيانات لإظهارها",
 
      "chooseapatient": "اختر مريض",
 
-    "searchpatient": "بحث المريض",
+    "searchpatient": "ابحث بالمرضى",
 
     "chooseadoctor": "اختر الطبيب",
             "choosearegion": "اختر المنطقة",
@@ -351,8 +351,8 @@
 
     "loadingData": "جار التحميل",
 
-    "bookADoctor": "احجز دكتور",
-    "labReports": "تقارير المعمل",
-    "labReport": "تقرير معمل",
-    "labId": "معرّف المعمل"
+    "bookADoctor": "احجز طبيب",
+    "labReports": "تقارير المخبر",
+    "labReport": "تقرير مخبري",
+    "labId": "رقم المخبر"
 }

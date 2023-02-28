@@ -14,6 +14,7 @@ import 'package:date_field/date_field.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui' as ui;
 import '../auth/providers/auth.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -58,8 +59,10 @@ class EditProfileState extends State<EditProfile> {
   String selectedSex = 'Male';
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("Male"), value: "Male"),
-      DropdownMenuItem(child: Text("Female"), value: "Female"),
+      DropdownMenuItem(
+          child: Text(AppLocalizations.of(context).male), value: "Male"),
+      DropdownMenuItem(
+          child: Text(AppLocalizations.of(context).female), value: "Female"),
     ];
     return menuItems;
   }
@@ -68,7 +71,13 @@ class EditProfileState extends State<EditProfile> {
   List<DropdownMenuItem<String>> get dropdownItemsBlood {
     List<DropdownMenuItem<String>> menuItemsBlood = [
       DropdownMenuItem(child: Text("A+"), value: "A+"),
+      DropdownMenuItem(child: Text("A-"), value: "A-"),
+      DropdownMenuItem(child: Text("B+"), value: "B+"),
+      DropdownMenuItem(child: Text("B-"), value: "B-"),
+      DropdownMenuItem(child: Text("AB+"), value: "AB+"),
+      DropdownMenuItem(child: Text("AB-"), value: "AB-"),
       DropdownMenuItem(child: Text("O+"), value: "O+"),
+      DropdownMenuItem(child: Text("O-"), value: "O-"),
     ];
     return menuItemsBlood;
   }
@@ -91,7 +100,7 @@ class EditProfileState extends State<EditProfile> {
               title: Text(
                 AppLocalizations.of(context).action,
               ),
-              content: Text("Please choose image"),
+              content: Text(AppLocalizations.of(context).pickImage),
               actions: [
                 TextButton(
                   child: Text(AppLocalizations.of(context).ok),
@@ -337,6 +346,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _name,
                                     decoration: InputDecoration(
                                         labelText:
@@ -361,6 +371,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _address,
                                     decoration: InputDecoration(
                                         labelText: AppLocalizations.of(context)
@@ -368,7 +379,7 @@ class EditProfileState extends State<EditProfile> {
                                         hintText: AppLocalizations.of(context)
                                             .address),
                                     validator: (value) {
-                                      if (value.isEmpty || value.length < 5) {
+                                      if (value.isEmpty) {
                                         return AppLocalizations.of(context)
                                             .invalidAddress;
                                       }
@@ -385,6 +396,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _phone,
                                     decoration: InputDecoration(
                                         labelText:
@@ -427,6 +439,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _age,
                                     decoration: InputDecoration(
                                         labelText:
@@ -455,6 +468,7 @@ class EditProfileState extends State<EditProfile> {
                                       children: [
                                         Expanded(
                                           child: TextFormField(
+                                            textDirection: ui.TextDirection.rtl,
                                             controller: _day,
                                             decoration: InputDecoration(
                                                 labelText:
@@ -475,6 +489,7 @@ class EditProfileState extends State<EditProfile> {
                                         ),
                                         Expanded(
                                           child: TextFormField(
+                                            textDirection: ui.TextDirection.rtl,
                                             controller: _month,
                                             decoration: InputDecoration(
                                                 labelText:
@@ -495,6 +510,7 @@ class EditProfileState extends State<EditProfile> {
                                         ),
                                         Expanded(
                                           child: TextFormField(
+                                            textDirection: ui.TextDirection.rtl,
                                             controller: _year,
                                             decoration: InputDecoration(
                                                 labelText:
@@ -597,6 +613,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _name,
                                     decoration: InputDecoration(
                                         labelText:
@@ -621,6 +638,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _address,
                                     decoration: InputDecoration(
                                         labelText: AppLocalizations.of(context)
@@ -628,7 +646,7 @@ class EditProfileState extends State<EditProfile> {
                                         hintText: AppLocalizations.of(context)
                                             .address),
                                     validator: (value) {
-                                      if (value.isEmpty || value.length < 5) {
+                                      if (value.isEmpty) {
                                         return AppLocalizations.of(context)
                                             .invalidAddress;
                                       }
@@ -645,6 +663,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _phone,
                                     decoration: InputDecoration(
                                         labelText:
@@ -687,6 +706,7 @@ class EditProfileState extends State<EditProfile> {
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    textDirection: ui.TextDirection.rtl,
                                     controller: _age,
                                     decoration: InputDecoration(
                                         labelText:
@@ -715,6 +735,7 @@ class EditProfileState extends State<EditProfile> {
                                       children: [
                                         Expanded(
                                           child: TextFormField(
+                                            textDirection: ui.TextDirection.rtl,
                                             controller: _day,
                                             decoration: InputDecoration(
                                                 labelText:
@@ -735,6 +756,7 @@ class EditProfileState extends State<EditProfile> {
                                         ),
                                         Expanded(
                                           child: TextFormField(
+                                            textDirection: ui.TextDirection.rtl,
                                             controller: _month,
                                             decoration: InputDecoration(
                                                 labelText:
@@ -755,6 +777,7 @@ class EditProfileState extends State<EditProfile> {
                                         ),
                                         Expanded(
                                           child: TextFormField(
+                                            textDirection: ui.TextDirection.rtl,
                                             controller: _year,
                                             decoration: InputDecoration(
                                                 labelText:

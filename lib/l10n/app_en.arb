@@ -883,6 +883,10 @@
     "bookADoctor": "Book A Doctor",
     "labReports": "Lab Reports",
     "labReport": "Lab Report",
-    "labId": "Lab Id"
+    "labId": "Lab Id",
+    "registerSuccess":"successfully signed up, please check your email ",
+    "male":"Male",
+    "female":"Female",
+    "pickImage":"please choose image"
 
 }

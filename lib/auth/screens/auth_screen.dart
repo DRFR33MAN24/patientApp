@@ -104,6 +104,23 @@ class _AuthCardState extends State<AuthCard> {
     );
   }
 
+  void _showSuccessDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(AppLocalizations.of(context).success),
+        content: Text(message),
+        actions: <Widget>[
+          TextButton(
+              child: Text(AppLocalizations.of(context).ok),
+              onPressed: () {
+                Navigator.of(ctx).pop();
+              }),
+        ],
+      ),
+    );
+  }
+
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
       // Invalid!
@@ -128,7 +145,7 @@ class _AuthCardState extends State<AuthCard> {
           _authData['email'],
           _authData['password'],
         );
-        _showErrorDialog("Signup successfull please confirm Email");
+        _showSuccessDialog(AppLocalizations.of(context).registerSuccess);
       }
     } on HttpException catch (error) {
       print('error message' + error.toString());

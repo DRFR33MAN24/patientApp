@@ -16,6 +16,7 @@ import 'package:date_field/date_field.dart';
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui' as ui;
 
 import '../auth/providers/auth.dart';
 
@@ -184,7 +185,7 @@ class AppointmentFromDoctorScreenScreenState
 
   Future<String> makeAppointment(context) async {
     String posturl = Auth().linkURL + "api/addAppointment";
-
+    print('dbg doctorappointment ${this._patient}-${this._ddoctor}');
     final res = await http.post(
       Uri.parse(posturl),
       body: {
@@ -229,12 +230,12 @@ class AppointmentFromDoctorScreenScreenState
   void initState() {
     super.initState();
 
-    url = Auth().linkURL + "api/getDoctorList?id=${this.useridd}";
-
+    Auth auth = Provider.of<Auth>(context, listen: false);
+    url = Auth().linkURL + "api/getDoctorList?id=${auth.userId}";
     this.getSWData();
 
-    _patient = this.idd;
-    appointmentStatus = new TextEditingController(text: 'Requested');
+    _patient = auth.userId;
+    appointmentStatus = new TextEditingController(text: 'Confirmed');
   }
 
   AppColor appcolor = new AppColor();
@@ -431,6 +432,7 @@ class AppointmentFromDoctorScreenScreenState
                             child: Theme(
                               data: theme.copyWith(primaryColor: Colors.blue),
                               child: TextFormField(
+                                textDirection: ui.TextDirection.rtl,
                                 controller: _remarks,
                                 decoration: InputDecoration(
                                     labelText:

@@ -351,8 +351,13 @@
 
     "loadingData": "جار التحميل",
 
-    "bookADoctor": "احجز طبيب",
+    "bookADoctor": "احجز موعد",
     "labReports": "تقارير المخبر",
     "labReport": "تقرير مخبري",
-    "labId": "رقم المخبر"
+    "labId": "رقم المخبر",
+    "newProfile": "بروفايل جديد",
+    "registerSuccess":"تم تسجيل المعلومات بنجاح, تحقق من بريدك",
+        "male":"ذكر",
+    "female":"انثى",
+    "pickImage":"الرجاء اختيار صورة"
 }

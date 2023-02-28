@@ -195,7 +195,7 @@ class PatientAppointmentDetailsScreenState
 
   Future<String> makeAppointment(context) async {
     String posturl = Auth().linkURL + "api/addAppointment";
-    print('dbg make call');
+    print('dbg appointment ${this._patient}-${this.selectedDoctor}');
     final res = await http.post(
       Uri.parse(posturl),
       body: {
@@ -255,7 +255,7 @@ class PatientAppointmentDetailsScreenState
     Auth auth = Provider.of<Auth>(context, listen: false);
     this.idd = auth.userId;
     _patient = this.idd;
-    appointmentStatus = new TextEditingController(text: 'Requested');
+    appointmentStatus = new TextEditingController(text: 'Confirmed');
   }
 
   AppColor appcolor = new AppColor();
@@ -410,8 +410,8 @@ class PatientAppointmentDetailsScreenState
                                     Container(
                                       width: 30,
                                       height: 30,
-                                      child: Image.network(
-                                          "https://image.flaticon.com/icons/png/512/147/147144.png"),
+                                      child:
+                                          Image.asset("assets/icon/points.png"),
                                     ),
                                     SizedBox(
                                       width: 10,
@@ -436,11 +436,12 @@ class PatientAppointmentDetailsScreenState
                           searchHint:
                               AppLocalizations.of(context).chooseadoctor,
                           onChanged: (value) {
+                            print('dbg ${value}');
                             setState(() {
                               print('get doctor time slot');
                               errordoctorselect = false;
                               _ddoctor = value;
-                              selectedDoctor = value.id;
+                              this.selectedDoctor = value['id'];
                               availableSlot = "";
 
                               String formattedDate = DateFormat('yyyy-MM-dd')

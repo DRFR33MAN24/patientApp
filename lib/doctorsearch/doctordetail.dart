@@ -23,6 +23,7 @@ import 'dart:convert';
 import '../auth/providers/auth.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'dart:ui' as ui;
 
 class DoctorDetailProfile extends StatefulWidget {
   static const routeName = '/doctordetail';
@@ -172,7 +173,7 @@ class DoctorDetailProfileState extends State<DoctorDetailProfile> {
     });
 
     String posturl = Auth().linkURL + "api/addAppointment";
-
+    print('dbg doctordetail ${this._patient}-${this.doctoruserid}');
     final res = await http.post(
       Uri.parse(posturl),
       body: {
@@ -221,11 +222,11 @@ class DoctorDetailProfileState extends State<DoctorDetailProfile> {
 
     getDoctorProfileData();
     print('dbg doctorDetail ${this.idd}');
-    setState(() {
-      _patient = this.idd;
-    });
+    Auth auth = Provider.of<Auth>(context, listen: false);
 
-    appointmentStatus = new TextEditingController(text: 'Requested');
+    _patient = auth.userId;
+
+    appointmentStatus = new TextEditingController(text: 'Confirmed');
   }
 
   AppColor appcolor = new AppColor();
@@ -536,6 +537,7 @@ class DoctorDetailProfileState extends State<DoctorDetailProfile> {
                                       backgroundColor: Colors.black,
                                     ),
                                     child: TextFormField(
+                                      textDirection: ui.TextDirection.rtl,
                                       controller: _remarks,
                                       decoration: InputDecoration(
                                         labelText: AppLocalizations.of(context)
